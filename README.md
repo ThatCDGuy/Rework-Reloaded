@@ -4,10 +4,7 @@
 
 # Requirements
 - [Pizza Tower on Steam](https://store.steampowered.com/app/2231450/Pizza_Tower/)
-- [GameMaker LTS 2022](https://gms.yoyogames.com/GameMaker-Installer-2022.0.1.31.exe) w/ Runtime 2022.0.1.30 <br/>
-This seems to be the exact version they use judging by the Steamworks extension. Any other versions break it too
-- [Steamworks SDK](https://partner.steamgames.com/downloads/steamworks_sdk.zip) <br/>
-This one's optional if you're gonna remove it, which you need to for mods
+- [GameMaker 2024](https://releases.gamemaker.io/) <br/>
 
 This repository doesn't include any of the datafiles (FMOD, langs) or sprites. An [UndertaleModTool](https://github.com/krzys-h/UndertaleModTool/releases) script is included to extract everything needed from the `data.win`, and port the required files to the decomp folder.
 
@@ -26,6 +23,4 @@ This repository doesn't include any of the datafiles (FMOD, langs) or sprites. A
 <img src="github/guide3.png">
 
 4. It takes a while to dump every frame of every sprite. Give it about 15 minutes... Make sure it dumps this to the same folder the YYP file is located.
-5. Run the `PizzaTower_GM2.yyp` in the *right version of GameMaker*. Open Extensions > Steamworks and change the "Steam SDK" location to wherever you put your Steamworks SDK. If that doesn't work, try going INTO the Steamworks folder and make that the path instead. 
-
-**If you try building the game with Steamworks, it will just run the unmodded game.** You can always just remove the extension though. Look through all Steam related code, and comment out any use of the `steam_` functions. I think you can also just delete the `steam_api64.dll` file from the build.
+5. Run the `PizzaTower_GM2.yyp` in the *right version of GameMaker*.
