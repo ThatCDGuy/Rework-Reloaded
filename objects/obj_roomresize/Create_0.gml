@@ -1,2 +1,2 @@
-dragged = false
-dock = comp_dock.topleft
+dragged = false;
+dock = comp_dock.topleft;

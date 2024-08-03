@@ -1,12 +1,12 @@
-function scr_initinput(open_savedata = true)
-{
+function scr_initinput(open_savedata = true) {
 	tdp_input_init();
 	global.spr_gamepadbuttons = spr_gamepadbuttons_style1;
 	global.spr_joystick = spr_joystick_style1;
-	
-	if open_savedata
+
+	if (open_savedata) {
 		ini_open("saveData.ini");
-	
+	}
+
 	tdp_input_add(new tdp_input_key("menu_reset_binds", [new tdp_input_action(tdp_input.keyboard, vk_f1)]));
 	tdp_input_add(new tdp_input_key("menu_reset_bindsC", [new tdp_input_action(tdp_input.gamepad, gp_select)]));
 	tdp_input_ini_read("menu_up", [tdp_action(tdp_input.keyboard, vk_up)]);
@@ -18,7 +18,7 @@ function scr_initinput(open_savedata = true)
 	tdp_input_ini_read("menu_back", [tdp_action(tdp_input.keyboard, ord("X")), tdp_action(tdp_input.keyboard, vk_escape)]);
 	tdp_input_ini_read("menu_delete", [tdp_action(tdp_input.keyboard, ord("C"))]);
 	tdp_input_ini_read("menu_quit", [tdp_action(tdp_input.keyboard, ord("X"))]);
-	
+
 	var _select = gp_face1;
 	var _back = gp_face2;
 	tdp_input_ini_read("menu_upC", [tdp_action(tdp_input.joystick, gp_axislv, -1), tdp_action(tdp_input.gamepad, gp_padu)]);
@@ -52,7 +52,7 @@ function scr_initinput(open_savedata = true)
 	tdp_input_ini_read("player_attackC", [tdp_action(tdp_input.gamepad, gp_shoulderrb), tdp_action(tdp_input.gamepad, gp_shoulderr)]);
 	tdp_input_ini_read("player_groundpoundC", []);
 	tdp_input_ini_read("player_superjumpC", []);
-	
+
 	global.key_up = ini_read_string("ControlsKeys", "up", vk_up);
 	global.key_right = ini_read_string("ControlsKeys", "right", vk_right);
 	global.key_left = ini_read_string("ControlsKeys", "left", vk_left);
@@ -64,7 +64,7 @@ function scr_initinput(open_savedata = true)
 	global.key_attack = ini_read_string("ControlsKeys", "attack", vk_shift);
 	global.key_start = ini_read_string("ControlsKeys", "start", vk_escape);
 	global.key_chainsaw = ini_read_string("ControlsKeys", "chainsaw", ord("V"));
-	
+
 	global.key_upC = ini_read_string("ControllerButton", "up", gp_padu);
 	global.key_rightC = ini_read_string("ControllerButton", "right", gp_padr);
 	global.key_leftC = ini_read_string("ControllerButton", "left", gp_padl);
@@ -78,7 +78,7 @@ function scr_initinput(open_savedata = true)
 	global.key_chainsawC = ini_read_string("ControllerButton", "chainsaw", gp_shoulderl);
 	global.key_superjumpC = ini_read_string("ControllerButton", "superjump", noone);
 	global.key_groundpoundC = ini_read_string("ControllerButton", "groundpound", noone);
-	
+
 	var dz = 0.4;
 	var dzv = 0.1;
 	var dzh = 0.1;
@@ -95,7 +95,8 @@ function scr_initinput(open_savedata = true)
 	global.gamepad_groundpound = ini_read_real("InputConfig", "groundpound", 1);
 	global.keyboard_superjump = ini_read_real("InputConfig", "kb_superjump", 1);
 	global.keyboard_groundpound = ini_read_real("InputConfig", "kb_groundpound", 1);
-	
-	if open_savedata
+
+	if (open_savedata) {
 		ini_close();
+	}
 }

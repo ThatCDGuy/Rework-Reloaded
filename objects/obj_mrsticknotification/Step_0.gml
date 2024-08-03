@@ -1,29 +1,24 @@
 var accel = 6;
-if !finish
-{
-	if start
-	{
+if (!finish) {
+	if (start) {
 		y = Approach(y, 32, accel);
-		with obj_player
-		{
-			if (place_meeting(x, y, obj_grannypizzasign) || place_meeting(x, y, obj_tutorialbook))
-			{
+		with (obj_player) {
+			if (place_meeting(x, y, obj_grannypizzasign) || place_meeting(x, y, obj_tutorialbook)) {
 				other.finish = true;
-				with obj_transfotip
-				{
+				with (obj_transfotip) {
 					alarm[1] = -1;
 					event_perform(2, 1);
 				}
 			}
 		}
-		if (!instance_exists(obj_transfotip))
+		if (!instance_exists(obj_transfotip)) {
 			finish = true;
+		}
 	}
-}
-else
-{
+} else {
 	var ty = -(height + 100);
 	y = Approach(y, ty, accel);
-	if y <= ty
+	if (y <= ty) {
 		instance_destroy();
+	}
 }

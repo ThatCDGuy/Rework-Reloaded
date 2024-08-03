@@ -1,26 +1,22 @@
-function string_split(input, split)
-{
+function string_split(input, split) {
 	input += " ";
 	var _current_str = "";
 	var _list = array_create(0);
-	for (var i = 1; i < string_length(input) + 1; i++)
-	{
+	for (var i = 1; i < string_length(input) + 1; i++) {
 		var _char = string_char_at(input, i);
-		if _char != split
+		if (_char != split) {
 			_current_str += _char;
-		else
-		{
+		} else {
 			array_push(_list, _current_str);
 			_current_str = "";
 		}
 	}
 	return _list;
 }
-function function_overload(arg_array, func)
-{
+
+function function_overload(arg_array, func) {
 	var _size = array_length(arg_array);
-	switch _size
-	{
+	switch (_size) {
 		case 0:
 			func();
 			break;
@@ -47,26 +43,26 @@ function function_overload(arg_array, func)
 			break;
 	}
 }
-function DebugCommand(_id, _desc, _format, _func) constructor
-{
+
+function DebugCommand(_id, _desc, _format, _func) constructor {
 	command_id = _id;
 	description = _desc;
 	format = _format;
 	func = _func;
-	
-	Invoke = function(args)
-	{
-		if args != undefined
+
+	Invoke = function(args) {
+		if (args != undefined) {
 			function_overload(args, func);
-		else
+		} else {
 			func();
+		}
 	};
 }
-function TextList_Add(type, text)
-{
-	with obj_debugcontroller
-	{
-		if DEBUG
+
+function TextList_Add(type, text) {
+	with (obj_debugcontroller) {
+		if (DEBUG) {
 			ds_list_add(text_list, [type, text]);
+		}
 	}
 }

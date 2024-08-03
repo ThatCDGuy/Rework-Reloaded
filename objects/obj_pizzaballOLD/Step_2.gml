@@ -1,2 +1,3 @@
-if state != states.golf
+if (state != states.golf) {
 	scr_collide();
+}

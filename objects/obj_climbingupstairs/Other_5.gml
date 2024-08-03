@@ -1,6 +1,9 @@
-with obj_pigtotal
+with (obj_pigtotal) {
 	visible = true;
-with obj_tv
+}
+with (obj_tv) {
 	visible = true;
-with obj_camera
+}
+with (obj_camera) {
 	visible = true;
+}

@@ -1,2 +1,3 @@
-if state == states.robotchase
+if (state == states.robotchase) {
 	event_inherited();
+}

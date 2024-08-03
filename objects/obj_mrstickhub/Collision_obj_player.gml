@@ -1,6 +1,5 @@
 var total = global.pigtotal - global.pigreduction;
-if other.key_up2 && total >= maxscore && !unlocked
-{
+if (other.key_up2 && total >= maxscore && !unlocked) {
 	unlocked = true;
 	ini_open_from_string(obj_savesystem.ini_str);
 	ini_write_real(save, "unlocked", true);

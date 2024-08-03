@@ -1,5 +1,4 @@
-if (global.levelcomplete)
-{
+if (global.levelcomplete) {
 	x = 480;
 	dir = 1;
 }

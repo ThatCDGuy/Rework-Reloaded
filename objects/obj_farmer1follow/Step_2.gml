@@ -1,5 +1,6 @@
 event_inherited();
-if x != xprevious
+if (x != xprevious) {
 	sprite_index = walkspr;
-else
+} else {
 	sprite_index = idlespr;
+}

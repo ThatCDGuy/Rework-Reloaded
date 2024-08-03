@@ -19,8 +19,7 @@ toppin_sprite[1] = spr_toppinpineapple;
 toppin_sprite[2] = spr_toppinsausage;
 toppin_sprite[3] = spr_toppinshroom;
 toppin_sprite[4] = spr_toppintomato;
-for (i = 0; i < array_length(toppin_sprite); i++)
-{
+for (i = 0; i < array_length(toppin_sprite); i++) {
 	toppin_number[i] = sprite_get_number(toppin_sprite[i]);
 	toppin_index[i] = 0;
 	toppin_has[i] = false;

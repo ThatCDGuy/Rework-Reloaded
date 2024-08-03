@@ -1,2 +1,2 @@
-level = "space"
-treasureindex = 10
+level = "space";
+treasureindex = 10;

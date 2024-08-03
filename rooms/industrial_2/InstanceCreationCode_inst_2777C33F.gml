@@ -1,2 +1,2 @@
-chosenstate = states.mach1
-escape = true
+chosenstate = states.mach1;
+escape = true;

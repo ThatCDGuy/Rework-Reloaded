@@ -1,8 +1,7 @@
 targetRoom = hub_room1;
 global.collect = 0;
 global.collectN = 0;
-with (obj_tv)
-{
+with (obj_tv) {
 	shownranka = false;
 	shownrankb = false;
 	shownrankc = false;

@@ -1,5 +1,4 @@
-if (!instance_exists(obj_noiseboss))
-{
+if (!instance_exists(obj_noiseboss)) {
 	instance_destroy(id, false);
 	exit;
 }

@@ -1,2 +1,3 @@
-with obj_camera
+with (obj_camera) {
 	shake_mag = 0;
+}

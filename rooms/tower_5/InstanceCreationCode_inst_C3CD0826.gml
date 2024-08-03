@@ -1,1 +1,1 @@
-targetRoom = tower_finalhallway
+targetRoom = tower_finalhallway;

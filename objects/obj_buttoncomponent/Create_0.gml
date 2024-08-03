@@ -1,4 +1,1 @@
-on_left_click = function()
-{
-	
-}
+on_left_click = function() {};

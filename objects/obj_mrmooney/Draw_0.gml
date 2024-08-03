@@ -1,8 +1,8 @@
-if (obj_player1.ispeppino && !global.swapmode) 
+if (obj_player1.ispeppino && !global.swapmode) {
 	draw_sprite(spr_mrmooney_house, 0, x, y);
+}
 draw_self();
-if showmoney
-{
+if (showmoney) {
 	draw_set_font(global.moneyfont);
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);

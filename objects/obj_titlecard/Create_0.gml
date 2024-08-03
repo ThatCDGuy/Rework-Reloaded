@@ -11,7 +11,9 @@ noisehead = [];
 noisespots = [];
 alarm[1] = 1;
 
-with obj_gusbrickchase
+with (obj_gusbrickchase) {
 	fmod_event_instance_stop(snd, true);
-with obj_gusbrickfightball
+}
+with (obj_gusbrickfightball) {
 	alarm[1] = -1;
+}

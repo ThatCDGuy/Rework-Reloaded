@@ -1,10 +1,11 @@
-function pattern_set_pattern(sprite, subimg)
-{
-	if sprite == global.Pattern_Texture_Indexed && global.Pattern_Texture_Indexed != noone
+function pattern_set_pattern(sprite, subimg) {
+	if (sprite == global.Pattern_Texture_Indexed && global.Pattern_Texture_Indexed != noone) {
 		exit;
-	if sprite == noone
+	}
+	if (sprite == noone) {
 		exit;
-	
+	}
+
 	global.Pattern_Texture_Indexed = sprite;
 	var _tex = sprite_get_texture(sprite, subimg);
 	texture_set_stage(global.Pattern_Texture, _tex);

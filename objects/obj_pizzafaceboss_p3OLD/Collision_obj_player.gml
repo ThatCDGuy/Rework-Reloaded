@@ -1,11 +1,9 @@
-if state == states.thrown
+if (state == states.thrown) {
 	exit;
-if other.state == states.handstandjump
-{
-	if state == states.handstandjump
-	{
-		with other
-		{
+}
+if (other.state == states.handstandjump) {
+	if (state == states.handstandjump) {
+		with (other) {
 			state = states.supergrab;
 			substate = states.grab;
 			attackcooldown = 0;
@@ -18,11 +16,8 @@ if other.state == states.handstandjump
 		punchcount = 12;
 		attackcooldown = 0;
 		playerid = other.id;
-	}
-	else
-	{
-		with other
-		{
+	} else {
+		with (other) {
 			state = states.supergrab;
 			substate = states.grab;
 			attackcooldown = 0;
@@ -36,9 +31,7 @@ if other.state == states.handstandjump
 		substate = states.grabbed;
 		cooldown += 15;
 	}
-}
-else if state == states.handstandjump
-{
+} else if (state == states.handstandjump) {
 	state = states.supergrab;
 	substate = states.grab;
 	punchcount = 6;

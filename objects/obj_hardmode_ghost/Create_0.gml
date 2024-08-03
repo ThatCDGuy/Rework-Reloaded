@@ -1,5 +1,6 @@
-if (instance_number(obj_hardmode) > 1)
+if (instance_number(obj_hardmode) > 1) {
 	instance_destroy();
+}
 depth = -108;
 hsp = 0;
 vsp = 0;

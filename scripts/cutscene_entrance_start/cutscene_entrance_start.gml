@@ -1,7 +1,5 @@
-function cutscene_entrance_start()
-{
-	with obj_player
-	{
+function cutscene_entrance_start() {
+	with (obj_player) {
 		state = states.actor;
 		sprite_index = spr_walkfront;
 		image_speed = 0.35;

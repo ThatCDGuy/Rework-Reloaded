@@ -1,1 +1,1 @@
-instance_create(x, y, obj_playerexplosion)
+instance_create(x, y, obj_playerexplosion);

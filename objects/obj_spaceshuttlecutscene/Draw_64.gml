@@ -1,5 +1,4 @@
-if start
-{
+if (start) {
 	var bgx = bg_x;
 	var bgy = bg_y - 200;
 	draw_sprite_tiled(bg_space1, 0, bgx, bgy);
@@ -15,8 +14,7 @@ if start
 draw_set_alpha(fade);
 draw_rectangle_color(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0, 0, false);
 draw_set_alpha(1);
-if (instance_exists(obj_fadeout))
-{
+if (instance_exists(obj_fadeout)) {
 	draw_set_alpha(obj_fadeout.fadealpha);
 	draw_rectangle_color(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0, 0, false);
 	draw_set_alpha(1);

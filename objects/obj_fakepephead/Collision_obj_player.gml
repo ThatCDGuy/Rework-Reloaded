@@ -1,2 +1,3 @@
-if thrown
+if (thrown) {
 	scr_hurtplayer(other);
+}

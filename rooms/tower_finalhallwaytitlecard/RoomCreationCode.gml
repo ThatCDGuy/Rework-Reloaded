@@ -7,15 +7,13 @@ global.player_damage = 0;
 global.swap_damage[0] = 0;
 global.swap_damage[1] = 0;
 
-with (obj_player)
-{
+with (obj_player) {
 	state = states.titlescreen;
 	targetRoom = tower_finalhallway;
 	targetDoor = "C";
 }
 
-with (instance_create(x, y, obj_titlecard))
-{
+with (instance_create(x, y, obj_titlecard)) {
 	titlecard_sprite = spr_titlecards;
 	titlecard_index = 15;
 	title_sprite = spr_titlecards_title2;

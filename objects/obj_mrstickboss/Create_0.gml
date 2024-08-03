@@ -64,51 +64,48 @@ targetstunnedminus[4] = 30;
 targetstunnedminus[5] = 30;
 targetstunnedminus[6] = 30;
 
-function boss_destroy(player)
-{
+function boss_destroy(player) {
 	SUPER_boss_destroy(player);
 	targetstunned = 1000;
 	stunned = 1000;
 	global.mrstickcutscene3 = true;
 	quick_ini_write_real(get_savefile_ini(), "cutscene", "mrstick3", true);
 }
-function boss_hurt(damage, player)
-{
-	if targetstunned > 0
-	{
+
+function boss_hurt(damage, player) {
+	if (targetstunned > 0) {
 		targetstunned -= targetstunnedminus[phase - 1];
 		attack_cooldown = 0;
-		if targetstunned < 0
+		if (targetstunned < 0) {
 			targetstunned = 1;
-	}
-	else
+		}
+	} else {
 		targetstunned = 150;
+	}
 	SUPER_boss_hurt(damage, player);
 	targetxscale = -argument1.xscale;
 }
-function boss_hurt_noplayer(damage)
-{
-	if targetstunned > 0
-	{
+
+function boss_hurt_noplayer(damage) {
+	if (targetstunned > 0) {
 		targetstunned -= targetstunnedminus[phase - 1];
 		attack_cooldown = 0;
-		if targetstunned < 0
+		if (targetstunned < 0) {
 			targetstunned = 1;
-	}
-	else
+		}
+	} else {
 		targetstunned = 150;
+	}
 	SUPER_boss_hurt_noplayer(damage);
 }
-function player_hurt(damage, player)
-{
-	if (!player.inv_frames && (player.state != states.backbreaker || player.parry_inst == noone))
-	{
+
+function player_hurt(damage, player) {
+	if (!player.inv_frames && (player.state != states.backbreaker || player.parry_inst == noone)) {
 		hitstate = state;
 		hithsp = hsp;
 		hitvsp = vsp;
 		SUPER_player_hurt(damage, player);
-		with player
-		{
+		with (player) {
 			inv_frames = true;
 			alarm[1] = 15;
 		}

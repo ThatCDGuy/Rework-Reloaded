@@ -1,6 +1,9 @@
-if (ds_list_find_index(global.saveroom, id) != -1)
+if (ds_list_find_index(global.saveroom, id) != -1) {
 	instance_destroy();
-if !global.panic
+}
+if (!global.panic) {
 	instance_destroy();
-if global.exitrank
+}
+if (global.exitrank) {
 	instance_destroy();
+}

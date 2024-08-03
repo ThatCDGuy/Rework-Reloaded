@@ -1,7 +1,5 @@
-function cutscene_ruin_end()
-{
-	with obj_player
-	{
+function cutscene_ruin_end() {
+	with (obj_player) {
 		state = states.normal;
 		x = backtohubstartx;
 		y = backtohubstarty;

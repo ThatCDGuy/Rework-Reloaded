@@ -1,3 +1,4 @@
 scr_collide();
-if grounded
+if (grounded) {
 	instance_destroy();
+}

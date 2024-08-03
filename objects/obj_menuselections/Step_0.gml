@@ -1,7 +1,8 @@
-if (instance_exists(obj_keyconfig))
+if (instance_exists(obj_keyconfig)) {
 	visible = false;
-else
+} else {
 	visible = true;
+}
 ini_open("saveData.ini");
 global.key_up = ini_read_string("ControlsKeys", "up", 38);
 global.key_right = ini_read_string("ControlsKeys", "right", 39);
@@ -42,57 +43,50 @@ global.key_shootCN = ini_read_string("ControllerButton", "shoot", 32770);
 global.key_attackCN = ini_read_string("ControllerButton", "attack", 32774);
 global.key_startCN = ini_read_string("ControllerButton", "start", 32778);
 ini_close();
-if levelselect == 1
-{
-	if (!instance_exists(obj_keyconfig))
+if (levelselect == 1) {
+	if (!instance_exists(obj_keyconfig)) {
 		scr_getinput();
-	if key_down2 && b < 5
+	}
+	if (key_down2 && b < 5) {
 		b += 1;
-	if key_up2 && b > 0
+	}
+	if (key_up2 && b > 0) {
 		b -= 1;
-	if (!instance_exists(obj_fadeout))
-	{
-		if key_jump
-		{
-			with (instance_create(x, y, obj_fadeout))
-			{
-				if other.b == 0
-				{
+	}
+	if (!instance_exists(obj_fadeout)) {
+		if (key_jump) {
+			with (instance_create(x, y, obj_fadeout)) {
+				if (other.b == 0) {
 					obj_player.targetRoom = desert_1;
 					obj_player.player_x = 208;
 					obj_player.player_y = 434;
 					obj_player.character = "P";
 				}
-				if other.b == 1
-				{
+				if (other.b == 1) {
 					obj_player.targetRoom = floor2_room0;
 					obj_player.player_x = 208;
 					obj_player.player_y = 434;
 					obj_player.character = "P";
 				}
-				if other.b == 2
-				{
+				if (other.b == 2) {
 					obj_player.targetRoom = floor3_room0;
 					obj_player.player_x = 976;
 					obj_player.player_y = 434;
 					obj_player.character = "P";
 				}
-				if other.b == 3
-				{
+				if (other.b == 3) {
 					obj_player.targetRoom = floor4_room0;
 					obj_player.player_x = 304;
 					obj_player.player_y = 402;
 					obj_player.character = "P";
 				}
-				if other.b == 4
-				{
+				if (other.b == 4) {
 					obj_player.targetRoom = floor5_room1;
 					obj_player.player_x = 244;
 					obj_player.player_y = 187;
 					obj_player.character = "P";
 				}
-				if other.b == 5
-				{
+				if (other.b == 5) {
 					obj_player.targetRoom = golf_room1;
 					obj_player.player_x = 176;
 					obj_player.player_y = 402;
@@ -100,18 +94,14 @@ if levelselect == 1
 				}
 			}
 		}
-		if key_slap2
-		{
-			with (instance_create(x, y, obj_fadeout))
-			{
-				if other.b == 0
-				{
+		if (key_slap2) {
+			with (instance_create(x, y, obj_fadeout)) {
+				if (other.b == 0) {
 					obj_player.player_x = 250;
 					obj_player.player_y = 250;
 					obj_player.character = "P";
 				}
-				if other.b == 1
-				{
+				if (other.b == 1) {
 					obj_player.targetRoom = floor2_roomtreasure;
 					obj_player.player_x = 250;
 					obj_player.player_y = 250;
@@ -120,30 +110,27 @@ if levelselect == 1
 			}
 		}
 	}
-}
-else if levelselect == 0
-{
-	if (!instance_exists(obj_keyconfig))
+} else if (levelselect == 0) {
+	if (!instance_exists(obj_keyconfig)) {
 		scr_getinput();
-	if (key_up && !instance_exists(obj_keyconfig) && optionselect == 1)
+	}
+	if (key_up && !instance_exists(obj_keyconfig) && optionselect == 1) {
 		optionselect = 0;
-	else if (key_down && !instance_exists(obj_keyconfig) && optionselect == 0)
+	} else if (key_down && !instance_exists(obj_keyconfig) && optionselect == 0) {
 		optionselect = 1;
-	if optionselect == 0
+	}
+	if (optionselect == 0) {
 		obj_cursor.y = y - 24;
-	else if optionselect == 1
+	} else if (optionselect == 1) {
 		obj_cursor.y = y + 18;
-	if (optionselect == 0 && key_jump && !instance_exists(obj_keyconfig))
-	{
+	}
+	if (optionselect == 0 && key_jump && !instance_exists(obj_keyconfig)) {
 		levelselect = true;
 		sprite_index = spr_null;
 	}
-	if (optionselect == 1 && !instance_exists(obj_keyconfig))
-	{
-		if (keyboard_check_pressed(global.key_jump))
+	if (optionselect == 1 && !instance_exists(obj_keyconfig)) {
+		if (keyboard_check_pressed(global.key_jump)) {
 			instance_create(x, y, obj_keyconfig);
-		else if (gamepad_button_check_pressed(0, global.key_jumpC))
-		{
-		}
+		} else if (gamepad_button_check_pressed(0, global.key_jumpC)) {}
 	}
 }

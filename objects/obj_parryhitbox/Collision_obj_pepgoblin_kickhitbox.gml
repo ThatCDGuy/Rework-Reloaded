@@ -1,4 +1,6 @@
-with other
+with (other) {
 	instance_destroy();
-if !collisioned
+}
+if (!collisioned) {
 	event_user(0);
+}

@@ -1,5 +1,4 @@
-function editor_input_init()
-{
+function editor_input_init() {
 	key_undo = false;
 	key_redo = false;
 	key_select = false;

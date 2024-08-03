@@ -1,2 +1,3 @@
-if offscreen
+if (offscreen) {
 	instance_destroy();
+}

@@ -1,2 +1,3 @@
-with obj_bosscontroller
+with (obj_bosscontroller) {
 	persistent = false;
+}

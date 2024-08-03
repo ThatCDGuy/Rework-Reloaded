@@ -1,2 +1,2 @@
-chosenstate = states.slap
-escape = true
+chosenstate = states.slap;
+escape = true;

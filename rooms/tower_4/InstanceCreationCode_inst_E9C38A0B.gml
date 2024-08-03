@@ -1,2 +1,2 @@
-level = "freezer"
-treasureindex = 16
+level = "freezer";
+treasureindex = 16;

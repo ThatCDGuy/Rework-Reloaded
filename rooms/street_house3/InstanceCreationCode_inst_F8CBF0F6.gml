@@ -1,2 +1,2 @@
-targetRoom = street_jail
-police = 1
+targetRoom = street_jail;
+police = 1;

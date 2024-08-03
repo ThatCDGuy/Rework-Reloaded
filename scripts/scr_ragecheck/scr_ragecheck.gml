@@ -1,5 +1,4 @@
-function scr_ragecheck()
-{
+function scr_ragecheck() {
 	/*
 	var player = instance_nearest(x, y, obj_player);
 

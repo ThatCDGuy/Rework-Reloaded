@@ -12,5 +12,6 @@ angryspr = -4;
 use_collision = true;
 spr_palette = spr_peppalette;
 paletteselect = 1;
-with (instance_create(x, y + 10, obj_jumpdust))
+with (instance_create(x, y + 10, obj_jumpdust)) {
 	image_xscale = -1;
+}

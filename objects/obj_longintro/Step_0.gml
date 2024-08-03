@@ -1,32 +1,27 @@
-with obj_player
+with (obj_player) {
 	state = states.titlescreen;
-if scene >= 0
-{
+}
+if (scene >= 0) {
 	scr_menu_getinput();
-	if (!showtext && (key_jump || key_start))
-	{
+	if (!showtext && (key_jump || key_start)) {
 		showtext = true;
 		alarm[0] = 120;
-	}
-	else if (showtext && (key_jump || key_start))
-	{
+	} else if (showtext && (key_jump || key_start)) {
 		room_goto(Mainmenu);
 		exit;
 	}
 }
 var _switch = false;
-if scenebuffer > 0
+if (scenebuffer > 0) {
 	scenebuffer--;
-else
+} else {
 	_switch = true;
-switch scene
-{
+}
+switch (scene) {
 	case -2:
-		if (_switch && !instance_exists(obj_logoprop))
-		{
+		if (_switch && !instance_exists(obj_logoprop)) {
 			scene++;
-			with (instance_create(room_width / 2, room_height / 2, obj_logoprop))
-			{
+			with (instance_create(room_width / 2, room_height / 2, obj_logoprop)) {
 				sprite_index = spr_intro_fmod;
 				image_xscale = 0.5;
 				image_yscale = image_xscale;
@@ -34,13 +29,11 @@ switch scene
 		}
 		break;
 	case -1:
-		if (_switch && !instance_exists(obj_logoprop))
-		{
+		if (_switch && !instance_exists(obj_logoprop)) {
 			scenebuffer = 340;
 			scenebuffer += 20;
 			scene++;
-			with (instance_create(0, 0, obj_genericfade))
-			{
+			with (instance_create(0, 0, obj_genericfade)) {
 				fade = 1.2;
 				deccel = 0.03;
 			}
@@ -59,10 +52,10 @@ switch scene
 			bg = instance_create(0, 0, obj_introprop);
 			bg.sprite_index = spr_introasset5;
 			bg.depth = 4;
-			with obj_music
-			{
-				if music != -4
+			with (obj_music) {
+				if (music != -4) {
 					fmod_event_instance_set_parameter(music.event, "state", 1, true);
+				}
 			}
 		}
 		break;
@@ -71,8 +64,7 @@ switch scene
 		tower.x -= 0.15;
 		moon.x += 0.08;
 		clouds.x += 0.1;
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			peppino = instance_create(-70, 0, obj_introprop);
 			peppino.sprite_index = spr_introasset9;
@@ -84,8 +76,7 @@ switch scene
 		break;
 	case 1:
 		peppino.x += 0.2;
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			peppino = instance_create(0, 0, obj_introprop);
 			peppino.sprite_index = spr_intro_table;
@@ -104,8 +95,7 @@ switch scene
 		}
 		break;
 	case 2:
-		if _switch
-		{
+		if (_switch) {
 			scenebuffer = 115;
 			instance_destroy(obj_introprop);
 			dramalines = instance_create(0, 0, obj_introprop);
@@ -129,8 +119,7 @@ switch scene
 	case 3:
 		bg1.x = lerp(bg1.x, -200, 0.04);
 		bg2.x = lerp(bg2.x, 200, 0.04);
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			pizzaface = instance_create(0, 400, obj_introprop);
 			pizzaface.sprite_index = spr_intro_pizzaface1;
@@ -143,8 +132,7 @@ switch scene
 		break;
 	case 4:
 		pizzaface.y = lerp(pizzaface.y, 0, 0.04);
-		if (_switch && floor(pizzaface.y) <= 1)
-		{
+		if (_switch && floor(pizzaface.y) <= 1) {
 			scenebuffer = 130;
 			instance_destroy(obj_introprop);
 			pizzaface = instance_create(0, 0, obj_introprop);
@@ -157,8 +145,7 @@ switch scene
 		}
 		break;
 	case 5:
-		if _switch
-		{
+		if (_switch) {
 			scenebuffer = 120;
 			instance_destroy(obj_introprop);
 			peppino = instance_create(0, 0, obj_introprop);
@@ -171,8 +158,7 @@ switch scene
 		}
 		break;
 	case 6:
-		if _switch
-		{
+		if (_switch) {
 			scenebuffer = 190;
 			scene++;
 			peppino.sprite_index = spr_intro_plot1;
@@ -191,8 +177,7 @@ switch scene
 		}
 		break;
 	case 7:
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(bg);
 			instance_destroy(bg1);
 			scenebuffer = 100;
@@ -209,8 +194,7 @@ switch scene
 		}
 		break;
 	case 8:
-		if _switch
-		{
+		if (_switch) {
 			scenebuffer = 120;
 			scene++;
 			peppino.sprite_index = spr_intro_plot3;
@@ -223,11 +207,9 @@ switch scene
 	case 9:
 		peppinopizza.x = irandom_range(-1, 1);
 		peppinopizza.y = irandom_range(-1, 1);
-		if _switch
-		{
+		if (_switch) {
 			scene++;
-			with (instance_create(0, 0, obj_genericfade))
-			{
+			with (instance_create(0, 0, obj_genericfade)) {
 				fade = 0;
 				accel = 0.1;
 				maxfade = 1.5;
@@ -237,8 +219,7 @@ switch scene
 		}
 		break;
 	case 10:
-		if _switch && !obj_genericfade.fadein
-		{
+		if (_switch && !obj_genericfade.fadein) {
 			instance_destroy(obj_introprop);
 			peppino = instance_create(-130, 386, obj_playerprop);
 			peppino.alarm[0] = 1;
@@ -267,8 +248,7 @@ switch scene
 		peppino.x += 1.5;
 		pizzaface.x += 2.5;
 		pizzaface.y = Wave(pizzaface.ystart - 30, pizzaface.ystart + 30, 3, 10);
-		if _switch
-		{
+		if (_switch) {
 			scene++;
 			scenebuffer = 180;
 			instance_destroy(obj_introprop);
@@ -290,8 +270,7 @@ switch scene
 		peppino.y = Approach(peppino.y, 0, 5);
 		bg.x -= 0.2;
 		bg.y += 0.1;
-		if _switch
-		{
+		if (_switch) {
 			scene++;
 			scenebuffer = 60;
 			instance_destroy(obj_introprop);
@@ -309,8 +288,7 @@ switch scene
 		peppino.x += 1;
 		pizzaface.x += 2;
 		pizzaface.y = Wave(pizzaface.ystart - 30, pizzaface.ystart + 30, 3, 10);
-		if _switch
-		{
+		if (_switch) {
 			peppino.sprite_index = spr_player_mach4;
 			peppino.fake_hsp = 12;
 			scene++;
@@ -329,8 +307,7 @@ switch scene
 		pizzaface.y = Wave(pizzaface.ystart - 30, pizzaface.ystart + 30, 3, 10);
 		slime1.x -= abs(layer_get_hspeed("Backgrounds_6"));
 		slime2.x -= abs(layer_get_hspeed("Backgrounds_6"));
-		if (peppino.x >= (slime1.x - 40))
-		{
+		if (peppino.x >= (slime1.x - 40)) {
 			scene++;
 			scenebuffer = 140;
 			layer_hspeed("Backgrounds_1", 0);
@@ -351,8 +328,7 @@ switch scene
 			bg2.hspeed = -1;
 			bg2.vspeed = 1;
 			bg2.depth = -13;
-			with (instance_create(0, 0, obj_genericfade))
-			{
+			with (instance_create(0, 0, obj_genericfade)) {
 				fade = 1.5;
 				accel = 0.1;
 				maxfade = 1.5;
@@ -364,8 +340,7 @@ switch scene
 	case 15:
 		bg.x -= 0.2;
 		bg.y += 0.1;
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			layer_x("Backgrounds_4", 0);
 			peppino = instance_create(0, 0, obj_introprop);
@@ -376,10 +351,10 @@ switch scene
 		}
 		break;
 	case 16:
-		if (floor(peppino.image_index) == (peppino.image_number - 1))
+		if (floor(peppino.image_index) == (peppino.image_number - 1)) {
 			peppino.image_index = peppino.image_number - 1;
-		if _switch
-		{
+		}
+		if (_switch) {
 			gustavo = instance_create(0, 300, obj_introprop);
 			gustavo.sprite_index = spr_intro_styleshot2;
 			gustavo.depth = -1;
@@ -388,11 +363,11 @@ switch scene
 		}
 		break;
 	case 17:
-		if (floor(peppino.image_index) == (peppino.image_number - 1))
+		if (floor(peppino.image_index) == (peppino.image_number - 1)) {
 			peppino.image_index = peppino.image_number - 1;
+		}
 		gustavo.y = lerp(gustavo.y, 0, 0.3);
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			layer_x("Backgrounds_4", 0);
 			peppino = instance_create(-700, 386, obj_playerprop);
@@ -415,53 +390,43 @@ switch scene
 		peppino.x += 14;
 		pizzaface.x += 20;
 		pizzaface.y = Wave(pizzaface.ystart - 30, pizzaface.ystart + 30, 3, 10);
-		if gustavo.sprite_index == spr_intro_gustavomap
-		{
-			if (peppino.x >= (gustavo.x - 25))
-			{
+		if (gustavo.sprite_index == spr_intro_gustavomap) {
+			if (peppino.x >= (gustavo.x - 25)) {
 				instance_create(peppino.x + 16, peppino.y, obj_bangeffect);
 				gustavo.sprite_index = spr_lonegustavo_hurt;
 				gustavo.hsp = 8;
 				gustavo.vsp = -11;
 			}
-		}
-		else
-		{
-			with gustavo
-			{
+		} else {
+			with (gustavo) {
 				x += hsp;
 				y += vsp;
-				if vsp < 20
+				if (vsp < 20) {
 					vsp += 0.5;
+				}
 			}
 		}
-		if stick.sprite_index == spr_intro_stick1
-		{
+		if (stick.sprite_index == spr_intro_stick1) {
 			stick.x += 2;
 			stick.y = Wave(stick.ystart - 10, stick.ystart + 10, 1, 5);
-			if (pizzaface.x >= (stick.x - 25))
-			{
+			if (pizzaface.x >= (stick.x - 25)) {
 				instance_create(pizzaface.x + 16, pizzaface.y, obj_bangeffect);
 				stick.sprite_index = spr_intro_stick2;
 				stick.hsp = 8;
 				stick.vsp = -11;
 			}
-		}
-		else
-		{
-			with stick
-			{
+		} else {
+			with (stick) {
 				x += hsp;
 				y += vsp;
-				if vsp < 20
+				if (vsp < 20) {
 					vsp += 0.5;
+				}
 			}
 		}
-		if (peppino.x > (room_width + 200) && gustavo.y > (room_height + 300))
-		{
+		if (peppino.x > (room_width + 200) && gustavo.y > (room_height + 300)) {
 			scene++;
-			with (instance_create(0, 0, obj_genericfade))
-			{
+			with (instance_create(0, 0, obj_genericfade)) {
 				fade = 0;
 				accel = 0.1;
 				maxfade = 2;
@@ -471,8 +436,7 @@ switch scene
 		}
 		break;
 	case 19:
-		if _switch && !obj_genericfade.fadein
-		{
+		if (_switch && !obj_genericfade.fadein) {
 			instance_destroy(obj_introprop);
 			scene++;
 			scenebuffer = 115;
@@ -497,8 +461,7 @@ switch scene
 		}
 		break;
 	case 20:
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			scene++;
 			scenebuffer = 140;
@@ -513,8 +476,7 @@ switch scene
 		}
 		break;
 	case 21:
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			scene++;
 			scenebuffer = 40;
@@ -526,25 +488,20 @@ switch scene
 		break;
 	case 22:
 		boss.y = Approach(boss.y, 0, 25);
-		if _switch && boss.y == 0
-		{
-			if (array_length(bossarr) > 0)
-			{
+		if (_switch && boss.y == 0) {
+			if (array_length(bossarr) > 0) {
 				scenebuffer = 40;
 				boss = instance_create(0, 540 * bossdir, obj_introprop);
 				bossdir *= -1;
 				boss.sprite_index = array_pop(bossarr);
-			}
-			else
-			{
+			} else {
 				scene++;
 				scenebuffer = 150;
 			}
 		}
 		break;
 	case 23:
-		if _switch
-		{
+		if (_switch) {
 			instance_destroy(obj_introprop);
 			peppino = instance_create(0, 0, obj_introprop);
 			peppino.sprite_index = spr_intro_punch;
@@ -555,8 +512,7 @@ switch scene
 		}
 		break;
 	case 24:
-		if (floor(peppino.image_index) == (peppino.image_number - 1))
-		{
+		if (floor(peppino.image_index) == (peppino.image_number - 1)) {
 			instance_destroy(obj_introprop);
 			title = instance_create(480, 270, obj_introprop);
 			title.sprite_index = spr_intro_title;
@@ -572,26 +528,25 @@ switch scene
 	case 25:
 		title.x = title.xstart + irandom_range(-title.shake_mag, title.shake_mag);
 		title.y = title.ystart + irandom_range(-title.shake_mag, title.shake_mag);
-		if title.shake_mag > 0
+		if (title.shake_mag > 0) {
 			title.shake_mag -= 0.1;
-		if _switch
+		}
+		if (_switch) {
 			scene++;
+		}
 		break;
 	case 26:
 		title.x = title.xstart;
 		title.y = title.ystart;
 		title.image_alpha = Approach(title.image_alpha, 0, 0.05);
-		if title.image_alpha <= 0
-		{
+		if (title.image_alpha <= 0) {
 			scene++;
 			scenebuffer = 80;
 		}
 		break;
 	case 27:
-		if _switch
-		{
-			with (instance_create(0, 0, obj_genericfade))
-			{
+		if (_switch) {
+			with (instance_create(0, 0, obj_genericfade)) {
 				persistent = true;
 				fade = 2;
 				deccel = 0.1;

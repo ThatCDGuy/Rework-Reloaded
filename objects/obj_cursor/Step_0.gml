@@ -1,4 +1,5 @@
-if (instance_exists(obj_keyconfig))
+if (instance_exists(obj_keyconfig)) {
 	visible = false;
-else
+} else {
 	visible = true;
+}

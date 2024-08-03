@@ -1,1 +1,1 @@
-whoopass = 1
+whoopass = 1;

@@ -1,4 +1,1 @@
-function scr_player_bossdefeat()
-{
-	
-}
+function scr_player_bossdefeat() {}

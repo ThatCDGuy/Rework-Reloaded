@@ -1,7 +1,5 @@
-function cutscene_forest_end()
-{
-	with obj_player
-	{
+function cutscene_forest_end() {
+	with (obj_player) {
 		state = states.normal;
 		x = backtohubstartx;
 		y = backtohubstarty;
@@ -12,10 +10,9 @@ function cutscene_forest_end()
 	quick_ini_write_real(get_savefile_ini(), "cutscene", "forest", true);
 	cutscene_end_action();
 }
-function cutscene_beach_end()
-{
-	with obj_player
-	{
+
+function cutscene_beach_end() {
+	with (obj_player) {
 		state = states.normal;
 		x = backtohubstartx;
 		y = backtohubstarty;
@@ -26,10 +23,9 @@ function cutscene_beach_end()
 	quick_ini_write_real(get_savefile_ini(), "cutscene", "beach", true);
 	cutscene_end_action();
 }
-function cutscene_sewer_end()
-{
-	with obj_player
-	{
+
+function cutscene_sewer_end() {
+	with (obj_player) {
 		state = states.normal;
 		x = backtohubstartx;
 		y = backtohubstarty;

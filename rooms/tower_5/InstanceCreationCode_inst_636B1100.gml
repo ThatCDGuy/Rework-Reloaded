@@ -1,2 +1,2 @@
-level = "chateau"
-treasureindex = 17
+level = "chateau";
+treasureindex = 17;

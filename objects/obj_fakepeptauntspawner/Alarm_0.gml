@@ -1,7 +1,6 @@
 alarm[0] = 5;
 var angle = 0;
-switch dir
-{
+switch (dir) {
 	case 0:
 		angle = point_direction(0, 0, -1, 0);
 		break;
@@ -34,22 +33,19 @@ switch dir
 }
 var dis = 50;
 var spd = 5;
-with (instance_create(x + lengthdir_x(dis, angle), y + lengthdir_y(dis, angle), obj_fakepepprojectile))
-{
+with (instance_create(x + lengthdir_x(dis, angle), y + lengthdir_y(dis, angle), obj_fakepepprojectile)) {
 	hsp = lengthdir_x(spd, angle);
 	vsp = lengthdir_y(spd, angle);
 	hithsp = hsp;
 	hitvsp = vsp;
 	spawnerID = other.id;
-	if (place_meeting(x, y, obj_solid))
-	{
+	if (place_meeting(x, y, obj_solid)) {
 		x = other.x;
 		y = other.y;
 	}
 }
 dir++;
-if singleshot
-{
+if (singleshot) {
 	alarm[0] = -1;
 	alarm[1] = 140;
 }

@@ -1,5 +1,7 @@
 scr_collide();
-if buffer > 0
+if (buffer > 0) {
 	buffer--;
-if rail
+}
+if (rail) {
 	scr_rail_phy();
+}

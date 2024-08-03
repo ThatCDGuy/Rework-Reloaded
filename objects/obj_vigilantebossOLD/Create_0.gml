@@ -91,58 +91,53 @@ targetstunnedminus[3] = 30;
 targetstunnedminus[4] = 30;
 targetstunnedminus[5] = 30;
 
-function boss_destroy(player)
-{
+function boss_destroy(player) {
 	SUPER_boss_destroy(player);
 	targetstunned = 1000;
 	stunned = 1000;
 	global.vigilantecutscene2 = true;
 	quick_ini_write_real(get_savefile_ini(), "cutscene", "vigilante2", true);
 }
-function boss_hurt(damage, player)
-{
-	if targetstunned > 0
-	{
+
+function boss_hurt(damage, player) {
+	if (targetstunned > 0) {
 		targetstunned -= targetstunnedminus[phase - 1];
 		attack_cooldown = 0;
-		if targetstunned < 0
+		if (targetstunned < 0) {
 			targetstunned = 1;
-	}
-	else
+		}
+	} else {
 		targetstunned = 150;
+	}
 	SUPER_boss_hurt(damage, player);
 	targetxscale = -argument1.xscale;
 }
-function boss_hurt_noplayer(damage)
-{
-	if targetstunned > 0
-	{
+
+function boss_hurt_noplayer(damage) {
+	if (targetstunned > 0) {
 		targetstunned -= targetstunnedminus[phase - 1];
 		attack_cooldown = 0;
-		if targetstunned < 0
+		if (targetstunned < 0) {
 			targetstunned = 1;
-	}
-	else
+		}
+	} else {
 		targetstunned = 150;
+	}
 	SUPER_boss_hurt_noplayer(damage);
 }
-function player_hurt(damage, player)
-{
-	if (!argument1.inv_frames && (argument1.state != states.backbreaker || argument1.parry_inst == noone))
-	{
+
+function player_hurt(damage, player) {
+	if (!argument1.inv_frames && (argument1.state != states.backbreaker || argument1.parry_inst == noone)) {
 		hitstate = state;
 		hithsp = hsp;
 		hitvsp = vsp;
-		if (state != states.uppunch || vsp < 0)
-		{
+		if (state != states.uppunch || vsp < 0) {
 			SUPER_player_hurt(damage, player);
-			with argument1
-			{
+			with (argument1) {
 				inv_frames = true;
 				alarm[1] = 15;
 			}
-			if hitstate == states.superattack
-			{
+			if (hitstate == states.superattack) {
 				hithsp = 0;
 				hitvsp = 0;
 			}

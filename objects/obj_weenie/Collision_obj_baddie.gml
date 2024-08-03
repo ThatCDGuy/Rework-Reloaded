@@ -1,2 +1,3 @@
-if state != states.tumble
+if (state != states.tumble) {
 	event_inherited();
+}

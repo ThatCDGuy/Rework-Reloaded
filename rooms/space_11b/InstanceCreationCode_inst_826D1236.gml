@@ -1,2 +1,2 @@
-targetRoom = space_12
-depth = 99
+targetRoom = space_12;
+depth = 99;

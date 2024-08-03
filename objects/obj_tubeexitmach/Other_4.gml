@@ -1,5 +1,4 @@
-switch object_index
-{
+switch (object_index) {
 	case obj_tubeexitdownexit:
 		tube_angle = 270;
 		break;
@@ -13,6 +12,6 @@ switch object_index
 		tube_angle = 0;
 		break;
 }
-x += (32 * image_xscale);
-y += (32 * image_yscale);
+x += 32 * image_xscale;
+y += 32 * image_yscale;
 sprite_index = tube_spr;

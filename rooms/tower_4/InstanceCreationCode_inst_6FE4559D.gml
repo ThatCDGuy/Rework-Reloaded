@@ -1,1 +1,1 @@
-pumpkinroom = "street_4"
+pumpkinroom = "street_4";

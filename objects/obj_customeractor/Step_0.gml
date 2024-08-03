@@ -1,5 +1,6 @@
-if happy
+if (happy) {
 	sprite_index = spr_happy;
-else
+} else {
 	sprite_index = spr_idle;
+}
 scr_collide();

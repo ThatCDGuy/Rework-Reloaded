@@ -1,3 +1,4 @@
 instance_destroy();
-with obj_player
+with (obj_player) {
 	state = states.normal;
+}

@@ -1,2 +1,2 @@
-monster = 0
-content = obj_bazooka
+monster = 0;
+content = obj_bazooka;

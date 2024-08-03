@@ -1,1 +1,1 @@
-targetRoom = tower_noisettecafe
+targetRoom = tower_noisettecafe;

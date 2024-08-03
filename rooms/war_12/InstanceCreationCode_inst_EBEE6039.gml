@@ -1,1 +1,1 @@
-targetRoom = war_secret3
+targetRoom = war_secret3;

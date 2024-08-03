@@ -1,8 +1,6 @@
-function cutscene_taxi_start(_player)
-{
+function cutscene_taxi_start(_player) {
 	var player = _player;
-	with player
-	{
+	with (player) {
 		global.failcutscene = true;
 		global.showgnomelist = false;
 		state = states.actor;

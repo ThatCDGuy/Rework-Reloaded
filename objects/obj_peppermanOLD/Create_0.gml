@@ -79,58 +79,55 @@ superattack_hpthreshold = 500;
 superattack_buffer = 0;
 superattack_max = 360;
 
-function player_destroy(player)
-{
+function player_destroy(player) {
 	SUPER_player_destroy(player);
 }
-function boss_destroy(player)
-{
+
+function boss_destroy(player) {
 	hitstate = states.normal;
 	SUPER_boss_destroy(player);
-	with obj_peppermanbrick
+	with (obj_peppermanbrick) {
 		instance_destroy();
+	}
 	global.peppermancutscene2 = true;
 	quick_ini_write_real(get_savefile_ini(), "cutscene", "pepperman2", true);
 	targetstunned = 1000;
 	stunned = 1000;
 }
-function boss_hurt(damage, player)
-{
-	if targetstunned > 0
-	{
+
+function boss_hurt(damage, player) {
+	if (targetstunned > 0) {
 		targetstunned -= targetstunnedminus[phase - 1];
 		attack_cooldown = 0;
-		if targetstunned < 0
+		if (targetstunned < 0) {
 			targetstunned = 1;
-	}
-	else
+		}
+	} else {
 		targetstunned = 150;
+	}
 	SUPER_boss_hurt(damage, player);
 	targetxscale = -player.xscale;
 }
-function boss_hurt_noplayer(damage)
-{
-	if targetstunned > 0
-	{
+
+function boss_hurt_noplayer(damage) {
+	if (targetstunned > 0) {
 		targetstunned -= targetstunnedminus[phase - 1];
 		attack_cooldown = 0;
-		if targetstunned < 0
+		if (targetstunned < 0) {
 			targetstunned = 1;
-	}
-	else
+		}
+	} else {
 		targetstunned = 150;
+	}
 	SUPER_boss_hurt_noplayer(damage);
 }
-function player_hurt(damage, player)
-{
-	if (player.state != states.backbreaker || player.parry_inst == noone)
-	{
+
+function player_hurt(damage, player) {
+	if (player.state != states.backbreaker || player.parry_inst == noone) {
 		var _prevstate = state;
 		SUPER_player_hurt(damage, player);
-		if (_prevstate == states.shoulderbash || _prevstate == states.supershoulderbash || _prevstate == states.shoulder || _prevstate == states.superslam)
-		{
-			with obj_camera
-			{
+		if (_prevstate == states.shoulderbash || _prevstate == states.supershoulderbash || _prevstate == states.shoulder || _prevstate == states.superslam) {
+			with (obj_camera) {
 				shake_mag = 3;
 				shake_mag_acc = 3 / room_speed;
 			}
@@ -138,11 +135,8 @@ function player_hurt(damage, player)
 			stunned = 70;
 			hitvsp = -4;
 			hithsp = -image_xscale * 8;
-		}
-		else if _prevstate == states.backbreaker
-		{
-			with obj_camera
-			{
+		} else if (_prevstate == states.backbreaker) {
+			with (obj_camera) {
 				shake_mag = 3;
 				shake_mag_acc = 3 / room_speed;
 			}
@@ -152,25 +146,18 @@ function player_hurt(damage, player)
 			hitvsp = 0;
 			hithsp = 0;
 			movespeed = 8;
-		}
-		else
-		{
+		} else {
 			hithsp = 0;
 			hitvsp = -4;
 			hitstate = states.normal;
 		}
-	}
-	else if state == states.superslam
-	{
-		with player
-		{
-			if (state == states.hit || state == states.chainsaw)
-			{
+	} else if (state == states.superslam) {
+		with (player) {
+			if (state == states.hit || state == states.chainsaw) {
 				x = hitX;
 				y = hitY;
 			}
-			if (other.state == states.hit || other.state == states.chainsaw)
-			{
+			if (other.state == states.hit || other.state == states.chainsaw) {
 				other.x = hitX;
 				other.y = hitY;
 			}

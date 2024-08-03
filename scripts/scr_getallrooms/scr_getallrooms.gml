@@ -1,5 +1,4 @@
-function scr_getallrooms()
-{
+function scr_getallrooms() {
 	return [
 		tower_entrancehall,
 		tower_johngutterhall,

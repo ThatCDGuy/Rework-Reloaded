@@ -1,2 +1,2 @@
-content = obj_pizzakinshroom
-depth = 9
+content = obj_pizzakinshroom;
+depth = 9;

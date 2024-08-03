@@ -1,19 +1,14 @@
-if !fakedeath
-{
+if (!fakedeath) {
 	scr_playerreset();
-	with obj_player
-	{
-		if (object_index == obj_player1 || global.coop)
-		{
+	with (obj_player) {
+		if (object_index == obj_player1 || global.coop) {
 			state = states.normal;
 			targetDoor = "A";
 		}
 	}
 	gamesave_async_save();
 	room = hub_mrstickarena;
-}
-else
-{
+} else {
 	extrarounds = true;
 	round_count = 1;
 	round_max = extrarounds_count;
@@ -21,8 +16,7 @@ else
 	timer_buffer = timer_max;
 	state = states.arenaround;
 	fade = 1;
-	with par_boss
-	{
+	with (par_boss) {
 		destroyed = false;
 		destroyable = true;
 		max_hp /= 2;

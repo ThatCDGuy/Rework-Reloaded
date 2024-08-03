@@ -29,17 +29,14 @@ scorewins_show = false;
 scorepos_x = 0;
 scorepos_y = 0;
 var timer = scr_get_timer_string(global.level_minutes, global.level_seconds);
-if !global.swapmode
-{
+if (!global.swapmode) {
 	text = [
 		[false, concat(lang_get_value("rank_highscore"), global.collect)],
 		[false, concat(lang_get_value("rank_time"), timer)],
 		[false, concat(lang_get_value("rank_damage"), global.player_damage)],
 		[false, concat(lang_get_value("rank_combo"), global.highest_combo)]
 	];
-}
-else
-{
+} else {
 	text = [
 		[false, concat(lang_get_value("rank_highscore"), global.collect)],
 		[false, concat(lang_get_value("rank_highscore_p1"), global.collect_player[0])],
@@ -49,14 +46,15 @@ else
 		[false, concat(lang_get_value("rank_time"), timer)],
 		[false, concat(lang_get_value("rank_combo"), global.highest_combo)]
 	];
-	if global.swapmode
-	{
-		if global.collect_player[0] >= global.collect_player[1]
+	if (global.swapmode) {
+		if (global.collect_player[0] >= global.collect_player[1]) {
 			scorewins = "N";
-		else
+		} else {
 			scorewins = "P";
-		if obj_savesystem.ispeppino
+		}
+		if (obj_savesystem.ispeppino) {
 			scorewins = (scorewins == "N") ? "P" : "N";
+		}
 		draw_set_font(lang_get_font("bigfont"));
 		var w1 = string_width(text[1][1]);
 		var w2 = string_width(text[2][1]);

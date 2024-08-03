@@ -1,7 +1,5 @@
-with other
-{
-	if state != states.gotoplayer && state != states.fireass
-	{
+with (other) {
+	if (state != states.gotoplayer && state != states.fireass) {
 		image_index = 0;
 		state = states.fireass;
 		vsp = -21;

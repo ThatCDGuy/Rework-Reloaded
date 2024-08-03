@@ -1,7 +1,5 @@
-if state != states.bee && other.state != states.bee
-{
-	with other
-	{
+if (state != states.bee && other.state != states.bee) {
+	with (other) {
 		state = states.bee;
 		bee_buffer = 150;
 	}

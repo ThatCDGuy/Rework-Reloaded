@@ -1,7 +1,7 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
-switch state
-{
+}
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -13,14 +13,14 @@ switch state
 		break;
 	case states.walk:
 		scr_enemy_walk();
-		if (!instance_exists(coneID))
-		{
+		if (!instance_exists(coneID)) {
 			coneID = instance_create(x, y, obj_patrolcone);
 			coneID.xoffset = 24;
 			coneID.baddieID = id;
 		}
-		if alarm[5] != -1
+		if (alarm[5] != -1) {
 			hsp = 0;
+		}
 		break;
 	case states.land:
 		scr_enemy_land();
@@ -47,90 +47,88 @@ switch state
 		scr_enemy_rage();
 		break;
 }
-if state == states.stun && stunned > 100 && birdcreated == 0
-{
+if (state == states.stun && stunned > 100 && birdcreated == 0) {
 	birdcreated = true;
-	with (instance_create(x, y, obj_enemybird))
+	with (instance_create(x, y, obj_enemybird)) {
 		ID = other.id;
+	}
 }
-if state != states.stun
+if (state != states.stun) {
 	birdcreated = false;
-if (state == states.walk && y > ystart && !scr_solid(x, y - 1))
+}
+if (state == states.walk && y > ystart && !scr_solid(x, y - 1)) {
 	y--;
-if (state == states.walk && y < ystart && !scr_solid(x, y + 1))
+}
+if (state == states.walk && y < ystart && !scr_solid(x, y + 1)) {
 	y++;
-if state == states.stun
+}
+if (state == states.stun) {
 	grav = 0.5;
-else
+} else {
 	grav = 0;
-if cooldown > 0
+}
+if (cooldown > 0) {
 	cooldown--;
-if state == states.walk
-{
-	if !patrolfound
-	{
-		if (!instance_exists(obj_jumpscare) && cooldown <= 0 && alarm[5] == -1 && instance_exists(coneID) && coneID.collision)
-		{
+}
+if (state == states.walk) {
+	if (!patrolfound) {
+		if (!instance_exists(obj_jumpscare) && cooldown <= 0 && alarm[5] == -1 && instance_exists(coneID) && coneID.collision) {
 			patroltimer = patroltimermax;
 			patrolfound = true;
 			alarm[5] = 30;
 		}
-	}
-	else if alarm[5] == -1
+	} else if (alarm[5] == -1) {
 		alarm[5] = 30;
-}
-else if (state == states.stun || state == states.grabbed || state == states.hit)
+	}
+} else if (state == states.stun || state == states.grabbed || state == states.hit) {
 	alarm[5] = -1;
-if (instance_exists(obj_jumpscare))
-{
+}
+if (instance_exists(obj_jumpscare)) {
 	patrolfound = false;
 	alarm[5] = -1;
 }
-if (state == states.walk && point_in_camera(x, y, view_camera[0]))
-{
+if (state == states.walk && point_in_camera(x, y, view_camera[0])) {
 	var p = false;
-	with obj_player
-	{
-		if state == states.backbreaker && sprite_index == spr_taunt
+	with (obj_player) {
+		if (state == states.backbreaker && sprite_index == spr_taunt) {
 			p = true;
-	}
-	if !p
-	{
-		with obj_swapmodefollow
-		{
-			if taunttimer > 0
-				p = true;
 		}
 	}
-	if (p && (alarm[5] == -1 || patroltimer > 0))
-	{
+	if (!p) {
+		with (obj_swapmodefollow) {
+			if (taunttimer > 0) {
+				p = true;
+			}
+		}
+	}
+	if (p && (alarm[5] == -1 || patroltimer > 0)) {
 		patroltimer = 0;
 		alarm[5] = -1;
 		event_perform(ev_alarm, 5);
 	}
 }
-if state == states.punch
-{
+if (state == states.punch) {
 	hsp = 0;
-	if floor(image_index) == image_number - 1
-	{
+	if (floor(image_index) == image_number - 1) {
 		state = states.walk;
 		sprite_index = walkspr;
 		cooldown = 100;
 	}
 }
-if flash == 1 && alarm[2] <= 0
+if (flash == 1 && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
-if state != states.grabbed
+}
+if (state != states.grabbed) {
 	depth = 0;
-if (state == states.stun || state == states.walk)
+}
+if (state == states.stun || state == states.walk) {
 	movespeed = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if boundbox == 0
-{
-	with (instance_create(x, y, obj_baddiecollisionbox))
-	{
+}
+if (boundbox == 0) {
+	with (instance_create(x, y, obj_baddiecollisionbox)) {
 		sprite_index = other.sprite_index;
 		mask_index = other.sprite_index;
 		baddieID = other.id;

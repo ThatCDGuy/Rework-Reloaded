@@ -1,2 +1,3 @@
-if (!instance_exists(objectID))
+if (!instance_exists(objectID)) {
 	instance_destroy();
+}

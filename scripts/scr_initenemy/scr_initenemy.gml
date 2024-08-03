@@ -1,5 +1,4 @@
-function scr_initenemy()
-{
+function scr_initenemy() {
 	chargesnd = fmod_event_create_instance("event:/sfx/enemies/charge");
 	pizzaheadKO = -4;
 	pizzaheadKO_ID = -4;

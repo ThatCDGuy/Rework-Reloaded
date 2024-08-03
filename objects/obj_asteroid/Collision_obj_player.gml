@@ -1,2 +1,3 @@
-if other.state == states.rocket
+if (other.state == states.rocket) {
 	instance_destroy();
+}

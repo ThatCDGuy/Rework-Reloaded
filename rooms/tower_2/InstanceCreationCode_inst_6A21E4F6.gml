@@ -1,2 +1,2 @@
-level = "badland"
-treasureindex = 4
+level = "badland";
+treasureindex = 4;

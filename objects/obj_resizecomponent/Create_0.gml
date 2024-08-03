@@ -1,11 +1,7 @@
-dock = comp_dock.bottomright
-snap = 32
-lock = 
-{
-	x: false,
-	y: false
-}
+dock = comp_dock.bottomright;
+snap = 32;
+lock = {x: false, y: false};
 
-xclamp = true
-yclamp = true
-dragged = false
+xclamp = true;
+yclamp = true;
+dragged = false;

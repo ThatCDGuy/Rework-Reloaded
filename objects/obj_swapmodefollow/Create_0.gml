@@ -19,30 +19,27 @@ notecreate = 0;
 grabbuffer = 0;
 steppybuffer = 0;
 
-get_character_spr = function()
-{
+get_character_spr = function() {
 	var palinfo = ispeppino ? get_pep_palette_info() : get_noise_palette_info();
 	paletteselect = palinfo.paletteselect;
 	patterntexture = palinfo.patterntexture;
-	
+
 	taunttimer = 0;
 	breakdance_pressed = 0;
 	breakdance_index = 0;
 	instance_destroy(tauntID);
 	tauntID = -4;
 	scr_characterspr();
-	
-	if ispeppino
-	{
+
+	if (ispeppino) {
 		spr_palette = spr_peppalette;
 		spr_idle = spr_player_idle;
 		spr_move = spr_player_move;
 		spr_air = spr_player_flyingfollower;
 		spr_animatronic = spr_pepanimatronic;
 		spr_fightball = spr_player_fightball;
-		
-		if isgustavo
-		{
+
+		if (isgustavo) {
 			spr_palette = spr_ratmountpalette;
 			spr_idle = spr_player_ratmountidle;
 			spr_move = spr_player_ratmountmove;
@@ -54,9 +51,7 @@ get_character_spr = function()
 			spr_taunt = spr_player_ratmounttaunt;
 			spr_walkfront = spr_ratmount_exitdoor;
 		}
-	}
-	else
-	{
+	} else {
 		spr_palette = spr_noisepalette;
 		spr_idle = spr_playerN_idle;
 		spr_move = spr_playerN_move;
@@ -64,7 +59,7 @@ get_character_spr = function()
 		spr_animatronic = spr_playerN_animatronic;
 		spr_fightball = spr_playerN_fightball;
 	}
-}
+};
 get_character_spr();
 
 is_visible = true;

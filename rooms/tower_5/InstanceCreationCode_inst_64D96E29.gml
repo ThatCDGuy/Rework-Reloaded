@@ -1,2 +1,2 @@
-level = "war"
-treasureindex = 19
+level = "war";
+treasureindex = 19;

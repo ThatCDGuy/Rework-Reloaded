@@ -1,7 +1,7 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
-switch state
-{
+}
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -31,50 +31,52 @@ switch state
 		break;
 	case states.actor:
 		hsp = 0;
-		if anim_buffer > 0
+		if (anim_buffer > 0) {
 			anim_buffer--;
-		else
-		{
+		} else {
 			sprite_index = walkspr;
 			state = states.walk;
 			bombreset = global.reset_timer[object_index];
 		}
 		break;
 }
-if state == states.stun && stunned > 100 && birdcreated == 0
-{
+if (state == states.stun && stunned > 100 && birdcreated == 0) {
 	birdcreated = true;
-	with (instance_create(x, y, obj_enemybird))
+	with (instance_create(x, y, obj_enemybird)) {
 		ID = other.id;
+	}
 }
-if state != states.stun
+if (state != states.stun) {
 	birdcreated = false;
+}
 scr_scareenemy();
-if flash == 1 && alarm[2] <= 0
+if (flash == 1 && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
-if state != states.grabbed
+}
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if bombreset > 0
+}
+if (bombreset > 0) {
 	bombreset--;
+}
 targetplayer = global.coop ? instance_nearest(x, y, obj_player) : obj_player1;
-if ((sprite_index == spr_archergoblin_shoot || sprite_index == spr_archergoblin_wave) && x != targetplayer.x)
+if ((sprite_index == spr_archergoblin_shoot || sprite_index == spr_archergoblin_wave) && x != targetplayer.x) {
 	image_xscale = -sign(x - targetplayer.x);
-if x != targetplayer.x && targetplayer.state != states.bombpep && state != states.actor && state != states.pizzagoblinthrow && bombreset == 0 && grounded
-{
-	if (targetplayer.x > x - 200 && targetplayer.x < x + 200) && (y <= targetplayer.y + 200 && y >= targetplayer.y - 200)
-	{
-		if (state == states.walk || (state == states.idle && sprite_index != scaredspr))
-		{
+}
+if (x != targetplayer.x && targetplayer.state != states.bombpep && state != states.actor && state != states.pizzagoblinthrow && bombreset == 0 && grounded) {
+	if ((targetplayer.x > x - 200 && targetplayer.x < x + 200) && (y <= targetplayer.y + 200 && y >= targetplayer.y - 200)) {
+		if (state == states.walk || (state == states.idle && sprite_index != scaredspr)) {
 			fmod_event_one_shot_3d("event:/sfx/enemies/noisegoblinbow");
 			sprite_index = spr_archergoblin_shoot;
 			image_index = 0;
-			if x != targetplayer.x
+			if (x != targetplayer.x) {
 				image_xscale = -sign(x - targetplayer.x);
+			}
 			state = states.pizzagoblinthrow;
-			if !obj_player1.ispeppino && !provoked
-			{
+			if (!obj_player1.ispeppino && !provoked) {
 				sprite_index = spr_archergoblin_wave;
 				state = states.actor;
 				anim_buffer = 100;
@@ -83,10 +85,8 @@ if x != targetplayer.x && targetplayer.state != states.bombpep && state != state
 		}
 	}
 }
-if boundbox == 0
-{
-	with (instance_create(x, y, obj_baddiecollisionbox))
-	{
+if (boundbox == 0) {
+	with (instance_create(x, y, obj_baddiecollisionbox)) {
 		sprite_index = other.sprite_index;
 		mask_index = other.sprite_index;
 		baddieID = other.id;

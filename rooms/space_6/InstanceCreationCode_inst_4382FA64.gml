@@ -1,1 +1,1 @@
-targetRoom = space_7
+targetRoom = space_7;

@@ -1,5 +1,6 @@
 event_inherited();
-if !global.pepanimatronic
+if (!global.pepanimatronic) {
 	instance_destroy();
+}
 xprevious = x;
 yprevious = y;

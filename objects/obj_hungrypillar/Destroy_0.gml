@@ -1,31 +1,29 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
-if (ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge == 0)
-{
-	if room == tower_finalhallway
+}
+if (ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge == 0) {
+	if (room == tower_finalhallway) {
 		global.leveltosave = "exit";
-	with obj_baddie
-	{
-		if escape == 1
-		{
+	}
+	with (obj_baddie) {
+		if (escape == 1) {
 			visible = true;
 			instance_create(x, y, obj_genericpoofeffect);
 		}
 	}
 	fmod_event_instance_play(global.snd_johndead);
-	
+
 	var combototal = 10 + floor(global.combo * 0.5);
 	global.collect += combototal;
 	global.comboscore += combototal;
 	global.combo += 1;
 	global.enemykilled += 1;
 	global.combotime = 60;
-	
+
 	global.fill = 4000;
 	notification_push(notifs.hungrypillar_dead, [room]);
-	
-	switch room
-	{
+
+	switch (room) {
 		case entrance_10:
 			global.fill = 1860;
 			break;
@@ -88,28 +86,30 @@ if (ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge == 0)
 			global.fill = 4056;
 			break;
 	}
-	
-	with (instance_create(x, y, obj_sausageman_dead))
-	{
+
+	with (instance_create(x, y, obj_sausageman_dead)) {
 		var debris = id;
 		sprite_index = spr_hungrypillar_dead;
-		if room == tower_finalhallway
+		if (room == tower_finalhallway) {
 			sprite_index = spr_protojohn;
+		}
 	}
-	with instance_create_unique(0, 0, obj_hungrypillarflash)
+	with (instance_create_unique(0, 0, obj_hungrypillarflash)) {
 		debrisid = debris;
-	
-	with obj_tv
+	}
+
+	with (obj_tv) {
 		chunkmax = global.fill;
-	with obj_escapecollect
-	{
+	}
+	with (obj_escapecollect) {
 		gotowardsplayer = false;
 		movespeed = 5;
 		image_alpha = 1;
 	}
-	with obj_escapecollectbig
+	with (obj_escapecollectbig) {
 		image_alpha = 1;
-	
+	}
+
 	fmod_event_instance_play(global.snd_escaperumble);
 	obj_camera.alarm[1] = 60;
 	instance_create(x, y, obj_bangeffect);
@@ -119,15 +119,13 @@ if (ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge == 0)
 	instance_create(x, y, obj_baddiegibs);
 	instance_create(x, y, obj_baddiegibs);
 	instance_create(x, y, obj_baddiegibs);
-	if global.coop == 1
-	{
+	if (global.coop == 1) {
 		obj_player1.x = x;
 		obj_player2.x = x;
 		obj_player1.y = y;
 		obj_player2.y = y;
 	}
-	with obj_camera
-	{
+	with (obj_camera) {
 		shake_mag = 3;
 		shake_mag_acc = 3 / room_speed;
 	}
@@ -135,9 +133,10 @@ if (ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge == 0)
 	fmod_event_one_shot_3d("event:/sfx/enemies/kill", x, y);
 	instance_create(x, y + 600, obj_itspizzatime);
 	global.panic = true;
-	
-	switch room // how do you fuck this up
-	{
+
+	switch (
+		room // how do you fuck this up
+	) {
 		case entrance_10:
 			global.minutes = 2;
 			global.seconds = 30;

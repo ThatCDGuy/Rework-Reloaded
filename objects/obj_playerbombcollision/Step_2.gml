@@ -1,5 +1,4 @@
-if (!instance_exists(bombID))
-{
+if (!instance_exists(bombID)) {
 	instance_destroy();
 	exit;
 }

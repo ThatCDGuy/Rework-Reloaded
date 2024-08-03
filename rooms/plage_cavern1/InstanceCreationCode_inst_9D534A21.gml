@@ -1,4 +1,5 @@
-if (!instance_exists(obj_frontcanongoblin))
+if (!instance_exists(obj_frontcanongoblin)) {
 	instance_destroy();
-else
+} else {
 	active = true;
+}

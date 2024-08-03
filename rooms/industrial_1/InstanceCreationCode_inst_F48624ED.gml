@@ -1,2 +1,2 @@
-targetRoom = industrial_2
-targetDoor = "B"
+targetRoom = industrial_2;
+targetDoor = "B";

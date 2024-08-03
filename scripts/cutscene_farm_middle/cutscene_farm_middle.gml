@@ -1,22 +1,22 @@
-function cutscene_farm_middle()
-{
+function cutscene_farm_middle() {
 	var _finish = false;
-	with obj_mort_inline
-	{
+	with (obj_mort_inline) {
 		sprite_index = spr_mortwalk;
-		x += (dir * 5);
-		if (!point_in_camera(x, y, view_camera[0]))
+		x += dir * 5;
+		if (!point_in_camera(x, y, view_camera[0])) {
 			_finish = true;
+		}
 	}
-	if (!instance_exists(obj_mort_inline))
+	if (!instance_exists(obj_mort_inline)) {
 		_finish = true;
-	if _finish
+	}
+	if (_finish) {
 		cutscene_end_action();
+	}
 }
-function cutscene_farm_end()
-{
-	with obj_player
-	{
+
+function cutscene_farm_end() {
+	with (obj_player) {
 		state = states.normal;
 		x = backtohubstartx;
 		y = backtohubstarty;

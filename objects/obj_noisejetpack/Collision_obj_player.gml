@@ -1,5 +1,4 @@
-if state == states.normal && other.grounded
-{
+if (state == states.normal && other.grounded) {
 	depth = -500;
 	ds_list_add(global.saveroom, id);
 	playerid = other.id;
@@ -9,8 +8,7 @@ if state == states.normal && other.grounded
 	cutscenebuffer = 40;
 	effectid = instance_create(x, y, obj_treasureeffect);
 	movespeed = 2;
-	with other
-	{
+	with (other) {
 		fmod_event_one_shot_3d("event:/sfx/misc/secretfound", x, y);
 		state = states.gottreasure;
 		hsp = 0;

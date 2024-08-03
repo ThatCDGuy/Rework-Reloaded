@@ -1,14 +1,9 @@
-enum aspectratio
-{
+enum aspectratio {
 	normal,
-	undertale
+	undertale,
 }
-global.resolutions[aspectratio.normal] = [
-	[480, 270], [960, 540], [1024, 576], [1280, 720], [1600, 900], [1920, 1080]
-];
-global.resolutions[aspectratio.undertale] = [
-	[640, 480], [800, 600], [1024, 768], [1152, 864], [1440, 1080]
-];
+global.resolutions[aspectratio.normal] = [[480, 270], [960, 540], [1024, 576], [1280, 720], [1600, 900], [1920, 1080]];
+global.resolutions[aspectratio.undertale] = [[640, 480], [800, 600], [1024, 768], [1152, 864], [1440, 1080]];
 
 gameframe_init();
 global.gameframe_caption_font = fnt_caption;

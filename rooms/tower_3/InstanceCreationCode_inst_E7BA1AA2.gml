@@ -1,2 +1,2 @@
-targetRoom = tower_pizzaland
-targetDoor = "F"
+targetRoom = tower_pizzaland;
+targetDoor = "F";

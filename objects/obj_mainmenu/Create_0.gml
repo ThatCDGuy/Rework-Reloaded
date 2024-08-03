@@ -52,69 +52,59 @@ game_icon_buffer = 0;
 game_icon_index = 0;
 punch_count = 0;
 
-unlock_noise = function(show_screen)
-{
-	for (var i = 0; i < 3; i++)
-	{
-		if (global.game[i].judgement != "none" || global.gameN[i].judgement != "none")
-		{
+unlock_noise = function(show_screen) {
+	for (var i = 0; i < 3; i++) {
+		if (global.game[i].judgement != "none" || global.gameN[i].judgement != "none") {
 			show_screen = true;
 			break;
 		}
 	}
-	if !show_screen
-	{
+	if (!show_screen) {
 		ini_open_from_string(obj_savesystem.ini_str_options);
 		show_screen = ini_read_real("Game", "beaten", 0) > 0;
-		if !show_screen
+		if (!show_screen) {
 			show_screen = ini_read_real("Game", "noiseunlocked", 0);
+		}
 		ini_close();
 	}
-	if show_screen
-	{
+	if (show_screen) {
 		noise_unlocked = true;
 		ini_open_from_string(obj_savesystem.ini_str_options);
-		if (ini_read_real("Game", "noiseunlocked", 0) == 0)
-		{
+		if (ini_read_real("Game", "noiseunlocked", 0) == 0) {
 			instance_create(0, 0, obj_noiseunlocked);
 			ini_write_real("Game", "noiseunlocked", 1);
 			obj_savesystem.ini_str_options = ini_close();
 			gamesave_async_save_options();
-		}
-		else
+		} else {
 			ini_close();
+		}
 	}
 };
-unlock_swap = function(show_screen)
-{
-	for (var i = 0; i < 3; i++)
-	{
-		if global.gameN[i].judgement != "none"
-		{
+unlock_swap = function(show_screen) {
+	for (var i = 0; i < 3; i++) {
+		if (global.gameN[i].judgement != "none") {
 			show_screen = true;
 			break;
 		}
 	}
-	if !show_screen
-	{
+	if (!show_screen) {
 		ini_open_from_string(obj_savesystem.ini_str_options);
 		show_screen = ini_read_real("Game", "swapunlocked", 0);
 		ini_close();
 	}
-	if show_screen
-	{
+	if (show_screen) {
 		swap_unlocked = true;
 		ini_open_from_string(obj_savesystem.ini_str_options);
-		if (ini_read_real("Game", "swapunlocked", 0) == 0)
-		{
-			with (instance_create(0, 0, obj_noiseunlocked))
+		if (ini_read_real("Game", "swapunlocked", 0) == 0) {
+			with (instance_create(0, 0, obj_noiseunlocked)) {
 				sprite_index = spr_swapmodeunlocked;
+			}
 			ini_write_real("Game", "swapunlocked", 1);
 			obj_savesystem.ini_str_options = ini_close();
 			gamesave_async_save_options();
-		}
-		else
+		} else {
 			ini_close();
+		}
 	}
 };
 unlock_noise(false);

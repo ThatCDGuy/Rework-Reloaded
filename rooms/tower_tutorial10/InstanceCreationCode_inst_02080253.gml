@@ -1,4 +1,5 @@
-if (global.panic == 0)
+if (global.panic == 0) {
 	text = lang_get_value("tutorial25");
-else
+} else {
 	text = lang_get_value("getout");
+}

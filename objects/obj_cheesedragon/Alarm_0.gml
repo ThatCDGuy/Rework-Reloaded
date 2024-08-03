@@ -1,5 +1,4 @@
-switch attackcycle
-{
+switch (attackcycle) {
 	case 0:
 		sprite_index = spr_cheesedragon_stomp;
 		image_index = 0;

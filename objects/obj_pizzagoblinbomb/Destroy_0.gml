@@ -1,8 +1,6 @@
-if destroy
-{
+if (destroy) {
 	trace("self: ", baddie);
-	with (instance_create(x, y, obj_canonexplosion))
-	{
+	with (instance_create(x, y, obj_canonexplosion)) {
 		hurtplayer = other.hurtplayer;
 		rat = other.grabbable;
 		baddie = other.baddie;

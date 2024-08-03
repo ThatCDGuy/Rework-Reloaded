@@ -1,9 +1,8 @@
-if obj_player1.ispeppino
-{
+if (obj_player1.ispeppino) {
 	shader_set(global.Pal_Shader);
 	pal_swap_set(spr_ratmountpalette, obj_player1.paletteselect, false);
 	draw_self();
 	shader_reset();
-}
-else
+} else {
 	draw_self();
+}

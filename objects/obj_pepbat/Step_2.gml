@@ -1,10 +1,8 @@
 event_inherited();
-if state == states.stun
-{
-	if (!scr_solid(x, y))
+if (state == states.stun) {
+	if (!scr_solid(x, y)) {
 		scr_collide();
-	else
-	{
+	} else {
 		x += hsp;
 		y += vsp;
 	}

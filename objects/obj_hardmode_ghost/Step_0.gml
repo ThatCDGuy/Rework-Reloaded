@@ -1,17 +1,15 @@
 highest_y = -270;
 var _instY = collision_line(obj_player1.x, obj_player1.y, obj_player1.x, obj_player1.y - 270, obj_solid, false, true);
-if _instY != -4
+if (_instY != -4) {
 	highest_y = -abs(obj_player1.y - (_instY.y + _instY.sprite_height)) - 32;
-if random_buffer > 0
+}
+if (random_buffer > 0) {
 	random_buffer--;
-else
-{
+} else {
 	var _col = collision_line(x, y, obj_player1.x, obj_player1.y, obj_solid, false, true);
-	if (!place_meeting(x, y, obj_solid) && !place_meeting(x, y, obj_slope) && _col == noone)
-	{
+	if (!place_meeting(x, y, obj_solid) && !place_meeting(x, y, obj_slope) && _col == noone) {
 		var n = irandom(array_length(content) - 1);
-		with (instance_create(x, y, content[n]))
-		{
+		with (instance_create(x, y, content[n])) {
 			important = true;
 			state = states.stun;
 			stunned = 50;

@@ -1,1 +1,1 @@
-targetRoom = kidsparty_floor4_2
+targetRoom = kidsparty_floor4_2;

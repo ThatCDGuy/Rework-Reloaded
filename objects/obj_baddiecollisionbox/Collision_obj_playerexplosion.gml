@@ -1,21 +1,24 @@
-if (instance_exists(baddieID) && baddieID.invtime == 0 && baddieID.state != states.grabbed && !baddieID.invincible && baddieID.instantkillable)
-{
-	if (room == boss_pizzaface && (baddieID.object_index == obj_pepperman || baddieID.object_index == obj_vigilanteboss || baddieID.object_index == obj_noiseboss || baddieID.object_index == obj_fakepepboss || baddieID.object_index == obj_pizzafaceboss_p3))
-	{
+if (instance_exists(baddieID) && baddieID.invtime == 0 && baddieID.state != states.grabbed && !baddieID.invincible && baddieID.instantkillable) {
+	if (
+		room == boss_pizzaface
+		&& (
+			baddieID.object_index == obj_pepperman
+				|| baddieID.object_index == obj_vigilanteboss
+				|| baddieID.object_index == obj_noiseboss
+				|| baddieID.object_index == obj_fakepepboss
+				|| baddieID.object_index == obj_pizzafaceboss_p3
+		)
+	) {
 		other.baddiegrabbedID = baddieID;
-		with baddieID
-		{
+		with (baddieID) {
 			grabbedby = 1;
 			scr_boss_grabbed();
 		}
-	}
-	else
-	{
+	} else {
 		baddieID.invtime = 15;
 		fmod_event_one_shot_3d("event:/sfx/pep/punch", x, y);
-		if !baddieID.important
-		{
-			global.style += (5 + global.combo);
+		if (!baddieID.important) {
+			global.style += 5 + global.combo;
 			global.combotime = 60;
 			global.heattime = 60;
 		}
@@ -28,18 +31,18 @@ if (instance_exists(baddieID) && baddieID.invtime == 0 && baddieID.state != stat
 		instance_create(baddieID.x, baddieID.y, obj_parryeffect);
 		baddieID.alarm[3] = 3;
 		baddieID.state = states.hit;
-		if baddieID.x != other.x
+		if (baddieID.x != other.x) {
 			baddieID.image_xscale = sign(other.x - baddieID.x);
-		else
+		} else {
 			baddieID.image_xscale = -other.image_xscale;
+		}
 		instance_create(x, y, obj_slapstar);
 		instance_create(x, y, obj_slapstar);
 		instance_create(x, y, obj_slapstar);
 		instance_create(x, y, obj_baddiegibs);
 		instance_create(x, y, obj_baddiegibs);
 		instance_create(x, y, obj_baddiegibs);
-		with obj_camera
-		{
+		with (obj_camera) {
 			shake_mag = 3;
 			shake_mag_acc = 3 / room_speed;
 		}

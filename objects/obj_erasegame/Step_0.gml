@@ -1,17 +1,16 @@
-if (!instance_exists(obj_keyconfig))
-{
-	if ((-obj_player.key_left2 || keyboard_check_pressed(vk_left)) && optionselected > 0)
+if (!instance_exists(obj_keyconfig)) {
+	if ((-obj_player.key_left2 || keyboard_check_pressed(vk_left)) && optionselected > 0) {
 		optionselected -= 1;
-	if ((obj_player.key_right2 || keyboard_check_pressed(vk_right)) && optionselected < 1)
+	}
+	if ((obj_player.key_right2 || keyboard_check_pressed(vk_right)) && optionselected < 1) {
 		optionselected += 1;
+	}
 }
-if (optionselected == 1 && (obj_player.key_jump || keyboard_check_pressed(vk_enter)))
-{
+if (optionselected == 1 && (obj_player.key_jump || keyboard_check_pressed(vk_enter))) {
 	file_delete("saveData.ini");
 	scr_initinput();
 	ini_open("saveData.ini");
-	if (!ini_section_exists("SAGE2019"))
-	{
+	if (!ini_section_exists("SAGE2019")) {
 		ini_write_string("SAGE2019", "shotgunsnick", false);
 		ini_write_string("SAGE2019", "dungeonbackup", false);
 		ini_write_string("SAGE2019", "srank", false);
@@ -34,8 +33,7 @@ if (optionselected == 1 && (obj_player.key_jump || keyboard_check_pressed(vk_ent
 	global.SAGEknighttaken = false;
 	global.SAGEtoppin = false;
 	global.SAGEtreasure = false;
-	with obj_SAGE2019achievementmarker
-	{
+	with (obj_SAGE2019achievementmarker) {
 		snickshotgun = false;
 		dungeonbackup = false;
 		srank = false;
@@ -49,8 +47,7 @@ if (optionselected == 1 && (obj_player.key_jump || keyboard_check_pressed(vk_ent
 	obj_mainmenuselect.selected = false;
 	instance_destroy();
 }
-if ((obj_player.key_slap2 || keyboard_check_pressed(vk_escape)) || (optionselected == 0 && (obj_player.key_jump || keyboard_check_pressed(vk_enter))))
-{
+if ((obj_player.key_slap2 || keyboard_check_pressed(vk_escape)) || (optionselected == 0 && (obj_player.key_jump || keyboard_check_pressed(vk_enter)))) {
 	obj_mainmenuselect.selected = false;
 	instance_destroy();
 }

@@ -1,12 +1,10 @@
-function cutscene_space_middle()
-{
+function cutscene_space_middle() {
 	instance_create(1024, -128, obj_cheeseboat);
 	cutscene_end_action();
 }
-function cutscene_space_end()
-{
-	with obj_player
-	{
+
+function cutscene_space_end() {
+	with (obj_player) {
 		state = states.normal;
 		x = backtohubstartx;
 		y = backtohubstarty;

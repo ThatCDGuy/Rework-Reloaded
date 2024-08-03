@@ -1,7 +1,6 @@
 targetplayer = obj_player1.id;
 mask_index = spr_player_mask;
-switch state
-{
+switch (state) {
 	case states.transition:
 		scr_fakepepclone_transitioncutscene();
 		break;
@@ -36,27 +35,25 @@ switch state
 		scr_fakepepboss_backbreaker();
 		break;
 }
-if state == states.Sjump
-{
-	if (!instance_exists(hitboxID))
-	{
-		with (instance_create(x, y, obj_forkhitbox))
-		{
+if (state == states.Sjump) {
+	if (!instance_exists(hitboxID)) {
+		with (instance_create(x, y, obj_forkhitbox)) {
 			ID = other.id;
 			other.hitboxID = id;
 			sprite_index = other.sprite_index;
 		}
 	}
 }
-if ((state == states.grabdash || (state == states.mach2 && attackspeed >= 10) || (state == states.throwing && sprite_index == spr_fakepeppino_flailing) || state == states.freefall) && alarm[0] == -1)
-{
+if ((state == states.grabdash || (state == states.mach2 && attackspeed >= 10) || (state == states.throwing && sprite_index == spr_fakepeppino_flailing) || state == states.freefall) && alarm[0] == -1) {
 	alarm[0] = 10;
-	if state == states.freefall
+	if (state == states.freefall) {
 		alarm[0] = 5;
+	}
 }
-if state == states.jump
+if (state == states.jump) {
 	grav = 0.4;
-else
+} else {
 	grav = 0.5;
+}
 scr_collide();
 scr_fakepep_update_sounds();

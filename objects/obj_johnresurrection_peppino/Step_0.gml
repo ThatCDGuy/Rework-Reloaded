@@ -1,9 +1,7 @@
-if sprite_index == spr_player_move
-{
-	if steppy > 0
+if (sprite_index == spr_player_move) {
+	if (steppy > 0) {
 		steppy--;
-	else
-	{
+	} else {
 		steppy = 8;
 		create_particle(x, y + 43, particle.cloudeffect);
 	}

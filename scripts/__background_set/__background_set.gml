@@ -1,5 +1,4 @@
-function __background_set(prop, bind, val)
-{
+function __background_set(prop, bind, val) {
 	var __prop = prop;
 	var __bind = bind;
 	var __val = val;

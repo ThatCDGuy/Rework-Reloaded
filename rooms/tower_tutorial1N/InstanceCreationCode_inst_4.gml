@@ -1,1 +1,1 @@
-text = lang_get_value("tutorial1N")
+text = lang_get_value("tutorial1N");

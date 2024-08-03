@@ -1,5 +1,4 @@
-with (instance_create(0, 0, obj_pizzahead_whitefade))
-{
+with (instance_create(0, 0, obj_pizzahead_whitefade)) {
 	persistent = true;
 	whitefade = 1.3;
 	deccel = 0.005;

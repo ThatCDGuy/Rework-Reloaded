@@ -1,7 +1,5 @@
-if comeback
-{
-	if other.state == states.throwing && other.brick
-	{
+if (comeback) {
+	if (other.state == states.throwing && other.brick) {
 		other.sprite_index = spr_pizzahead_ratballcatch;
 		other.image_index = 0;
 	}

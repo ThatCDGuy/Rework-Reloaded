@@ -1,5 +1,4 @@
-function scr_read_game(ini)
-{
+function scr_read_game(ini) {
 	var q = game_empty();
 	ini_open(ini);
 	q.percentage = ini_read_real("Game", "percent", 0);
@@ -17,45 +16,24 @@ function scr_read_game(ini)
 	ini_close();
 	return q;
 }
-function menu_get_game(slot, peppino)
-{
+
+function menu_get_game(slot, peppino) {
 	var g = global.game[slot];
-	if !peppino
+	if (!peppino) {
 		g = global.gameN[slot];
-	
-	var q = 
-	{
-		percentage: g.percentage,
-		percvisual: 0,
-		snotty: g.snotty,
-		john: g.john,
-		judgement: g.judgement,
-		perstatus_icon: 0,
-		alpha: 1,
-		minutes: g.minutes,
-		seconds: g.seconds
-	};
+	}
+
+	var q = {percentage: g.percentage, percvisual: 0, snotty: g.snotty, john: g.john, judgement: g.judgement, perstatus_icon: 0, alpha: 1, minutes: g.minutes, seconds: g.seconds};
 	q.perstatus_icon = floor(q.percentage / (100 / 7));
-	if (q.perstatus_icon > (sprite_get_number(spr_percentstatemenu) - 1))
+	if (q.perstatus_icon > (sprite_get_number(spr_percentstatemenu) - 1)) {
 		q.perstatus_icon = sprite_get_number(spr_percentstatemenu) - 1;
-	if q.percentage >= 101
+	}
+	if (q.percentage >= 101) {
 		q.perstatus_icon = 8;
+	}
 	return q;
 }
-function game_empty()
-{
-	return 
-	{
-		percentage: 0,
-		started: false,
-		judgement: "none",
-		john: false,
-		snotty: false,
-		palette: 1,
-		palettetexture: -4,
-		minutes: 0,
-		seconds: 0,
-		palette_player2: 1,
-		palettetexture_player2: -4
-	};
+
+function game_empty() {
+	return {percentage: 0, started: false, judgement: "none", john: false, snotty: false, palette: 1, palettetexture: -4, minutes: 0, seconds: 0, palette_player2: 1, palettetexture_player2: -4};
 }

@@ -13,52 +13,77 @@ savedmusicmuffle = 0;
 
 pause_menu = ["pause_resume", "pause_options", "pause_restart", "pause_exit"];
 pause_menu_map = ds_map_create();
-ds_map_set(pause_menu_map, "pause_resume", [0, function()
-{
-	scr_pause_activate_objects();
-	pause_unpause_music();
-	instance_destroy(obj_option);
-	instance_destroy(obj_keyconfig);
-}]);
-ds_map_set(pause_menu_map, "pause_achievements", [5, function()
-{
-	fmod_event_one_shot("event:/sfx/ui/select");
-	with (instance_create(x, y, obj_achievement_pause))
-		depth = other.depth - 1;
-}]);
-ds_map_set(pause_menu_map, "pause_options", [1, function()
-{
-	fmod_event_one_shot("event:/sfx/ui/select");
-	with (instance_create(x, y, obj_option))
-		depth = other.depth - 1;
-}]);
-ds_map_set(pause_menu_map, "pause_restart", [2, function()
-{
-	if (room == Endingroom || room == tower_soundtest || room == tower_soundtestlevel || room == Creditsroom || room == Johnresurrectionroom)
-		exit;
-	if !global.snickchallenge
-	{
-		var rm = global.leveltorestart;
-		if rm != -4 && rm != -1
-		{
-			alarm[5] = 1;
-			roomtorestart = rm;
-			pause_unpause_music();
-			stop_music();
+ds_map_set(
+	pause_menu_map,
+	"pause_resume",
+	[
+		0,
+		function() {
 			scr_pause_activate_objects();
-			scr_pause_stop_sounds();
+			pause_unpause_music();
 			instance_destroy(obj_option);
 			instance_destroy(obj_keyconfig);
-			pause = false;
 		}
-		else
+	]
+);
+ds_map_set(
+	pause_menu_map,
+	"pause_achievements",
+	[
+		5,
+		function() {
 			fmod_event_one_shot("event:/sfx/ui/select");
-	}
-}]);
-var exit_function = function()
-{
-	if (room == Endingroom || room == Creditsroom || room == Johnresurrectionroom)
+			with (instance_create(x, y, obj_achievement_pause)) {
+				depth = other.depth - 1;
+			}
+		}
+	]
+);
+ds_map_set(
+	pause_menu_map,
+	"pause_options",
+	[
+		1,
+		function() {
+			fmod_event_one_shot("event:/sfx/ui/select");
+			with (instance_create(x, y, obj_option)) {
+				depth = other.depth - 1;
+			}
+		}
+	]
+);
+ds_map_set(
+	pause_menu_map,
+	"pause_restart",
+	[
+		2,
+		function() {
+			if (room == Endingroom || room == tower_soundtest || room == tower_soundtestlevel || room == Creditsroom || room == Johnresurrectionroom) {
+				exit;
+			}
+			if (!global.snickchallenge) {
+				var rm = global.leveltorestart;
+				if (rm != -4 && rm != -1) {
+					alarm[5] = 1;
+					roomtorestart = rm;
+					pause_unpause_music();
+					stop_music();
+					scr_pause_activate_objects();
+					scr_pause_stop_sounds();
+					instance_destroy(obj_option);
+					instance_destroy(obj_keyconfig);
+					pause = false;
+				} else {
+					fmod_event_one_shot("event:/sfx/ui/select");
+				}
+			}
+		}
+	]
+);
+var exit_function = function() {
+	if (room == Endingroom || room == Creditsroom || room == Johnresurrectionroom) {
 		exit;
+	}
 	pause_unpause_music();
 	stop_music();
 	scr_pause_stop_sounds();
@@ -72,30 +97,26 @@ var exit_function = function()
 	var arr = -4;
 	ds_list_copy(sl, sound_list);
 	ds_list_copy(il, instance_list);
-	if global.leveltorestart != -4
-	{
-		if global.leveltorestart != boss_fakepepkey && global.leveltorestart != tower_tutorial1N
+	if (global.leveltorestart != -4) {
+		if (global.leveltorestart != boss_fakepepkey && global.leveltorestart != tower_tutorial1N) {
 			gamesave_async_save();
-		
+		}
+
 		hub = true;
 		arr = ["hubgroup"];
 		global.stargate = false;
 		global.leveltorestart = -4;
-	}
-	else
-	{
+	} else {
 		hub = false;
 		arr = ["menugroup"];
-		with obj_player1
-		{
+		with (obj_player1) {
 			character = "P";
 			ispeppino = true;
 			scr_characterspr();
 		}
 	}
 	ds_list_add(il, id);
-	with (textures_offload(arr))
-	{
+	with (textures_offload(arr)) {
 		ds_list_clear(sound_list);
 		ds_list_clear(instance_list);
 		ds_list_copy(sound_list, sl);

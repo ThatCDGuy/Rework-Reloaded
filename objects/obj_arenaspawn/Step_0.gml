@@ -1,17 +1,13 @@
-switch state
-{
+switch (state) {
 	case states.normal:
-		if obj_player1.x <= x
-		{
+		if (obj_player1.x <= x) {
 			state = states.arenaround;
 			round_count = 10;
-			with obj_arenagate
-			{
+			with (obj_arenagate) {
 				sprite_index = spr_arenagate_close;
 				image_index = 0;
 				block_inst = instance_create(x, y, obj_solid);
-				with block_inst
-				{
+				with (block_inst) {
 					sprite_index = spr_arenagate_open;
 					image_xscale = other.image_xscale;
 					image_yscale = other.image_yscale;
@@ -20,14 +16,13 @@ switch state
 		}
 		break;
 	case states.arenaintro:
-		with obj_player
+		with (obj_player) {
 			state = states.gottreasure;
-		if cutscene_count > 0
+		}
+		if (cutscene_count > 0) {
 			cutscene_count--;
-		else
-		{
-			with obj_player
-			{
+		} else {
+			with (obj_player) {
 				state = states.normal;
 				image_index = 0;
 			}
@@ -36,45 +31,39 @@ switch state
 		}
 		break;
 	case states.arenaround:
-		if round_count > 0
+		if (round_count > 0) {
 			round_count--;
-		else
+		} else {
 			state = states.spawnenemy;
+		}
 		break;
 	case states.spawnenemy:
-		if (!ds_list_empty(baddielist))
-		{
-			for (var i = 0; i < ds_list_size(baddielist); i++)
-			{
+		if (!ds_list_empty(baddielist)) {
+			for (var i = 0; i < ds_list_size(baddielist); i++) {
 				var b = ds_list_find_value(baddielist, i);
-				if b[0] == wave
-				{
+				if (b[0] == wave) {
 					instance_activate_object(b[1]);
-					if (instance_exists(b[1]))
-					{
-						with (instance_create(b[1].x, b[1].y, obj_arena_pizzaportal))
-						{
+					if (instance_exists(b[1])) {
+						with (instance_create(b[1].x, b[1].y, obj_arena_pizzaportal)) {
 							stored_id = b[1];
 							alarm[0] = other.round_max;
 						}
 						instance_deactivate_object(b[1]);
 					}
-				}
-				else
+				} else {
 					instance_deactivate_object(b[1]);
+				}
 			}
 		}
 		wave_minutes = minutes;
 		wave_seconds = seconds;
 		round_count = round_max;
 		state = states.arena;
-		with obj_arenadoor
-		{
+		with (obj_arenadoor) {
 			wave = other.wave;
 			alarm[0] = 10;
 			finish = false;
-			if objectlist[wave] == noone
-			{
+			if (objectlist[wave] == noone) {
 				alarm[0] = -1;
 				finish = true;
 			}
@@ -82,45 +71,42 @@ switch state
 		break;
 	case states.arena:
 		var _doorfinish = true;
-		with obj_arenadoor
-		{
-			if !finish
+		with (obj_arenadoor) {
+			if (!finish) {
 				_doorfinish = false;
+			}
 		}
-		if (!instance_exists(obj_baddie) && !instance_exists(obj_arena_pizzaportal) && (!instance_exists(obj_arenadoor) || _doorfinish))
-		{
+		if (!instance_exists(obj_baddie) && !instance_exists(obj_arena_pizzaportal) && (!instance_exists(obj_arenadoor) || _doorfinish)) {
 			wave++;
-			if wave > maxwave
-			{
+			if (wave > maxwave) {
 				instance_destroy();
 				instance_destroy(block_inst);
-				with obj_arenagate
-				{
+				with (obj_arenagate) {
 					image_index = 0;
 					sprite_index = spr_arenagate_open;
 					instance_destroy(block_inst);
 				}
 				cutscene_count = outro_max;
-				with obj_player
-				{
-					with obj_music
+				with (obj_player) {
+					with (obj_music) {
 						arena = false;
+					}
 				}
-			}
-			else
-			{
+			} else {
 				state = states.spawnenemy;
 				round_count = round_max;
 			}
 		}
 		break;
 	case states.transition:
-		if floor(image_index) == image_number - 1
+		if (floor(image_index) == image_number - 1) {
 			state = states.victory;
+		}
 		break;
 	case states.victory:
 		instance_destroy();
 		break;
 }
-if state != states.normal && state != states.arenaintro
+if (state != states.normal && state != states.arenaintro) {
 	visible = false;
+}

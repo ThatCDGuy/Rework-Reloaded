@@ -1,2 +1,2 @@
-visible = false
-targetRoom = tower_pizzafacehall
+visible = false;
+targetRoom = tower_pizzafacehall;

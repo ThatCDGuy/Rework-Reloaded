@@ -1,1 +1,1 @@
-scr_soundtest_secret()
+scr_soundtest_secret();

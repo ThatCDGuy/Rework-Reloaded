@@ -1,9 +1,7 @@
 var r = string_letters(room_get_name(room));
-if (r != "towertutorial" && r != "towertutorialN" && string_copy(r, 1, 5) == "tower")
-{
+if (r != "towertutorial" && r != "towertutorialN" && string_copy(r, 1, 5) == "tower") {
 	timer_tower = true;
-	if global.panic
-	{
+	if (global.panic) {
 		instance_destroy(obj_gusbrickchase);
 		instance_destroy(obj_gusbrickfightball);
 		instance_destroy(obj_peppermanvengeful);
@@ -15,12 +13,11 @@ if (r != "towertutorial" && r != "towertutorialN" && string_copy(r, 1, 5) == "to
 		instance_destroy(obj_vigilanteunsure);
 		instance_destroy(obj_tutorialbook);
 	}
-}
-else
+} else {
 	timer_tower = false;
+}
 tv_bg_index = 0;
-switch global.leveltosave
-{
+switch (global.leveltosave) {
 	case "entrance":
 		tv_bg_index = 1;
 		break;
@@ -79,8 +76,7 @@ switch global.leveltosave
 		tv_bg_index = 19;
 		break;
 }
-if special_prompts == noone && room != Realtitlescreen && room != characterselect
-{
+if (special_prompts == noone && room != Realtitlescreen && room != characterselect) {
 	special_prompts = ds_map_create();
 	ini_open(concat("saveData", global.currentsavefile, ".ini"));
 	ds_map_set(special_prompts, "knight", ini_read_real("Prompts", "knight", 0));
@@ -97,14 +93,13 @@ if special_prompts == noone && room != Realtitlescreen && room != characterselec
 	ds_map_set(special_prompts, "rocket", ini_read_real("Prompts", "rocket", 0));
 	ini_close();
 }
-if room == Realtitlescreen
-{
-	if special_prompts != -4
+if (room == Realtitlescreen) {
+	if (special_prompts != -4) {
 		ds_map_destroy(special_prompts);
+	}
 	special_prompts = -4;
 }
-switch room
-{
+switch (room) {
 	case entrance_1:
 		global.srank = 16000;
 		break;
@@ -165,7 +160,7 @@ switch room
 	case tower_finalhallway:
 		global.srank = 5500;
 		break;
-	
+
 	case boss_pepperman:
 		global.srank = 6;
 		break;
@@ -178,7 +173,7 @@ switch room
 	case boss_fakepep:
 		global.srank = 4;
 		break;
-	
+
 	case secret_entrance:
 		global.srank = 38000;
 		break;
@@ -186,5 +181,6 @@ switch room
 global.arank = floor(global.srank / 2);
 global.brank = floor(global.arank / 2);
 global.crank = floor(global.brank / 2);
-if room == custom_lvl_room
+if (room == custom_lvl_room) {
 	alarm[1] = 4;
+}

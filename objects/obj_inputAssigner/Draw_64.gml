@@ -4,17 +4,13 @@ draw_set_halign(fa_center);
 draw_set_halign(fa_center);
 draw_set_alpha(1);
 draw_set_color(c_white);
-if !deactivated
-{
+if (!deactivated) {
 	draw_set_font(lang_get_font("bigfont"));
-	if press_start
-	{
+	if (press_start) {
 		var _txt = "PRESS START";
 		draw_text(SCREEN_WIDTH / 2, 298, _txt);
 	}
-}
-else
-{
+} else {
 	draw_rectangle_color(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0, 0, false);
 	draw_set_font(lang_get_font("smallfont"));
 	_txt = lang_get_value("menu_controller_disconnected");

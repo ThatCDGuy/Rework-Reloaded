@@ -1,7 +1,7 @@
-with obj_finaleN_prop
-{
-	if depth <= -100 && visible
+with (obj_finaleN_prop) {
+	if (depth <= -100 && visible) {
 		exit;
+	}
 }
 draw_set_alpha(dark);
 draw_set_color(c_white);

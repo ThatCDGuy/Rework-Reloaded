@@ -17,10 +17,10 @@ var _palinfo = get_noise_palette_info();
 spr_palette = _palinfo.spr_palette;
 paletteselect = _palinfo.paletteselect;
 patterntexture = _palinfo.patterntexture;
-with (instance_create(x, y, obj_playerbombcollision))
+with (instance_create(x, y, obj_playerbombcollision)) {
 	bombID = other.id;
-if (place_meeting(x, y, obj_solid))
-{
+}
+if (place_meeting(x, y, obj_solid)) {
 	x = obj_player1.x;
 	y = obj_player1.y;
 }

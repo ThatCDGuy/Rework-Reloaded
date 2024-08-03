@@ -1,5 +1,4 @@
-if (!instance_exists(objectID))
-{
+if (!instance_exists(objectID)) {
 	instance_destroy();
 	exit;
 }
@@ -19,7 +18,8 @@ var r = (cx + cw) - edge_x - pad;
 var b = (cy + ch) - edge_y - pad;
 x = clamp(x, l, r);
 y = clamp(y, t, b);
-if (!collision_rectangle(l - edge_x, t - edge_y, r + edge_x, b + edge_y, objectID, false, false))
+if (!collision_rectangle(l - edge_x, t - edge_y, r + edge_x, b + edge_y, objectID, false, false)) {
 	visible = true;
-else
+} else {
 	visible = false;
+}

@@ -9,8 +9,10 @@ title_music = -4;
 
 var _found = false;
 ini_open_from_string(obj_savesystem.ini_str);
-if (ini_read_string("Game", "finalrank", "none") != "none")
+if (ini_read_string("Game", "finalrank", "none") != "none") {
 	_found = true;
+}
 ini_close();
-if (!_found)
+if (!_found) {
 	instance_destroy();
+}

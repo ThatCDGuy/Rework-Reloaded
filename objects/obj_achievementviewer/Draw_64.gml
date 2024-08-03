@@ -1,5 +1,4 @@
-if alpha > 0
-{
+if (alpha > 0) {
 	var text = concat(texttitle, "\n", textdesc);
 	draw_set_font(textfont);
 	draw_set_halign(fa_center);

@@ -1,7 +1,5 @@
-function scr_keyname(_key)
-{
-	switch _key
-	{
+function scr_keyname(_key) {
+	switch (_key) {
 		case vk_up:
 			return lang_get_value("key_up");
 			break;
@@ -162,9 +160,8 @@ function scr_keyname(_key)
 			return lang_get_value("option_press_key");
 			break;
 	}
-	
-	switch _key
-	{
+
+	switch (_key) {
 		case vk_backspace:
 			return "BACKSPACE";
 			break;

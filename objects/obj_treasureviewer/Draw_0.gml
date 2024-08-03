@@ -1,20 +1,15 @@
-if visible
-{
+if (visible) {
 	var n = 0;
 	var x1 = 160;
 	var y1 = 96;
-	for (var yy = 0; yy < 2; yy++)
-	{
+	for (var yy = 0; yy < 2; yy++) {
 		var y2 = yy * 64;
-		for (var xx = 0; xx < floor(array_length(treasure_arr) / 2); xx++)
-		{
+		for (var xx = 0; xx < floor(array_length(treasure_arr) / 2); xx++) {
 			var b = treasure_arr[n];
 			var x2 = xx * 64;
 			draw_sprite(spr_treasurespace, 0, x1 + x2, y1 + y2);
-			if treasure_pos == n
-			{
-				switch treasure_state
-				{
+			if (treasure_pos == n) {
+				switch (treasure_state) {
 					case 0:
 						treasure_posX = obj_player1.x - 18;
 						treasure_posY = obj_player1.y - 35;
@@ -29,9 +24,9 @@ if visible
 						treasure_posY = Approach(treasure_posY, ty, abs(ly));
 						break;
 				}
-			}
-			else if b[0]
+			} else if (b[0]) {
 				draw_sprite(b[1], 0, x1 + x2, y1 + y2);
+			}
 			n++;
 		}
 	}

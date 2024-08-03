@@ -1,5 +1,7 @@
-if (scr_solid(x, y))
+if (scr_solid(x, y)) {
 	spawn = false;
-if grounded
+}
+if (grounded) {
 	instance_destroy();
+}
 scr_collide();

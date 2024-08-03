@@ -1,4 +1,5 @@
-if obj_mainmenuselect.optionselected == 2
+if (obj_mainmenuselect.optionselected == 2) {
 	sprite_index = spr_file3;
-else
+} else {
 	sprite_index = spr_file3empty;
+}

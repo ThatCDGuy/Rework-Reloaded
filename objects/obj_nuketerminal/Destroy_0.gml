@@ -1,18 +1,17 @@
-if (ds_list_find_index(global.saveroom, id) == -1)
-{
+if (ds_list_find_index(global.saveroom, id) == -1) {
 	instance_create_unique(0, 0, obj_wartimer);
 	fmod_event_one_shot("event:/sfx/ui/wartimerup");
-	with obj_wartimer
-	{
-		for (addseconds += other.seconds; other.minutes > 0; addseconds += 60)
+	with (obj_wartimer) {
+		for (addseconds += other.seconds; other.minutes > 0; addseconds += 60) {
 			other.minutes--;
+		}
 		alarm[0] = -1;
 		alarm[2] = 1;
 	}
-	for (var i = 0; i < sprite_get_number(spr_warterminal_debris); i++)
-	{
-		with (create_debris(x, y, spr_warterminal_debris))
+	for (var i = 0; i < sprite_get_number(spr_warterminal_debris); i++) {
+		with (create_debris(x, y, spr_warterminal_debris)) {
 			image_index = i;
+		}
 	}
 	tile_layer_delete_at(1, x, y);
 	tile_layer_delete_at(1, x + 32, y);

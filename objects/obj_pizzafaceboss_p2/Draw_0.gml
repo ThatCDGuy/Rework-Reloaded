@@ -1,5 +1,4 @@
-if (state == states.duel && duelphase == 0 && !instance_exists(obj_vigilante_duelintro))
-{
+if (state == states.duel && duelphase == 0 && !instance_exists(obj_vigilante_duelintro)) {
 	draw_set_font(global.bigfont);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

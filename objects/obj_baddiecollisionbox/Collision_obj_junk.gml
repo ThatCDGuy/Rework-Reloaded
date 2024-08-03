@@ -1,12 +1,16 @@
-if (instance_exists(baddieID) && baddieID.state != states.hit && baddieID.invtime == 0 && other.thrown == 1 && !baddieID.invincible && (baddieID.object_index != obj_noiseboss || (other.object_index != obj_pepjunk || !other.noisethrow)) && baddieID.destroyable)
-{
-	if (baddieID.destroyable && (!baddieID.elite || baddieID.elitehit <= 0))
-	{
+if (
+	instance_exists(baddieID)
+	&& baddieID.state != states.hit
+	&& baddieID.invtime == 0
+	&& other.thrown == 1
+	&& !baddieID.invincible
+	&& (baddieID.object_index != obj_noiseboss || (other.object_index != obj_pepjunk || !other.noisethrow))
+	&& baddieID.destroyable
+) {
+	if (baddieID.destroyable && (!baddieID.elite || baddieID.elitehit <= 0)) {
 		instance_destroy();
 		instance_destroy(baddieID);
-	}
-	else
-	{
+	} else {
 		var lag = 2;
 		baddieID.hitLag = lag;
 		baddieID.hitX = baddieID.x;
@@ -22,8 +26,7 @@ if (instance_exists(baddieID) && baddieID.state != states.hit && baddieID.invtim
 		instance_create(x, y, obj_baddiegibs);
 		instance_create(x, y, obj_baddiegibs);
 		instance_create(x, y, obj_baddiegibs);
-		with obj_camera
-		{
+		with (obj_camera) {
 			shake_mag = 3;
 			shake_mag_acc = 3 / room_speed;
 		}

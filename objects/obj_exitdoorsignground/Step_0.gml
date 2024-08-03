@@ -1,4 +1,5 @@
-if global.panic == true
+if (global.panic == true) {
 	visible = true;
-else
+} else {
 	visible = false;
+}

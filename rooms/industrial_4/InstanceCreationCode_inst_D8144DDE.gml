@@ -1,2 +1,2 @@
-objectlist = [obj_dashpad]
-delaymax = 150
+objectlist = [obj_dashpad];
+delaymax = 150;

@@ -1,1 +1,1 @@
-content = obj_pistolpickup
+content = obj_pistolpickup;

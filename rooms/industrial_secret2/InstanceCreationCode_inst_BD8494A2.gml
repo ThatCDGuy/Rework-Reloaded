@@ -1,2 +1,2 @@
-content = obj_pizzagoblinbomb
-countdown = 100
+content = obj_pizzagoblinbomb;
+countdown = 100;

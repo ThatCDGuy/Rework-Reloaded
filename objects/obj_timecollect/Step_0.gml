@@ -1,4 +1,5 @@
-if (place_meeting(x, y, obj_destructibles))
+if (place_meeting(x, y, obj_destructibles)) {
 	depth = 102;
-else
+} else {
 	depth = 2;
+}

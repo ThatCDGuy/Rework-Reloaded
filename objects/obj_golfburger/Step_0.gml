@@ -1,7 +1,7 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
-switch state
-{
+}
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -39,32 +39,31 @@ switch state
 		scr_enemy_ghostpossess();
 		break;
 }
-if golfcooldown > 0
+if (golfcooldown > 0) {
 	golfcooldown--;
-if state == states.stun && stunned > 100 && birdcreated == 0
-{
-	birdcreated = true;
-	with (instance_create(x, y, obj_enemybird))
-		ID = other.id;
 }
-if state != states.stun
+if (state == states.stun && stunned > 100 && birdcreated == 0) {
+	birdcreated = true;
+	with (instance_create(x, y, obj_enemybird)) {
+		ID = other.id;
+	}
+}
+if (state != states.stun) {
 	birdcreated = false;
-if flash == 1 && alarm[2] <= 0
+}
+if (flash == 1 && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
-if state == states.throwing
-{
+}
+if (state == states.throwing) {
 	hsp = 0;
-	if floor(image_index) == image_number - 1
-	{
+	if (floor(image_index) == image_number - 1) {
 		state = states.walk;
 		sprite_index = walkspr;
 		golfcooldown = 100;
 	}
-	if !shot
-	{
+	if (!shot) {
 		golfcooldown = 100;
-		with golfid
-		{
+		with (golfid) {
 			invincible = true;
 			hsp = 0;
 			vsp = 0;
@@ -74,12 +73,10 @@ if state == states.throwing
 			y = (other.y + 23) - 25;
 		}
 	}
-	if (floor(image_index) >= 6 && !shot)
-	{
+	if (floor(image_index) >= 6 && !shot) {
 		shot = true;
 		notification_push(notifs.pizzaball, [object_index]);
-		with golfid
-		{
+		with (golfid) {
 			invincible = false;
 			x = other.x;
 			y = other.y;
@@ -90,16 +87,17 @@ if state == states.throwing
 		golfid = -4;
 	}
 }
-if state != states.throwing
+if (state != states.throwing) {
 	scr_scareenemy();
-if state != states.grabbed
+}
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if boundbox == 0
-{
-	with (instance_create(x, y, obj_baddiecollisionbox))
-	{
+}
+if (boundbox == 0) {
+	with (instance_create(x, y, obj_baddiecollisionbox)) {
 		sprite_index = other.sprite_index;
 		mask_index = other.sprite_index;
 		baddieID = other.id;

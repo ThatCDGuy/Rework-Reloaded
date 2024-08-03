@@ -1,7 +1,5 @@
-if global.switchbuffer == 0 && global.panic == escape
-{
-	with other
-	{
+if (global.switchbuffer == 0 && global.panic == escape) {
+	with (other) {
 		hsp = 0;
 		vsp = 0;
 		visible = false;
@@ -12,15 +10,14 @@ if global.switchbuffer == 0 && global.panic == escape
 	sprite_index = switchstart;
 	playerid = other.id;
 	global.switchbuffer = 200;
-	with obj_gustavoswitch
-	{
+	with (obj_gustavoswitch) {
 		sprite_index = switchend;
 		image_index = 0;
 	}
-	with (instance_create(0, 0, obj_charswitch_intro))
-	{
+	with (instance_create(0, 0, obj_charswitch_intro)) {
 		spr = spr_gustavo_intro;
-		if !obj_player1.ispeppino
+		if (!obj_player1.ispeppino) {
 			spr = spr_noise_intro;
+		}
 	}
 }

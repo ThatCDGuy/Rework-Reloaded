@@ -1,7 +1,7 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
-switch state
-{
+}
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -45,23 +45,21 @@ switch state
 		scr_enemy_pizzaheadjump();
 		break;
 }
-if state == states.stun && stunned > 100 && birdcreated == 0
-{
+if (state == states.stun && stunned > 100 && birdcreated == 0) {
 	birdcreated = true;
-	with (instance_create(x, y, obj_enemybird))
+	with (instance_create(x, y, obj_enemybird)) {
 		ID = other.id;
+	}
 }
-if state != states.stun
+if (state != states.stun) {
 	birdcreated = false;
+}
 scr_scareenemy();
-if elite && ragecooldown == 0
-{
+if (elite && ragecooldown == 0) {
 	var player = instance_nearest(x, y, obj_player);
 	var check = (image_xscale > 0) ? (player.x > x && player.x < (x + 400)) : (player.x < x && player.x > (x - 400));
-	if state == states.walk
-	{
-		if (check && (y <= (player.y + 60) && y >= (player.y - 60)))
-		{
+	if (state == states.walk) {
+		if (check && (y <= (player.y + 60) && y >= (player.y - 60))) {
 			image_xscale = -sign(x - player.x);
 			sprite_index = spr_forknight_ragestart;
 			image_index = 0;
@@ -73,32 +71,34 @@ if elite && ragecooldown == 0
 		}
 	}
 }
-if ragedash > 0 && state == states.rage
+if (ragedash > 0 && state == states.rage) {
 	ragedash--;
-if ragedash == 0 && state == states.rage
-{
+}
+if (ragedash == 0 && state == states.rage) {
 	state = states.walk;
 	sprite_index = walkspr;
 	ragecooldown = 100;
 }
-if ragecooldown > 0
+if (ragecooldown > 0) {
 	ragecooldown--;
-if flash == 1 && alarm[2] <= 0
-	alarm[2] = 0.15 * room_speed;
-if hitboxcreate == 0 && state == states.walk
-{
-	hitboxcreate = true;
-	with (instance_create(x, y, obj_forkhitbox))
-		ID = other.id;
 }
-if state != states.grabbed
+if (flash == 1 && alarm[2] <= 0) {
+	alarm[2] = 0.15 * room_speed;
+}
+if (hitboxcreate == 0 && state == states.walk) {
+	hitboxcreate = true;
+	with (instance_create(x, y, obj_forkhitbox)) {
+		ID = other.id;
+	}
+}
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if boundbox == 0
-{
-	with (instance_create(x, y, obj_baddiecollisionbox))
-	{
+}
+if (boundbox == 0) {
+	with (instance_create(x, y, obj_baddiecollisionbox)) {
 		sprite_index = other.sprite_index;
 		mask_index = other.sprite_index;
 		baddieID = other.id;

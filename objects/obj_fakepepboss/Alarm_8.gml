@@ -1,8 +1,10 @@
-if state == states.walk && formed
+if (state == states.walk && formed) {
 	miniflash = !miniflash;
-else
+} else {
 	miniflash = false;
-if !miniflash
+}
+if (!miniflash) {
 	alarm[8] = 10;
-else
+} else {
 	alarm[8] = 5;
+}

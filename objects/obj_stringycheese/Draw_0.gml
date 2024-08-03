@@ -4,10 +4,10 @@ var dir = point_direction(x, y, drawhandx, drawhandy);
 var xx = x;
 var yy = y;
 var armcount = 4;
-for (var i = 0; i < armcount; i++)
-{
-	if i != 0 && i != armcount
+for (var i = 0; i < armcount; i++) {
+	if (i != 0 && i != armcount) {
 		draw_sprite(spr_mrpinch_arm, -1, xx, yy);
+	}
 	xx += lengthdir_x(len / armcount, dir);
 	yy += lengthdir_y(len / armcount, dir);
 }

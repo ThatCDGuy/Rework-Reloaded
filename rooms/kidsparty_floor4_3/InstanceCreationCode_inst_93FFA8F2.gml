@@ -1,2 +1,2 @@
-content = noone
-monster = 1
+content = noone;
+monster = 1;

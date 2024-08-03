@@ -1,11 +1,10 @@
 targetplayer = global.coop ? instance_nearest(x, y, obj_player) : obj_player1;
-if hp <= 0 && state != states.arenaround
-{
-	if !destroyed && !thrown && !destroyable
+if (hp <= 0 && state != states.arenaround) {
+	if (!destroyed && !thrown && !destroyable) {
 		boss_destroy(lastplayerid);
+	}
 }
-switch state
-{
+switch (state) {
 	case states.arenaround:
 		grav = 0.5;
 		state_boss_arenaround();
@@ -87,4 +86,4 @@ switch state
 		break;
 }
 colliding = !(state == states.jump || state == states.cardboard || state == states.cardboardend);
-attacking = (state == states.shield || state == states.jump || state == states.cardboard || state == states.cardboardend || state == states.smokebombstart);
+attacking = state == states.shield || state == states.jump || state == states.cardboard || state == states.cardboardend || state == states.smokebombstart;

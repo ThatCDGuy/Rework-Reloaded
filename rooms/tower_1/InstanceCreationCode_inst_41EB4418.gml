@@ -1,2 +1,2 @@
-level = "medieval"
-treasureindex = 1
+level = "medieval";
+treasureindex = 1;

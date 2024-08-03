@@ -1,7 +1,7 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
-if global.key_inv == 1
-{
+}
+if (global.key_inv == 1) {
 	vsp = -15;
 	hsp = random_range(-4, 4);
 }

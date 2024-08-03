@@ -1,5 +1,6 @@
-if (instance_number(obj_gnome_checklist) > 1)
+if (instance_number(obj_gnome_checklist) > 1) {
 	instance_destroy();
+}
 start = true;
 finish = false;
 xx = 736;

@@ -1,8 +1,7 @@
-enum tvprompt
-{
+enum tvprompt {
 	normal,
 	trigger,
-	transfo
+	transfo,
 }
 
 image_speed = 0.1;

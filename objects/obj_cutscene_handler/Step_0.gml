@@ -1,6 +1,5 @@
 var current_scene = scene_info[scene];
-switch (array_length(current_scene) - 1)
-{
+switch (array_length(current_scene) - 1) {
 	case 0:
 		current_scene[0]();
 		break;

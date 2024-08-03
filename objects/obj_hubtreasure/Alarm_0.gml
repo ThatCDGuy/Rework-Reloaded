@@ -1,2 +1,3 @@
-with playerid
+with (playerid) {
 	state = states.normal;
+}

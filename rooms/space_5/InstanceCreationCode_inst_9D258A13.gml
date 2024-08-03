@@ -1,2 +1,2 @@
-particlespr = spr_planetdebris
-targettiles = "Tiles_BG"
+particlespr = spr_planetdebris;
+targettiles = "Tiles_BG";

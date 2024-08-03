@@ -1,15 +1,13 @@
-function Command() constructor
-{
-	static execute = function()
-	{
+function Command() constructor {
+	static execute = function() {
 		trace("Test cmd execute");
 	};
-	static undo = function()
-	{
+
+	static undo = function() {
 		trace("Test cmd undo");
 	};
-	static destroy = function()
-	{
+
+	static destroy = function() {
 		trace("Test cmd destroy");
 	};
 }

@@ -1,18 +1,13 @@
-function scr_player_ridecow()
-{
+function scr_player_ridecow() {
 	doublejump = false;
 	hsp = 0;
 	vsp = 0;
 	movespeed = 0;
-	if (!instance_exists(cowID))
-	{
-		if has_mort
-		{
+	if (!instance_exists(cowID)) {
+		if (has_mort) {
 			state = states.mortjump;
 			sprite_index = spr_fall;
-		}
-		else
-		{
+		} else {
 			state = states.jump;
 			sprite_index = spr_fall;
 		}
@@ -23,18 +18,14 @@ function scr_player_ridecow()
 	x = cowID.x;
 	y = cowID.y - 42;
 	xscale = cowID.image_xscale;
-	if key_jump
-	{
+	if (key_jump) {
 		cow_buffer = 20;
 		vsp = -11;
 		image_index = 0;
-		if has_mort
-		{
+		if (has_mort) {
 			state = states.mortjump;
 			sprite_index = spr_jump;
-		}
-		else
-		{
+		} else {
 			state = states.jump;
 			sprite_index = spr_jump;
 		}

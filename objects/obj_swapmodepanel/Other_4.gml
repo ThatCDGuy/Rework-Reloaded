@@ -1,2 +1,3 @@
-if !global.swapmode || global.panic
+if (!global.swapmode || global.panic) {
 	instance_destroy();
+}

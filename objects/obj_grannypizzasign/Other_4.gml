@@ -1,10 +1,8 @@
-if global.panic
-{
+if (global.panic) {
 	instance_destroy();
 	exit;
 }
-switch room
-{
+switch (room) {
 	case tower_1:
 		scr_add_grannypizzalevel("entrance", 0);
 		scr_add_grannypizzalevel("medieval", 1);
@@ -37,8 +35,9 @@ switch room
 		scr_add_grannypizzalevel("chateau", 20);
 		scr_add_grannypizzalevel("kidsparty", 21);
 		scr_add_grannypizzalevel("war", 22);
-		if (quick_ini_read_string("", "Game", "finalrank", "none") != "none")
+		if (quick_ini_read_string("", "Game", "finalrank", "none") != "none") {
 			scr_add_grannypizzalevel("exit", 23, false, false, false, true);
+		}
 		break;
 }
 level_xpad = (sprite_get_width(spr_tutorialbubble) * text_xscale) / (array_length(levelarray) + 1);

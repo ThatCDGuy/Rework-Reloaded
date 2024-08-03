@@ -1,10 +1,9 @@
-noise = instance_create(208, 402, obj_finaleN_prop)
-noise.sprite_index = spr_playerN_finalattack1
+noise = instance_create(208, 402, obj_finaleN_prop);
+noise.sprite_index = spr_playerN_finalattack1;
 noise.usepalette = true;
 
 peppinoID = noone;
-if global.swapmode
-{
+if (global.swapmode) {
 	peppinoID = instance_create((noise.x - 50), 402, obj_swapplayerprop);
 	peppinoID.ispeppino = true;
 	peppinoID.sprite_index = spr_player_idle;
@@ -13,10 +12,10 @@ if global.swapmode
 	peppinoID.hsp = 0;
 	peppinoID.vsp = 0;
 }
-with obj_player1
-{
-	if ispeppino
+with (obj_player1) {
+	if (ispeppino) {
 		swap_player(false);
+	}
 }
 
 pizzahead = instance_create(786, 369, obj_finaleN_prop);

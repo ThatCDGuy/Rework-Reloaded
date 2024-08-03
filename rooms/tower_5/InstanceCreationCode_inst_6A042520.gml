@@ -1,3 +1,3 @@
-targetRoom = tower_pizzafacehall
-save = "w5stick"
-maxscore = global.stickreq[4]
+targetRoom = tower_pizzafacehall;
+save = "w5stick";
+maxscore = global.stickreq[4];

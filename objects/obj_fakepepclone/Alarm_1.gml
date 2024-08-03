@@ -1,8 +1,10 @@
-if paletteselect == 1
+if (paletteselect == 1) {
 	paletteselect = 2;
-else
+} else {
 	paletteselect = 1;
-if paletteselect == 2
+}
+if (paletteselect == 2) {
 	alarm[1] = 2;
-else
+} else {
 	alarm[1] = 8;
+}

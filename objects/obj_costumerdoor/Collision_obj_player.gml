@@ -1,7 +1,5 @@
-with obj_player
-{
-	if grounded && state != states.transition
-	{
+with (obj_player) {
+	if (grounded && state != states.transition) {
 		global.timeractive = false;
 		global.panic = false;
 		global.panicbg = false;

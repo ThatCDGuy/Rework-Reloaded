@@ -1,10 +1,10 @@
 var bg_spr = spr_finalrankBG;
-if !ispeppino
+if (!ispeppino) {
 	bg_spr = spr_finalrankBG_N;
+}
 draw_sprite_tiled(bg_spr, bg_index, bg_x, bg_y);
 draw_self();
-if brown
-{
+if (brown) {
 	shader_set(shd_rank);
 	draw_set_alpha(brownfade);
 	draw_sprite_tiled(bg_spr, bg_index, bg_x, bg_y);
@@ -15,18 +15,17 @@ if brown
 draw_set_font(lang_get_font("bigfont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-for (var i = 0; i < array_length(text); i++)
-{
+for (var i = 0; i < array_length(text); i++) {
 	var b = text[i];
-	if b[0]
+	if (b[0]) {
 		tdp_draw_text_color(48, 48 + (32 * i), b[1], c_white, c_white, c_white, c_white, 1);
+	}
 }
 tdp_text_commit(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 draw_set_alpha(fade);
 draw_rectangle_color(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0, 0, false);
 draw_set_alpha(1);
-if state == 2
-{
+if (state == 2) {
 	draw_set_font(global.combofont);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

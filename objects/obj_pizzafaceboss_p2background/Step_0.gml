@@ -1,1 +1,1 @@
-time += (1 / room_speed);
+time += 1 / room_speed;

@@ -1,10 +1,7 @@
-if (instance_exists(baddieID) && !baddieID.invincible && baddieID.hp < 1)
-{
+if (instance_exists(baddieID) && !baddieID.invincible && baddieID.hp < 1) {
 	instance_destroy();
 	instance_destroy(baddieID);
-}
-else if (instance_exists(baddieID) && !baddieID.invincible)
-{
+} else if (instance_exists(baddieID) && !baddieID.invincible) {
 	baddieID.hp -= 1;
 	global.hit += 1;
 	global.combotime = 60;

@@ -1,1 +1,1 @@
-targetRoom = tower_laundryroom
+targetRoom = tower_laundryroom;

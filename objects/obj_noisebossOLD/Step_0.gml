@@ -1,15 +1,27 @@
 targetplayer = global.coop ? instance_nearest(x, y, obj_player) : obj_player1;
-if hp <= 0 && state != states.arenaround
-{
-	if !destroyed && !thrown && !destroyable
+if (hp <= 0 && state != states.arenaround) {
+	if (!destroyed && !thrown && !destroyable) {
 		boss_destroy(lastplayerid);
+	}
 }
-if chooseparry_buffer > 0
+if (chooseparry_buffer > 0) {
 	chooseparry_buffer--;
-if ((state == states.handstandjump || state == states.crouchslide || state == states.skateboardturn || state == states.jetpack || state == states.jetpackspin || (state == states.pogo && pogochargeactive) || state == states.skateboard) && alarm[0] <= 0)
+}
+if (
+	(
+		state == states.handstandjump
+			|| state == states.crouchslide
+			|| state == states.skateboardturn
+			|| state == states.jetpack
+			|| state == states.jetpackspin
+			|| (state == states.pogo && pogochargeactive)
+			|| state == states.skateboard
+	)
+	&& alarm[0] <= 0
+) {
 	alarm[0] = 6;
-switch state
-{
+}
+switch (state) {
 	case states.arenaround:
 		grav = 0.5;
 		state_boss_arenaround();
@@ -98,4 +110,13 @@ switch state
 		break;
 }
 angry = phase > 6;
-attacking = state == states.handstandjump || state == states.crouchslide || state == states.skateboard || state == states.skateboardturn || state == states.pogo || state == states.jetpackstart || state == states.jetpack || state == states.jetpackspin || state == states.throwing;
+attacking =
+	state == states.handstandjump
+	|| state == states.crouchslide
+	|| state == states.skateboard
+	|| state == states.skateboardturn
+	|| state == states.pogo
+	|| state == states.jetpackstart
+	|| state == states.jetpack
+	|| state == states.jetpackspin
+	|| state == states.throwing;

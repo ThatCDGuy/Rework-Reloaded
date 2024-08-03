@@ -1,16 +1,11 @@
 seconds--;
-if seconds < 0
-{
-	if minutes > 0
-	{
+if (seconds < 0) {
+	if (minutes > 0) {
 		minutes--;
 		seconds = 59;
-	}
-	else
-	{
+	} else {
 		instance_destroy();
-		with obj_deliveryfollower
-		{
+		with (obj_deliveryfollower) {
 			instance_create(x, y, obj_deliveryfolloweranim);
 			instance_destroy();
 		}

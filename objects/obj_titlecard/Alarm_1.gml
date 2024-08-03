@@ -1,24 +1,18 @@
 /// @description noise heads
-if obj_player1.ispeppino && !global.swapmode
+if (obj_player1.ispeppino && !global.swapmode) {
 	exit;
+}
 
-var _add_spot = function(x, y, scale)
-{
-	var q = 
-	{
-		x: x,
-		y: y,
-		scale: scale
-	}
+var _add_spot = function(x, y, scale) {
+	var q = {x: x, y: y, scale: scale};
 
 	trace("Adding noise head spot at: ", q);
 	array_push(noisespots, q);
 	return q;
-}
+};
 
 noisespot_buffermax = 10;
-if titlecard_sprite == spr_titlecardsecret
-{
+if (titlecard_sprite == spr_titlecardsecret) {
 	// secrets of the world
 	_add_spot(480, 340, 0.93);
 	_add_spot(234, 262, 0.93);
@@ -28,11 +22,8 @@ if titlecard_sprite == spr_titlecardsecret
 	_add_spot(28, 432, 0.28);
 	_add_spot(397, 155, 0.28);
 	_add_spot(656, 167, 1.25);
-}
-else
-{
-	switch titlecard_index
-	{
+} else {
+	switch (titlecard_index) {
 		case 0: // john gutter
 			_add_spot(677, 408, 0.55);
 			_add_spot(735, 325, 0.68);
@@ -50,7 +41,7 @@ else
 			_add_spot(671, 257, 0.4);
 			_add_spot(295, 327, 0.35);
 			break;
-		
+
 		case 4: // oregano desert
 			_add_spot(627, 246, 1.38);
 			_add_spot(370, 77, 0.74);
@@ -80,7 +71,7 @@ else
 			_add_spot(589, 264, 0.55);
 			_add_spot(504, 275, 0.96);
 			break;
-		
+
 		case 8: // plage
 			_add_spot(444, 274, 1.1);
 			_add_spot(222, 201, 0.41);
@@ -99,7 +90,7 @@ else
 		case 11: // golf
 			_add_spot(232, 106, 0.91);
 			break;
-		
+
 		case 12: // pig city
 			_add_spot(191, 375, 1.5);
 			_add_spot(531, 159, 0.91);
@@ -122,7 +113,7 @@ else
 			_add_spot(421, 404, 0.75);
 			_add_spot(712, 176, 1.1);
 			break;
-		
+
 		case 18: // pizzascare
 			_add_spot(303, 257, 1.17);
 			_add_spot(685, 223, 1.3);
@@ -148,27 +139,18 @@ else
 			_add_spot(428, 289, 4);
 			_add_spot(846, 304, 0.8);
 			break;
-		
+
 		case 15: // ctop
 			noisespot_buffermax = 2;
-			for (var i = 0; i < 64; i++)
+			for (var i = 0; i < 64; i++) {
 				_add_spot(irandom(960), irandom(540), random_range(0.25, 1.25));
-			break
+			}
+			break;
 	}
-
 }
-for (i = 0; i < array_length(noisespots); i++)
-{
+for (i = 0; i < array_length(noisespots); i++) {
 	var spot = noisespots[i];
-	var head = 
-	{
-		x: spot.x,
-		y: spot.y,
-		scale: spot.scale,
-		visual_scale: 1,
-		visible: false,
-		image_index: irandom(sprite_get_number(spr_titlecard_noise) - 1)
-	}
+	var head = {x: spot.x, y: spot.y, scale: spot.scale, visual_scale: 1, visible: false, image_index: irandom(sprite_get_number(spr_titlecard_noise) - 1)};
 
 	trace("Adding noise head at: ", head);
 	array_push(noisehead, head);

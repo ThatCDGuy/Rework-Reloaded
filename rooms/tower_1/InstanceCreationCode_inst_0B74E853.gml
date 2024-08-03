@@ -1,1 +1,1 @@
-pumpkinroom = "dungeon_9"
+pumpkinroom = "dungeon_9";

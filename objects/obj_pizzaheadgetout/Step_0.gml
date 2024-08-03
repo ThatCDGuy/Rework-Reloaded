@@ -1,1 +1,1 @@
-x += (dir * spd);
+x += dir * spd;

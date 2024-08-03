@@ -1,1 +1,1 @@
-visible = active
+visible = active;

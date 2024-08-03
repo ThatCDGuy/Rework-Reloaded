@@ -1,4 +1,1 @@
-function scr_fakepeppino_hit()
-{
-	
-}
+function scr_fakepeppino_hit() {}

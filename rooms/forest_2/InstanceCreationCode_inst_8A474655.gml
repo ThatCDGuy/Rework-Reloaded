@@ -1,2 +1,2 @@
-targetRoom = forest_lap
-targetDoor = "C"
+targetRoom = forest_lap;
+targetDoor = "C";

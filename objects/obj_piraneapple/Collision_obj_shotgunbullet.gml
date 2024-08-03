@@ -1,3 +1,4 @@
 instance_destroy();
-if other.pistol
+if (other.pistol) {
 	instance_destroy(other);
+}

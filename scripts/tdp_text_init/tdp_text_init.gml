@@ -1,5 +1,4 @@
-function tdp_text_init()
-{
+function tdp_text_init() {
 	global.tdp_text_surface = -4;
 	global.tdp_text_queue = ds_queue_create();
 	global.tdp_text_enabled = false;

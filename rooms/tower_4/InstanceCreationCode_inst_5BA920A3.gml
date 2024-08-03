@@ -1,2 +1,2 @@
-level = "street"
-treasureindex = 12
+level = "street";
+treasureindex = 12;

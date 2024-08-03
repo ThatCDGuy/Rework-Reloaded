@@ -1,1 +1,1 @@
-text = lang_get_value_granny("hubtips6")
+text = lang_get_value_granny("hubtips6");

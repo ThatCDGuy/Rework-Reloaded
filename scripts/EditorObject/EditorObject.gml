@@ -1,5 +1,4 @@
-function EditorObject(_id, _name, _sprite, _object, _snap_tile_val = 32) constructor
-{
+function EditorObject(_id, _name, _sprite, _object, _snap_tile_val = 32) constructor {
 	sprite_index = _sprite;
 	object_index = _object;
 	mask_index = _sprite;

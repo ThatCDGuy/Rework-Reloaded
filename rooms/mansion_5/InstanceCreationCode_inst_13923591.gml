@@ -1,2 +1,2 @@
-start = true
-trigger = 1
+start = true;
+trigger = 1;

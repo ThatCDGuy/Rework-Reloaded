@@ -3,5 +3,6 @@ global.roommessage = "PIZZA TOWER ISLAND";
 global.use_temperature = true;
 global.gameframe_caption_text = lang_get_value("caption_freezer");
 
-if (!obj_secretmanager.init)
+if (!obj_secretmanager.init) {
 	obj_secretmanager.init = true;
+}

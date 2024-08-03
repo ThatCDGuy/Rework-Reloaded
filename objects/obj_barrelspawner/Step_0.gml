@@ -1,2 +1,3 @@
-if cooldown > 0
+if (cooldown > 0) {
 	cooldown--;
+}

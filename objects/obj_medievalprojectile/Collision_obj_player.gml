@@ -1,2 +1,3 @@
-if vsp > 0
+if (vsp > 0) {
 	scr_hurtplayer(other);
+}

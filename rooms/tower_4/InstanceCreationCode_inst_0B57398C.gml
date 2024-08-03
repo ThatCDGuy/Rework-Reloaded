@@ -1,1 +1,1 @@
-snotty = 1
+snotty = 1;

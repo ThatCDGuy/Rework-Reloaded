@@ -1,1 +1,1 @@
-targetRoom = tower_tutorial2N
+targetRoom = tower_tutorial2N;

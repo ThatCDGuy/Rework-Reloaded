@@ -1,2 +1,3 @@
-if destroyonanimation
+if (destroyonanimation) {
 	instance_destroy();
+}

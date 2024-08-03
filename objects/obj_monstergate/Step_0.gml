@@ -1,3 +1,4 @@
 depth = 110;
-if active
+if (active) {
 	y = Approach(y, ystart - sprite_height, 12);
+}

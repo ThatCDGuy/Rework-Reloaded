@@ -1,7 +1,6 @@
-if image_xscale < 60
-{
+if (image_xscale < 60) {
 	image_xscale += 1;
 	image_yscale += 1;
-}
-else
+} else {
 	instance_destroy();
+}

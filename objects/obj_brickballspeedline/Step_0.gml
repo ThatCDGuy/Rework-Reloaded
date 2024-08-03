@@ -1,5 +1,4 @@
-if (!instance_exists(playerid))
-{
+if (!instance_exists(playerid)) {
 	instance_destroy();
 	exit;
 }

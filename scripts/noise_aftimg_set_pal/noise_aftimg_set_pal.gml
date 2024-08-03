@@ -1,5 +1,4 @@
-function noise_aftimg_set_pal(sprite, subimg, palette = 5)
-{
+function noise_aftimg_set_pal(sprite, subimg, palette = 5) {
 	var tex = sprite_get_texture(sprite, 0);
 	var UVs = sprite_get_uvs(sprite, 0);
 	texture_set_stage(global.N_Pal_Texture, tex);

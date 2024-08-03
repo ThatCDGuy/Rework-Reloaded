@@ -1,2 +1,3 @@
-if (!instance_exists(bossID))
+if (!instance_exists(bossID)) {
 	instance_destroy();
+}

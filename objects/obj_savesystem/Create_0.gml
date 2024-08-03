@@ -1,6 +1,5 @@
 depth = -600;
-if (instance_number(object_index) > 1)
-{
+if (instance_number(object_index) > 1) {
 	instance_destroy();
 	exit;
 }

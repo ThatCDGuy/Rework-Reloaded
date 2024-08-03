@@ -1,5 +1,4 @@
-if (instance_number(object_index) > 1)
-{
+if (instance_number(object_index) > 1) {
 	instance_destroy();
 	exit;
 }
@@ -29,7 +28,7 @@ boss_hp_y = 50;
 boss_xpad = 44;
 boss_ypad = 42;
 boss_hpsprite = spr_bossfight_pepperhp;
-boss_palette = spr_bossfight_pepperpalette
+boss_palette = spr_bossfight_pepperpalette;
 boss_index = 0;
 player_hp = 6;
 player_maxhp = player_hp;
@@ -65,8 +64,7 @@ vstitleplayer = spr_vstitle_player;
 playerspr = spr_vspeppino;
 playersprshadow = spr_vspeppinoshadow;
 bossspr = spr_vsnoise;
-if !obj_player1.ispeppino
-{
+if (!obj_player1.ispeppino) {
 	playerspr = spr_vsnoiseplayer;
 	playersprshadow = spr_vsnoiseplayershadow;
 	vstitleplayer = spr_vstitle_playerN;

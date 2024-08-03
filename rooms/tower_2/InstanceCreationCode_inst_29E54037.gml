@@ -1,1 +1,1 @@
-pumpkinroom = "farm_12"
+pumpkinroom = "farm_12";

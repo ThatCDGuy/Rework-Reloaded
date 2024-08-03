@@ -1,5 +1,4 @@
-switch state
-{
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -22,11 +21,11 @@ switch state
 		scr_enemy_grabbed();
 		break;
 }
-if (!instance_exists(obj_slaphitbox))
+if (!instance_exists(obj_slaphitbox)) {
 	slapped = false;
+}
 stunned = 100;
-if cigar == 0
-{
+if (cigar == 0) {
 	landspr = spr_noisesatellite;
 	idlespr = spr_noisesatellite;
 	fallspr = spr_noisesatellite;
@@ -45,9 +44,12 @@ if cigar == 0
 	stompedspr = spr_noisesatellite;
 	grabbedspr = spr_noisesatellitestun;
 }
-if state != states.grabbed
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if flash == 1 && alarm[2] <= 0
+}
+if (flash == 1 && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
+}

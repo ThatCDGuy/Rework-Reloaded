@@ -20,7 +20,7 @@ player_palettes[0] = [
 	["bones", false, 12, spr_peppattern6],
 	["pp", false, 12, spr_peppattern7],
 	["war", false, 12, spr_peppattern8],
-	["john", false, 12, spr_peppattern9],
+	["john", false, 12, spr_peppattern9]
 ];
 player_palettes[1] = [
 	["classicN", true, 1],
@@ -49,18 +49,17 @@ player_palettes[1] = [
 ];
 
 ini_open_from_string(obj_savesystem.ini_str_options);
-for (var i = 0; i < array_length(player_palettes); i++)
-{
+for (var i = 0; i < array_length(player_palettes); i++) {
 	array_push(player_palettes[i], ["candy", false, 12, spr_peppattern10]);
 	array_push(player_palettes[i], ["bloodstained", false, 12, spr_peppattern11]);
 	array_push(player_palettes[i], ["bat", false, 12, spr_peppattern12]);
 	array_push(player_palettes[i], ["pumpkin", false, 12, spr_peppattern13]);
 	array_push(player_palettes[i], ["fur", false, 12, spr_peppattern14]);
 	array_push(player_palettes[i], ["flesh", false, 12, spr_peppattern15]);
-	for (var j = 1; j < array_length(player_palettes[i]); j++)
-	{
-		if (ini_read_real("Palettes", player_palettes[i][j][0], false))
+	for (var j = 1; j < array_length(player_palettes[i]); j++) {
+		if (ini_read_real("Palettes", player_palettes[i][j][0], false)) {
 			player_palettes[i][j][1] = true;
+		}
 	}
 }
 ini_close();

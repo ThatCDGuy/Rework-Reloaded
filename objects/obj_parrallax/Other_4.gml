@@ -18,30 +18,28 @@ layer_depth("Assets_FG2", -351);
 var asset_layers = ["Assets_BG", "Assets_BG1", "Assets_BG2", "Assets_stillBG1", "Assets_FG", "Assets_FG1", "Assets_FG2"];
 var asset_parallax = [[0.1, 0.1], [0.05, 0.05], [0.1, 0.1], [0.05, 0], [-0.1, -0.1], [-0.05, -0.05], [-0.1, -0.1]];
 
-for (var i = 0; i < array_length(asset_layers); i++)
-{
+for (var i = 0; i < array_length(asset_layers); i++) {
 	var b = asset_layers[i];
 	var p = asset_parallax[i];
-	if (layer_exists(b))
-	{
+	if (layer_exists(b)) {
 		b = layer_get_id(b);
-		var q = layer_get_all_elements(b)
-		for (var j = 0; j < array_length(q); j++)
-		{
+		var q = layer_get_all_elements(b);
+		for (var j = 0; j < array_length(q); j++) {
 			var _asset = q[j];
 			var _x = layer_sprite_get_x(_asset);
 			var _y = layer_sprite_get_y(_asset);
 			var spr = layer_sprite_get_sprite(_asset);
-			if p[0] != 0
+			if (p[0] != 0) {
 				layer_sprite_x(_asset, (_x - (_x * p[0])) + ((SCREEN_WIDTH / 4) * p[0]));
-			if p[1] != 0 && spr != spr_industrialpipe && spr != bg_farmdirtwall
+			}
+			if (p[1] != 0 && spr != spr_industrialpipe && spr != bg_farmdirtwall) {
 				layer_sprite_y(_asset, (_y - (_y * p[1])) + ((SCREEN_HEIGHT / 4) * p[1]));
+			}
 		}
 	}
 }
 
-if global.hidetiles
-{
+if (global.hidetiles) {
 	layer_set_visible("Tiles_BG", false);
 	layer_set_visible("Tiles_BG2", false);
 	layer_set_visible("Tiles_BG3", false);

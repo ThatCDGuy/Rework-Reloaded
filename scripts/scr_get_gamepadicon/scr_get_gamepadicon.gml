@@ -1,7 +1,5 @@
-function scr_get_gamepadicon(button)
-{
-	switch button
-	{
+function scr_get_gamepadicon(button) {
+	switch (button) {
 		case gp_face3:
 			return 0;
 			break;

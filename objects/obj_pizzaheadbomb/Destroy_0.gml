@@ -1,2 +1,3 @@
-if destroy
+if (destroy) {
 	instance_create(x, y, obj_canonexplosion);
+}

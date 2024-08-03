@@ -1,10 +1,8 @@
-if (!instance_exists(ID))
-{
+if (!instance_exists(ID)) {
 	instance_destroy();
 	exit;
 }
-if ID.state != states.punch
-{
+if (ID.state != states.punch) {
 	instance_destroy();
 	ID.breakdanceinst = -4;
 	exit;

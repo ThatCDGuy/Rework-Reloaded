@@ -1,2 +1,2 @@
-escape = true
-elite = 1
+escape = true;
+elite = 1;

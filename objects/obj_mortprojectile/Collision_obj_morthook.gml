@@ -1,2 +1,3 @@
-if other.projectilebuffer <= 0
+if (other.projectilebuffer <= 0) {
 	event_inherited();
+}

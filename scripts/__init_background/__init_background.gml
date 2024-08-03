@@ -1,7 +1,5 @@
-function __init_background()
-{
-	enum e__BG
-	{
+function __init_background() {
+	enum e__BG {
 		Visible,
 		Foreground,
 		Index,
@@ -17,5 +15,5 @@ function __init_background()
 		VSpeed,
 		Blend,
 		Alpha,
-	};
+	}
 }

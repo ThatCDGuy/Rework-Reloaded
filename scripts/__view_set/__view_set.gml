@@ -1,5 +1,4 @@
-function __view_set(prop, index, val)
-{
+function __view_set(prop, index, val) {
 	var __prop = prop;
 	var __index = index;
 	var __val = val;

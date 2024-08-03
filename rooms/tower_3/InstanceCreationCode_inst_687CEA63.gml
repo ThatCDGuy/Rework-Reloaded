@@ -1,1 +1,1 @@
-pumpkinroom = "plage_cavern1"
+pumpkinroom = "plage_cavern1";

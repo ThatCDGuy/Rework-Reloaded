@@ -1,7 +1,5 @@
-function scr_panicbg_end()
-{
-	if event_type == ev_draw && event_number == 0
-	{
+function scr_panicbg_end() {
+	if (event_type == ev_draw && event_number == 0) {
 		surface_reset_target();
 		shader_set(shd_panicbg);
 		var panic_id = shader_get_uniform(shd_panicbg, "panic");

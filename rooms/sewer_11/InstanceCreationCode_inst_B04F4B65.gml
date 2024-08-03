@@ -1,1 +1,1 @@
-content = obj_slipnslide
+content = obj_slipnslide;

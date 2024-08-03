@@ -1,7 +1,5 @@
-if (global.noisejetpack && (other.ispeppino || other.noisepizzapepper) && playerid == noone)
-{
-	with other
-	{
+if (global.noisejetpack && (other.ispeppino || other.noisepizzapepper) && playerid == noone) {
+	with (other) {
 		hsp = 0;
 		vsp = 0;
 		landAnim = false;

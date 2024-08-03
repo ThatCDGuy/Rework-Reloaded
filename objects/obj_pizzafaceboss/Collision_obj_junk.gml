@@ -1,5 +1,4 @@
-if other.thrown && state != states.stun
-{
+if (other.thrown && state != states.stun) {
 	state = states.stun;
 	stunned = 1000;
 	thrown = false;

@@ -97,15 +97,12 @@ hotairhit = 0;
 lastattack = 0;
 cloudbuffer = 0;
 doise = false;
-if (!obj_player1.ispeppino || global.swapmode)
-{
+if (!obj_player1.ispeppino || global.swapmode) {
 	usepalette = true;
 	spr_palette = spr_noiseboss_palette;
 	paletteselect = 1;
 	doise = true;
-}
-else
-{
+} else {
 	usepalette = true;
 	spr_palette = spr_noiseboss_palette;
 	paletteselect = 2;

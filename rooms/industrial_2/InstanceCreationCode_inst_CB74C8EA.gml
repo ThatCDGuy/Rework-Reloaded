@@ -1,1 +1,1 @@
-targetRoom = industrial_1
+targetRoom = industrial_1;

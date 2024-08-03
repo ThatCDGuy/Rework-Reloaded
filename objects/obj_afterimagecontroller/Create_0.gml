@@ -1,5 +1,4 @@
-enum afterimage
-{
+enum afterimage {
 	simple,
 	mach3effect,
 	heatattack,
@@ -9,8 +8,7 @@ enum afterimage
 	enemy,
 	fakepep,
 	noise,
-	
-	enum_length
+	enum_length,
 }
 
 depth = 1;

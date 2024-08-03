@@ -1,11 +1,10 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
+}
 
-if sprite_index == spr_player_ratmountgameover && !gusrat
-{
+if (sprite_index == spr_player_ratmountgameover && !gusrat) {
 	gusrat = true;
-	with create_debris(x, y, spr_ratblock_dead)
-	{
+	with (create_debris(x, y, spr_ratblock_dead)) {
 		image_xscale = other.image_xscale;
 		hsp = -image_xscale * 4;
 		vsp = -8;
@@ -13,11 +12,11 @@ if sprite_index == spr_player_ratmountgameover && !gusrat
 	}
 }
 
-if state != states.grabbed && state != states.hit && (state != states.stun || (grounded && vsp > 0))
+if (state != states.grabbed && state != states.hit && (state != states.stun || (grounded && vsp > 0))) {
 	instance_destroy();
+}
 
-switch state
-{
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -59,32 +58,31 @@ switch state
 		break;
 }
 
-if state == states.stun && stunned > 100 && birdcreated == false
-{
+if (state == states.stun && stunned > 100 && birdcreated == false) {
 	birdcreated = true;
-	with instance_create(x, y, obj_enemybird)
+	with (instance_create(x, y, obj_enemybird)) {
 		ID = other.id;
+	}
 }
-if state != states.stun
+if (state != states.stun) {
 	birdcreated = false;
-if flash == true && alarm[2] <= 0
+}
+if (flash == true && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
+}
 scr_scareenemy();
 
-var player = instance_nearest(x, y, obj_player)
-if elite
-{
+var player = instance_nearest(x, y, obj_player);
+if (elite) {
 	var check = image_xscale > 0 ? (player.x > x && player.x < x + 200) : (player.x < x && player.x > x - 200);
-	if state == states.walk
-	{
-		if check && (y <= player.y + 60 && y >= player.y - 60)
-		{
-			if state != states.rage && ragebuffer == 0
-			{
+	if (state == states.walk) {
+		if (check && (y <= player.y + 60 && y >= player.y - 60)) {
+			if (state != states.rage && ragebuffer == 0) {
 				state = states.rage;
 				sprite_index = ragespr;
-				if x != player.x
+				if (x != player.x) {
 					image_xscale = -sign(x - player.x);
+				}
 				ragebuffer = 100;
 				image_index = 0;
 				image_speed = 0.5;
@@ -94,17 +92,18 @@ if elite
 			}
 		}
 	}
-	if ragebuffer > 0
+	if (ragebuffer > 0) {
 		ragebuffer--;
+	}
 }
-if state != states.grabbed
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if boundbox == false
-{
-	with (instance_create(x, y, obj_baddiecollisionbox))
-	{
+}
+if (boundbox == false) {
+	with (instance_create(x, y, obj_baddiecollisionbox)) {
 		sprite_index = other.sprite_index;
 		mask_index = other.sprite_index;
 		baddieID = other.id;

@@ -1,2 +1,2 @@
-targetRoom = kidsparty_john
-targetDoor = "C"
+targetRoom = kidsparty_john;
+targetDoor = "C";

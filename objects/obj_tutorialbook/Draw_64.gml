@@ -1,10 +1,11 @@
-if !global.option_hud
+if (!global.option_hud) {
 	exit;
-if (text_state == states.titlescreen && text_y <= -(text_sprite_height * text_yscale))
+}
+if (text_state == states.titlescreen && text_y <= -(text_sprite_height * text_yscale)) {
 	exit;
+}
 reset_blendmode();
-if showgranny
-{
+if (showgranny) {
 	draw_sprite(spr_tutorialbubble_rope, 0, 64 + text_wave_x, text_y + text_wave_y);
 	draw_sprite(spr_tutorialbubble_rope, 0, (SCREEN_WIDTH - 64) + text_wave_x, text_y + text_wave_y);
 }
@@ -17,7 +18,4 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_font(font);
 draw_set_color(text_color);
-scr_draw_text_arr(xx + text_contentpad, yy + text_contentpad, text_arr, text_color, 1, texteffect.updown, 
-{
-	offset: 1
-});
+scr_draw_text_arr(xx + text_contentpad, yy + text_contentpad, text_arr, text_color, 1, texteffect.updown, {offset: 1});

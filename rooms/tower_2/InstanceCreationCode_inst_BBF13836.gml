@@ -1,2 +1,2 @@
-targetRoom = tower_ravine
-targetDoor = "F"
+targetRoom = tower_ravine;
+targetDoor = "F";

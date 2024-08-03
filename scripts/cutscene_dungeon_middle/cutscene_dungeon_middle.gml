@@ -1,7 +1,5 @@
-function cutscene_dungeon_middle()
-{
-	with obj_lavapot
-	{
+function cutscene_dungeon_middle() {
+	with (obj_lavapot) {
 		destroy = true;
 		instance_destroy();
 	}

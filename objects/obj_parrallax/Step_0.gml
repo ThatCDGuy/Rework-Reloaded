@@ -1,12 +1,10 @@
 var _cam_x = camera_get_view_x(view_camera[0]);
 var _cam_y = camera_get_view_y(view_camera[0]);
 var lay_arr = layer_get_all();
-for (var i = 0; i < array_length(lay_arr); i++)
-{
+for (var i = 0; i < array_length(lay_arr); i++) {
 	var lay = lay_arr[i];
 	var lay_name = layer_get_name(lay);
-	switch lay_name
-	{
+	switch (lay_name) {
 		case "Assets_BG2":
 			layer_x(lay, _cam_x * 0.1);
 			layer_y(lay, _cam_y * 0.1);
@@ -23,13 +21,10 @@ for (var i = 0; i < array_length(lay_arr); i++)
 			layer_x(lay, _cam_x * 0.1);
 			break;
 		case "Backgrounds_1":
-			if (room == tower_entrancehall || room == tower_johngutterhall || room == tower_1)
-			{
+			if (room == tower_entrancehall || room == tower_johngutterhall || room == tower_1) {
 				layer_x(lay, floor(bg_1xoffset + (_cam_x * 0.25)));
 				layer_y(lay, floor(bg_1yoffset + (_cam_y * 0.25)));
-			}
-			else
-			{
+			} else {
 				layer_x(lay, bg_1xoffset + (_cam_x * 0.25));
 				layer_y(lay, bg_1yoffset + (_cam_y * 0.25));
 			}
@@ -68,8 +63,7 @@ for (var i = 0; i < array_length(lay_arr); i++)
 			var per = 0.25;
 			var xof = bg_still2xoffset;
 			var yof = bg_still2yoffset;
-			if lay_name == "Backgrounds_still1"
-			{
+			if (lay_name == "Backgrounds_still1") {
 				per = 0.3;
 				xof = bg_still1xoffset;
 				yof = bg_still1yoffset;

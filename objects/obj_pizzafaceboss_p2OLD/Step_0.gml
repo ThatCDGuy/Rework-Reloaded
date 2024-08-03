@@ -1,8 +1,7 @@
 wastedhits = maxhp - hp;
 targetplayer = obj_player1;
 image_speed = 0.35;
-switch state
-{
+switch (state) {
 	case states.fall:
 		scr_pizzaface_p2_fall();
 		break;
@@ -40,20 +39,16 @@ switch state
 		boss_pizzahead_surprisebox();
 		break;
 }
-if (place_meeting(x, y, obj_canonexplosion))
-{
-	if !explosionhit
-	{
+if (place_meeting(x, y, obj_canonexplosion)) {
+	if (!explosionhit) {
 		explosionhit = true;
 		hp--;
 	}
-}
-else
+} else {
 	explosionhit = false;
-if (hp <= 0 && !instance_exists(obj_fadeout))
-{
-	with obj_player
-	{
+}
+if (hp <= 0 && !instance_exists(obj_fadeout)) {
+	with (obj_player) {
 		targetRoom = boss_pizzaface_p3;
 		targetDoor = "A";
 	}

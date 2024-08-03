@@ -1,11 +1,9 @@
 scr_delete_pause_image();
-if !pause
+if (!pause) {
 	scr_pause_activate_objects(false);
-else
-{
+} else {
 	instance_activate_object(pauseID);
-	with pauseID
-	{
+	with (pauseID) {
 		alarm[3] = 1;
 		scr_pause_activate_objects();
 		instance_destroy(obj_option);

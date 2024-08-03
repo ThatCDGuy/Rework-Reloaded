@@ -1,18 +1,18 @@
-if state == states.transition
+if (state == states.transition) {
 	exit;
-if state == states.victory
+}
+if (state == states.victory) {
 	exit;
-if obj_player.state != states.playersuperattack
-{
+}
+if (obj_player.state != states.playersuperattack) {
 	round_timer--;
-	if round_timer <= 0
-	{
+	if (round_timer <= 0) {
 		instance_destroy(obj_baddiespawner);
 		instance_destroy(obj_noisey);
-		if endroundfunc != -4
+		if (endroundfunc != -4) {
 			endroundfunc();
-		if round_count < round_max
-		{
+		}
+		if (round_count < round_max) {
 			round_count++;
 			minutes = maxminutes;
 			seconds = maxseconds;
@@ -21,26 +21,21 @@ if obj_player.state != states.playersuperattack
 			bell_sprite = spr_bosstimer_hitbell;
 			bell_index = 0;
 			bell_buffer = 70;
-			with par_boss
-			{
+			with (par_boss) {
 				phase++;
 				phase = clamp(phase, 0, max_phase);
-				if colliding && state != states.cardboard && state != states.cardboardend
+				if (colliding && state != states.cardboard && state != states.cardboardend) {
 					state = states.arenaround;
+				}
 			}
-		}
-		else if (instance_exists(bossID))
-		{
+		} else if (instance_exists(bossID)) {
 			var b_hp = (bossID.hp / bossID.max_hp) * 100;
 			var p_hp = (player_hp / player_hpmax) * 100;
-			if b_hp <= p_hp
-			{
+			if (b_hp <= p_hp) {
 				depth = obj_player1.depth + 1;
 				state = states.transition;
-				with bossID
-				{
-					with lastplayerid
-					{
+				with (bossID) {
+					with (lastplayerid) {
 						xscale = 1;
 						suplexmove = true;
 						sfx_gain(suplexdashsnd);
@@ -52,11 +47,8 @@ if obj_player.state != states.playersuperattack
 					hp = 0;
 					boss_destroy(lastplayerid);
 				}
-			}
-			else
-			{
-				with bossID
-				{
+			} else {
+				with (bossID) {
 					sprite_index = defeatplayerspr;
 					fakedeath = false;
 				}
@@ -66,5 +58,6 @@ if obj_player.state != states.playersuperattack
 		}
 	}
 }
-if state != states.arenaround && state != states.victory && state != states.transition
+if (state != states.arenaround && state != states.victory && state != states.transition) {
 	alarm[0] = 1;
+}

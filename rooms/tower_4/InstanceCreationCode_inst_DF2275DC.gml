@@ -1,1 +1,1 @@
-targetRoom = tower_graffiti
+targetRoom = tower_graffiti;

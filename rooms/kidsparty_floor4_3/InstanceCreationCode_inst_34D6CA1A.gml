@@ -1,1 +1,1 @@
-content = obj_camerapatrol
+content = obj_camerapatrol;

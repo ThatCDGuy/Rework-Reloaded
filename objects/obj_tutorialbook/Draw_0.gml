@@ -1,2 +1,3 @@
-if showgranny
+if (showgranny) {
 	draw_self();
+}

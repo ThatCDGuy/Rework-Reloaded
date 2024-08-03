@@ -9,12 +9,14 @@ ispeppino = obj_player1.ispeppino;
 snd_drumroll = fmod_event_create_instance("event:/sfx/playerN/finaljudgement_drumroll");
 snd_verdict = fmod_event_create_instance("event:/sfx/playerN/finaljudgement_verdict");
 snd_start = fmod_event_create_instance("event:/sfx/playerN/finaljudgement_start");
-if !ispeppino
+if (!ispeppino) {
 	fmod_event_instance_play(snd_start);
+}
 sprite_index = spr_finaljudgement;
 image_speed = 0.35;
-if !ispeppino
+if (!ispeppino) {
 	sprite_index = spr_finaljudgementN;
+}
 fade = 1;
 state = 0; // not an enum
 introbuffer = 300;
@@ -22,56 +24,77 @@ brown = false;
 brownfade = 0;
 depth = -601;
 alarm[0] = 1;
-with obj_music
-{
-	if music != -4
+with (obj_music) {
+	if (music != -4) {
 		fmod_event_instance_stop(music.event, true);
+	}
 }
 
 var timer = scr_get_timer_string(global.file_minutes, global.file_seconds, true);
 var levels = [
-	"entrance", "medieval", "ruin", "dungeon",
-	"badland", "graveyard", "farm", "saloon",
-	"plage", "forest", "minigolf", "space",
-	"sewer", "industrial", "street", "freezer",
-	"chateau", "war", "kidsparty", "exit",
-	"w1stick", "w2stick", "w3stick", "w4stick", "w5stick"
+	"entrance",
+	"medieval",
+	"ruin",
+	"dungeon",
+	"badland",
+	"graveyard",
+	"farm",
+	"saloon",
+	"plage",
+	"forest",
+	"minigolf",
+	"space",
+	"sewer",
+	"industrial",
+	"street",
+	"freezer",
+	"chateau",
+	"war",
+	"kidsparty",
+	"exit",
+	"w1stick",
+	"w2stick",
+	"w3stick",
+	"w4stick",
+	"w5stick"
 ];
 
 ini_open_from_string(obj_savesystem.ini_str);
 var damage = ini_read_real("Game", "damage", 0);
 var _score = 0;
 var _enemies = ini_read_real("Game", "enemies", 0);
-for (var i = 0; i < array_length(levels); i++)
+for (var i = 0; i < array_length(levels); i++) {
 	_score += ini_read_real("Highscore", levels[i], 0);
+}
 
 var _perc = get_percentage();
-if _perc >= 95
+if (_perc >= 95) {
 	rank_spr = spr_rank_wow;
-else if _perc >= 83
+} else if (_perc >= 83) {
 	rank_spr = spr_rank_notbad;
-else if _perc >= 72
+} else if (_perc >= 72) {
 	rank_spr = spr_rank_nojudgement;
-else if _perc >= 61
+} else if (_perc >= 61) {
 	rank_spr = spr_rank_officer;
-else if _perc >= 50
+} else if (_perc >= 50) {
 	rank_spr = spr_rank_confused;
-else
+} else {
 	rank_spr = spr_rank_yousuck;
-
-if (ini_read_string("Game", "finalrank", "none") == "none")
-{
-	if global.file_minutes < 240 && _perc >= 95
-		rank_spr = spr_rank_holyshit;
-	else if global.file_minutes < 120
-		rank_spr = spr_rank_quick;
 }
-if (ini_read_string("Game", "finalrank", "none") == "holyshit")
+
+if (ini_read_string("Game", "finalrank", "none") == "none") {
+	if (global.file_minutes < 240 && _perc >= 95) {
+		rank_spr = spr_rank_holyshit;
+	} else if (global.file_minutes < 120) {
+		rank_spr = spr_rank_quick;
+	}
+}
+if (ini_read_string("Game", "finalrank", "none") == "holyshit") {
 	rank_spr = spr_rank_holyshit;
+}
 
 var r = "yousuck";
-switch rank_spr
-{
+switch (rank_spr) {
 	case spr_rank_wow:
 		r = "wow";
 		break;
@@ -96,8 +119,7 @@ switch rank_spr
 }
 rank_name = r;
 
-switch rank_spr
-{
+switch (rank_spr) {
 	case spr_rank_yousuck:
 		bg_index = 0;
 		break;
@@ -123,10 +145,8 @@ switch rank_spr
 		bg_index = 3;
 		break;
 }
-if !ispeppino
-{
-	switch rank_spr
-	{
+if (!ispeppino) {
+	switch (rank_spr) {
 		case spr_rank_yousuck:
 			rank_spr = spr_rankN1;
 			break;
@@ -155,8 +175,9 @@ if !ispeppino
 }
 
 ini_write_string("Game", "finalrank", r);
-if (ini_read_real("Game", "snotty", false) == false)
+if (ini_read_real("Game", "snotty", false) == false) {
 	ini_write_real("Game", "finalsnotty", true);
+}
 obj_savesystem.ini_str = ini_close();
 gamesave_async_save();
 

@@ -1,4 +1,5 @@
-if whitefade > 0
+if (whitefade > 0) {
 	whitefade -= deccel;
-else
+} else {
 	instance_destroy();
+}

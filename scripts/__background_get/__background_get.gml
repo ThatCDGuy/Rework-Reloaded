@@ -1,5 +1,4 @@
-function __background_get(prop, bind)
-{
+function __background_get(prop, bind) {
 	var __prop = prop;
 	var __bind = bind;
 

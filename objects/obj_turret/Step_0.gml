@@ -1,6 +1,5 @@
 targetplayer = global.coop ? instance_nearest(x, y, obj_player) : obj_player1;
-switch state
-{
+switch (state) {
 	case states.normal:
 		state_turret_normal();
 		break;
@@ -8,7 +7,9 @@ switch state
 		state_turret_charge();
 		break;
 }
-if invtime > 0
+if (invtime > 0) {
 	invtime--;
-if hp <= 0
+}
+if (hp <= 0) {
 	instance_destroy();
+}

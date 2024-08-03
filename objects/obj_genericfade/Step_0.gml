@@ -1,12 +1,11 @@
-if fadein
-{
+if (fadein) {
 	fade = Approach(fade, maxfade, accel);
-	if fade >= maxfade
+	if (fade >= maxfade) {
 		fadein = false;
-}
-else
-{
+	}
+} else {
 	fade = Approach(fade, 0, deccel);
-	if fade <= 0
+	if (fade <= 0) {
 		instance_destroy();
+	}
 }

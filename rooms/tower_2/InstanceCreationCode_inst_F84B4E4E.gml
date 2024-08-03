@@ -1,2 +1,2 @@
-level = "saloon"
-treasureindex = 7
+level = "saloon";
+treasureindex = 7;

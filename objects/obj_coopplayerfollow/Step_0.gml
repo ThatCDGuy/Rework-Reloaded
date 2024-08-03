@@ -1,13 +1,13 @@
-if room == rank_room
+if (room == rank_room) {
 	visible = false;
-else
+} else {
 	visible = true;
+}
 playerid = obj_player1.id;
 image_speed = 0;
 var _p1spr = obj_player1.sprite_index;
 var _spr = obj_player2.spr_idle;
-switch _p1spr
-{
+switch (_p1spr) {
 	case obj_player1.spr_idle:
 		_spr = obj_player2.spr_idle;
 		break;

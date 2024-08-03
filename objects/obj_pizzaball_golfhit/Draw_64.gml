@@ -1,7 +1,9 @@
-if (!global.option_hud || (instance_exists(obj_debugcontroller) && !obj_debugcontroller.showhud))
+if (!global.option_hud || (instance_exists(obj_debugcontroller) && !obj_debugcontroller.showhud)) {
 	exit;
-if (instance_exists(obj_ghostcollectibles))
+}
+if (instance_exists(obj_ghostcollectibles)) {
 	exit;
+}
 
 draw_self();
 draw_sprite(spr_pizzaball_primoburg, 0, SCREEN_WIDTH - 120, y);
@@ -17,10 +19,10 @@ draw_text_color(tx, ty, primoburg, c_white, c_white, c_white, c_white, 1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-if !obj_player1.ispeppino
-{
-	if hand_shake != 0
+if (!obj_player1.ispeppino) {
+	if (hand_shake != 0) {
 		draw_sprite(spr_noisearmgolfcloud, cloud_index, tx, ty);
+	}
 	shader_set(global.Pal_Shader);
 	pattern_set(global.Base_Pattern_Color, sprite_index, image_index, image_xscale, image_yscale, global.palettetexture);
 	pal_swap_set(obj_player1.spr_palette, obj_player1.paletteselect, false);

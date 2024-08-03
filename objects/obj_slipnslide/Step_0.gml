@@ -1,5 +1,7 @@
 scr_collide();
-if (scr_solid(x, y + 1))
+if (scr_solid(x, y + 1)) {
 	hsp = 0;
-if banana == 2
+}
+if (banana == 2) {
 	instance_destroy();
+}

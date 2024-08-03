@@ -1,15 +1,14 @@
-if down
-{
+if (down) {
 	var ty = 24;
 	y = Approach(y, ty, movespeed);
-	if y >= ty && alarm[0] == -1
+	if (y >= ty && alarm[0] == -1) {
 		alarm[0] = 80;
-}
-else
-{
+	}
+} else {
 	ty = -sprite_height;
 	y = Approach(y, ty, movespeed);
-	if y <= ty
+	if (y <= ty) {
 		instance_destroy();
+	}
 }
 x = SCREEN_WIDTH / 2;

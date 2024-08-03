@@ -1,11 +1,8 @@
-function textures_offload(texturegroup_array)
-{
+function textures_offload(texturegroup_array) {
 	var b = instance_create(0, 0, obj_loadingscreen);
-	with b
-	{
+	with (b) {
 		group_arr = texturegroup_array;
-		if global.offload_tex != -4
-		{
+		if (global.offload_tex != -4) {
 			offload_arr = array_create(0);
 			array_copy(offload_arr, 0, global.offload_tex, 0, array_length(global.offload_tex));
 			global.offload_tex = -4;
@@ -13,13 +10,14 @@ function textures_offload(texturegroup_array)
 	}
 	return b;
 }
-function scr_playerreset(stopmusic = true)
-{
+
+function scr_playerreset(stopmusic = true) {
 	trace("playerreset");
-	
+
 	global.lap = false;
-	if room != boss_pizzaface && room != boss_noise && room != boss_pepperman && room != boss_fakepep && room != boss_vigilante
+	if (room != boss_pizzaface && room != boss_noise && room != boss_pepperman && room != boss_fakepep && room != boss_vigilante) {
 		global.bossintro = false;
+	}
 	global.bossplayerhurt = false;
 	global.swap_boss_damage = 0;
 	global.playerhit = 0;
@@ -38,37 +36,34 @@ function scr_playerreset(stopmusic = true)
 	global.prank_enemykilled = false;
 	global.prank_cankillenemy = true;
 	global.noisejetpack = false;
-	with obj_player
+	with (obj_player) {
 		noisepizzapepper = false;
+	}
 	global.level_minutes = 0;
 	global.level_seconds = 0;
 	global.pistol = false;
-	
-	with obj_screensizer
+
+	with (obj_screensizer) {
 		camzoom = 1;
-	with obj_camera
-	{
+	}
+	with (obj_camera) {
 		camzoom = 1;
 		lock = false;
 		state = states.normal;
 	}
-	
-	with obj_swapmodefollow
-	{
+
+	with (obj_swapmodefollow) {
 		isgustavo = false;
 		get_character_spr();
 	}
-	
-	with obj_achievementtracker
-	{
+
+	with (obj_achievementtracker) {
 		achievement_reset_variables(achievements_notify);
 		achievement_reset_variables(achievements_update);
 	}
-	
-	if stopmusic
-	{
-		with obj_music
-		{
+
+	if (stopmusic) {
+		with (obj_music) {
 			secretend = true;
 			secret = false;
 			exitmusic = false;
@@ -77,9 +72,9 @@ function scr_playerreset(stopmusic = true)
 	}
 	fmod_set_parameter("musicmuffle", 0, true);
 	fmod_set_parameter("pillarfade", 0, true);
-	
+
 	camera_set_view_size(view_camera[0], SCREEN_WIDTH, SCREEN_HEIGHT);
-	
+
 	instance_destroy(obj_frontcanongoblin);
 	instance_destroy(obj_pumpkineffect);
 	instance_destroy(obj_pumpkincounter);
@@ -99,28 +94,28 @@ function scr_playerreset(stopmusic = true)
 	instance_destroy(obj_hpeffect);
 	instance_destroy(obj_crosspriest_cross);
 	instance_destroy(obj_gravecorpse, false);
-	
-	with obj_camera
-	{
+
+	with (obj_camera) {
 		alarm[4] = -1;
 		comboend = false;
 		previousrank = 0;
 	}
-	
-	if !global.levelreset
-	{
+
+	if (!global.levelreset) {
 		instance_destroy(obj_surfback);
 		instance_destroy(obj_randomsecret);
 		instance_destroy(obj_deliverytimer);
 		instance_destroy(obj_wartimer);
-		with obj_cutscene_handler
+		with (obj_cutscene_handler) {
 			instance_destroy();
-		with obj_snowparticle
+		}
+		with (obj_snowparticle) {
 			instance_destroy();
-		with obj_camera
+		}
+		with (obj_camera) {
 			alarm[4] = -1;
-		with obj_tv
-		{
+		}
+		with (obj_tv) {
 			shownranka = false;
 			shownrankb = false;
 			shownrankc = false;
@@ -130,16 +125,14 @@ function scr_playerreset(stopmusic = true)
 			promptx = promptxstart;
 			tv_bg_index = 0;
 			expressionsprite = -4;
-			if !global.levelreset
-			{
+			if (!global.levelreset) {
 				sprite_index = spr_tv_off;
 				tvsprite = spr_tv_idle;
 				state = states.normal;
 				tv_set_idle();
 			}
 		}
-		with obj_secretmanager
-		{
+		with (obj_secretmanager) {
 			ds_list_clear(secrettriggers);
 			ds_list_clear(touchall);
 			touchrequirement = -4;
@@ -184,8 +177,9 @@ function scr_playerreset(stopmusic = true)
 		global.golfhit = 0;
 		global.railspeed = global.maxrailspeed;
 		global.temperature = 0;
-		if room != freezer_1
+		if (room != freezer_1) {
 			global.use_temperature = false;
+		}
 		global.heatmeter_count = 0;
 		global.monsterspeed = 0;
 		global.timedgate = false;
@@ -219,48 +213,57 @@ function scr_playerreset(stopmusic = true)
 		global.hit = 0;
 		global.playerhealth = 100;
 		global.panic = false;
-		with obj_stylebar
+		with (obj_stylebar) {
 			sprite = spr_mild;
-		with obj_music
+		}
+		with (obj_music) {
 			arena = false;
-		
-		if (instance_exists(obj_endlevelfade))
+		}
+
+		if (instance_exists(obj_endlevelfade)) {
 			instance_destroy(obj_endlevelfade);
-		
-		if (instance_exists(obj_monstertrackingrooms))
+		}
+
+		if (instance_exists(obj_monstertrackingrooms)) {
 			instance_destroy(obj_monstertrackingrooms);
-		
+		}
+
 		instance_destroy(obj_trapghost);
 		instance_destroy(obj_comboend);
 		instance_destroy(obj_farmer1follow);
 		instance_destroy(obj_farmer2follow);
 		instance_destroy(obj_farmer3follow);
-		
-		if (instance_exists(obj_snickexe))
+
+		if (instance_exists(obj_snickexe)) {
 			instance_destroy(obj_snickexe);
-		
-		with obj_pizzaface
-			destroy_sounds([snd])
-		instance_destroy(obj_pizzaface, false)
-		
+		}
+
+		with (obj_pizzaface) {
+			destroy_sounds([snd]);
+		}
+		instance_destroy(obj_pizzaface, false);
+
 		instance_destroy(obj_pizzashield);
 		instance_destroy(obj_pepanimatronicfollow);
-		
-		if (instance_exists(obj_coopflag))
+
+		if (instance_exists(obj_coopflag)) {
 			instance_destroy(obj_coopflag);
-		
-		if (instance_exists(obj_cooppointer))
+		}
+
+		if (instance_exists(obj_cooppointer)) {
 			instance_destroy(obj_cooppointer);
+		}
 		instance_destroy(obj_coopplayerfollow);
-		
-		if (instance_exists(obj_toppinwarrior))
+
+		if (instance_exists(obj_toppinwarrior)) {
 			instance_destroy(obj_toppinwarrior);
-		
-		if (instance_exists(obj_timesup))
+		}
+
+		if (instance_exists(obj_timesup)) {
 			instance_destroy(obj_timesup);
+		}
 	}
-	with obj_player
-	{
+	with (obj_player) {
 		mort = false;
 		noisepizzapepper = false;
 		goblinkey = false;
@@ -286,16 +289,16 @@ function scr_playerreset(stopmusic = true)
 		obj_player.supercharge = 0;
 		obj_player.supercharged = false;
 		pistol = false;
-		if (instance_exists(obj_gnome_checklist))
-		{
+		if (instance_exists(obj_gnome_checklist)) {
 			var destroy = true;
-			with obj_player
-			{
-				if (state == states.dead || state == states.timesup)
+			with (obj_player) {
+				if (state == states.dead || state == states.timesup) {
 					destroy = false;
+				}
 			}
-			if destroy
+			if (destroy) {
 				instance_destroy(obj_gnome_checklist);
+			}
 		}
 		obj_timeattack.stop = false;
 		obj_player1.spotlight = true;
@@ -315,8 +318,7 @@ function scr_playerreset(stopmusic = true)
 		ds_list_clear(global.saveroom);
 		ds_list_clear(global.escaperoom);
 		ds_list_clear(global.baddieroom);
-		with obj_player
-		{
+		with (obj_player) {
 			flash = false;
 			pistolcharge = 0;
 			pistolchargedelay = 5;
@@ -438,8 +440,7 @@ function scr_playerreset(stopmusic = true)
 			noisebossscream = false;
 		}
 	}
-	with obj_player2
-	{
+	with (obj_player2) {
 		pizzashield = false;
 		image_blend = make_colour_hsv(0, 0, 255);
 		supercharged = false;
@@ -563,10 +564,10 @@ function scr_playerreset(stopmusic = true)
 		anger = 0;
 		angry = false;
 	}
-	with obj_followcharacter
-	{
-		if persistent && object_index != obj_swapmodefollow
+	with (obj_followcharacter) {
+		if (persistent && object_index != obj_swapmodefollow) {
 			instance_destroy();
+		}
 	}
 	instance_destroy(obj_shotgunback);
 }

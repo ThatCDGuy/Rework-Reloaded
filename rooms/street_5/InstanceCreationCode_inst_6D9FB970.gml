@@ -1,1 +1,1 @@
-elite = 1
+elite = 1;

@@ -12,5 +12,6 @@ idlespr = spr_toppincheese;
 movespr = spr_toppincheese_run;
 tauntspr = spr_toppincheese_taunt;
 depth = 1;
-while (scr_solid(x, y))
+while (scr_solid(x, y)) {
 	y--;
+}

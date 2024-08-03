@@ -1,5 +1,4 @@
-enum textkey
-{
+enum textkey {
 	up,
 	left,
 	right,
@@ -11,90 +10,80 @@ enum textkey
 	jump,
 	shoot,
 	taunt,
-	groundpound,	// gamepad
-	superjump,		// gamepad
-	
-	menu_up,		// 13
-	menu_left,		// 14
-	menu_right,		// 15
-	menu_down,		// 16
-	menu_select,	// 17
-	menu_back,		// 18
-	menu_delete,	// 19
-	menu_quit,		// 20
-	menu_start,		// 21
-	reset_binds		// 22
+	groundpound, // gamepad
+	superjump, // gamepad
+	menu_up, // 13
+	menu_left, // 14
+	menu_right, // 15
+	menu_down, // 16
+	menu_select, // 17
+	menu_back, // 18
+	menu_delete, // 19
+	menu_quit, // 20
+	menu_start, // 21
+	reset_binds, // 22
 }
-enum texteffect
-{
+enum texteffect {
 	normal,
 	shake,
-	updown
+	updown,
 }
-enum texttype
-{
+enum texttype {
 	normal, // just draws the text
 	icon, // draws tutorial keys
-	array // does scr_draw_text_arr within itself
+	array, // does scr_draw_text_arr within itself
 }
 
 // functions
-function create_transformation_tip(str, save_entry = noone)
-{
+function create_transformation_tip(str, save_entry = noone) {
 	ini_open_from_string(obj_savesystem.ini_str);
-	if (save_entry != -4 && ini_read_real("Tip", save_entry, false))
-	{
+	if (save_entry != -4 && ini_read_real("Tip", save_entry, false)) {
 		ini_close();
 		exit;
 	}
 	instance_destroy(obj_transfotip);
 	var b = -4;
-	with (instance_create(0, 0, obj_transfotip))
-	{
+	with (instance_create(0, 0, obj_transfotip)) {
 		text = str;
 		b = id;
 	}
-	if save_entry != -4
+	if (save_entry != -4) {
 		ini_write_real("Tip", save_entry, true);
+	}
 	obj_savesystem.ini_str = ini_close();
 	return b;
 }
 
-function scr_compile_icon_text(text, pos = 1, return_array = false)
-{
+function scr_compile_icon_text(text, pos = 1, return_array = false) {
 	var arr = [];
 	var len = string_length(text);
 	var info = font_get_info(draw_get_font());
 	var newline = string_height(lang_get_value("default_letter"));
 	var char_x = 0;
 	var char_y = 0;
-	
+
 	var offset_x = 0;
 	var offset_y = 0;
-	if info.spriteIndex != -1
-	{
+	if (info.spriteIndex != -1) {
 		offset_x = sprite_get_xoffset(info.spriteIndex);
 		offset_y = sprite_get_yoffset(info.spriteIndex);
 	}
-	
-	for (var saved_pos = 1; pos <= len; pos += 1)
-	{
+
+	for (var saved_pos = 1; pos <= len; pos += 1) {
 		var start = pos;
 		var char = string_ord_at(text, pos);
-		switch char
-		{
+		switch (char) {
 			case ord("\n"):
 				char_y += newline;
 				char_x = 0;
 				break;
-			
+
 			case ord("{"):
 				var effect = string_copy(text, pos, 3);
 				var te = texteffect.shake;
 				pos += 3;
 				var n = scr_compile_icon_text(text, pos, true);
-				switch effect
-				{
+				switch (effect) {
 					case "{s}":
 						te = texteffect.shake;
 						break;
@@ -107,14 +96,13 @@ function scr_compile_icon_text(text, pos = 1, return_array = false)
 				char_x = n[2];
 				char_y = n[3];
 				break;
-			
+
 			case ord("["):
 				var button = string_copy(text, pos, 3);
 				var t = texttype.icon;
-				
+
 				var b = textkey.up;
-				switch button
-				{
+				switch (button) {
 					case "[D]":
 						b = textkey.down;
 						break;
@@ -154,7 +142,7 @@ function scr_compile_icon_text(text, pos = 1, return_array = false)
 					case "[s]":
 						b = textkey.superjump;
 						break;
-					
+
 					// MENU
 					case "[u]":
 						b = textkey.menu_up;
@@ -191,23 +179,22 @@ function scr_compile_icon_text(text, pos = 1, return_array = false)
 				char_x += 32;
 				pos += 2;
 				break;
-			
+
 			case ord("/"):
-				if return_array
-				{
+				if (return_array) {
 					saved_pos = pos;
 					pos = len + 1;
 				}
 				break;
-			
+
 			default:
-				while ((pos + 1) <= len)
-				{
+				while ((pos + 1) <= len) {
 					char = string_ord_at(text, pos + 1);
-					if (char != ord("[") && char != ord("\n") && char != ord("{") && char != ord("/"))
+					if (char != ord("[") && char != ord("\n") && char != ord("{") && char != ord("/")) {
 						pos += 1;
-					else
+					} else {
 						break;
+					}
 				}
 				n = string_copy(text, start, (pos - start) + 1);
 				array_push(arr, [char_x - offset_x, char_y - offset_y, texttype.normal, n]); // 0 << 0
@@ -215,64 +202,66 @@ function scr_compile_icon_text(text, pos = 1, return_array = false)
 				break;
 		}
 	}
-	if return_array
+	if (return_array) {
 		return [arr, saved_pos, char_x, char_y];
+	}
 	return arr;
 }
 
-function scr_text_arr_size(array)
-{
+function scr_text_arr_size(array) {
 	var w = 0;
 	var newline = string_height(lang_get_value("default_letter"));
 	var h = newline;
-	for (var i = 0; i < array_length(array); i++)
-	{
+	for (var i = 0; i < array_length(array); i++) {
 		var b = array[i];
 		var cx = b[0];
 		var cy = b[1];
 		var t = b[2];
 		var val = b[3];
-		
-		switch t
-		{
+
+		switch (t) {
 			case texttype.icon:
-				if ((cx + 32) > w)
+				if ((cx + 32) > w) {
 					w += 32;
+				}
 				break;
-			
+
 			case texttype.array:
 				var val2 = b[4];
 				var q = scr_text_arr_size(val2);
-				if ((cy + q[1]) > h)
-					h += (q[1] - newline);
-				else if ((cx + q[0]) > w)
+				if ((cy + q[1]) > h) {
+					h += q[1] - newline;
+				} else if ((cx + q[0]) > w) {
 					w += q[0];
+				}
 				break;
-			
+
 			case texttype.normal:
-				if cy > h
+				if (cy > h) {
 					h += newline;
-				else
-				{
+				} else {
 					var sw = string_width(val);
-					if ((cx + sw) > w)
+					if ((cx + sw) > w) {
 						w += string_width(val);
+					}
 				}
 				break;
 		}
 	}
 	return [w, h];
 }
-function scr_draw_granny_texture(x, y, xscale, yscale, tex_x, tex_y, sprite = spr_pizzagrannytexture, bubble_sprite = spr_tutorialbubble)
-{
+
+function scr_draw_granny_texture(x, y, xscale, yscale, tex_x, tex_y, sprite = spr_pizzagrannytexture, bubble_sprite = spr_tutorialbubble) {
 	var w = sprite_get_width(bubble_sprite) * xscale;
 	var h = sprite_get_height(bubble_sprite) * yscale;
-	
-	if (!surface_exists(surfclip))
+
+	if (!surface_exists(surfclip)) {
 		surfclip = surface_create(w, h);
-	if (!surface_exists(surffinal))
+	}
+	if (!surface_exists(surffinal)) {
 		surffinal = surface_create(w, h);
-	
+	}
+
 	// draw dialog box
 	surface_set_target(surfclip);
 	draw_clear_alpha(0, 0);
@@ -281,7 +270,7 @@ function scr_draw_granny_texture(x, y, xscale, yscale, tex_x, tex_y, sprite = sp
 	draw_sprite_ext(bubble_sprite, 0, 0, 0, xscale, yscale, 0, c_white, 1);
 	reset_blendmode();
 	surface_reset_target();
-	
+
 	// draw the looping texture
 	surface_set_target(surffinal);
 	draw_sprite_tiled(sprite, 0, tex_x, tex_y);
@@ -289,30 +278,27 @@ function scr_draw_granny_texture(x, y, xscale, yscale, tex_x, tex_y, sprite = sp
 	draw_surface(surfclip, 0, 0);
 	reset_blendmode();
 	surface_reset_target();
-	
+
 	// draw everything
 	draw_surface(surffinal, x, y);
 }
 
-function scr_draw_text_arr(x, y, text_arr, color = c_white, alpha = 1, effect = texteffect.normal, option_struct = noone)
-{
-	if text_arr == noone
+function scr_draw_text_arr(x, y, text_arr, color = c_white, alpha = 1, effect = texteffect.normal, option_struct = noone) {
+	if (text_arr == noone) {
 		exit;
-	
-	for (var i = 0; i < array_length(text_arr); i++)
-	{
+	}
+
+	for (var i = 0; i < array_length(text_arr); i++) {
 		var b = text_arr[i];
 		var cx = x + b[0];
 		var cy = y + b[1];
 		var t = b[2];
 		var val = b[3];
-		
-		switch t
-		{
+
+		switch (t) {
 			case texttype.icon:
 				var icon = noone;
-				switch val
-				{
+				switch (val) {
 					case textkey.down:
 						icon = tdp_get_tutorial_icon("player_down");
 						break;
@@ -337,90 +323,91 @@ function scr_draw_text_arr(x, y, text_arr, color = c_white, alpha = 1, effect = 
 					case textkey.taunt:
 						icon = tdp_get_tutorial_icon("player_taunt");
 						break;
-					
+
 					case textkey.groundpound:
-						if !global.gamepad_groundpound && obj_inputAssigner.player_input_device[0] >= 0
+						if (!global.gamepad_groundpound && obj_inputAssigner.player_input_device[0] >= 0) {
 							icon = tdp_get_tutorial_icon("player_groundpound");
-						else
+						} else {
 							icon = tdp_get_tutorial_icon("player_down");
+						}
 						break;
 					case textkey.superjump:
-						if !global.gamepad_superjump && obj_inputAssigner.player_input_device[0] >= 0
+						if (!global.gamepad_superjump && obj_inputAssigner.player_input_device[0] >= 0) {
 							icon = tdp_get_tutorial_icon("player_superjump");
-						else
+						} else {
 							icon = tdp_get_tutorial_icon("player_up");
+						}
 						break;
-					
+
 					case textkey.forwards:
-						if (instance_exists(obj_player1) && obj_player1.xscale < 0)
+						if (instance_exists(obj_player1) && obj_player1.xscale < 0) {
 							icon = tdp_get_tutorial_icon("player_left");
-						else
+						} else {
 							icon = tdp_get_tutorial_icon("player_right");
+						}
 						break;
 					case textkey.backwards:
-						if (instance_exists(obj_player1) && obj_player1.xscale > 0)
+						if (instance_exists(obj_player1) && obj_player1.xscale > 0) {
 							icon = tdp_get_tutorial_icon("player_left");
-						else
+						} else {
 							icon = tdp_get_tutorial_icon("player_right");
+						}
 						break;
-					
+
 					case textkey.menu_left:
-						icon = tdp_get_tutorial_icon("menu_left")
-						break
+						icon = tdp_get_tutorial_icon("menu_left");
+						break;
 					case textkey.menu_right:
-						icon = tdp_get_tutorial_icon("menu_right")
-						break
+						icon = tdp_get_tutorial_icon("menu_right");
+						break;
 					case textkey.menu_up:
-						icon = tdp_get_tutorial_icon("menu_up")
-						break
+						icon = tdp_get_tutorial_icon("menu_up");
+						break;
 					case textkey.menu_down:
-						icon = tdp_get_tutorial_icon("menu_down")
-						break
+						icon = tdp_get_tutorial_icon("menu_down");
+						break;
 					case textkey.menu_select:
-						icon = tdp_get_tutorial_icon("menu_select")
-						break
+						icon = tdp_get_tutorial_icon("menu_select");
+						break;
 					case textkey.menu_quit:
-						icon = tdp_get_tutorial_icon("menu_quit")
-						break
+						icon = tdp_get_tutorial_icon("menu_quit");
+						break;
 					case textkey.menu_delete:
-						icon = tdp_get_tutorial_icon("menu_delete")
-						break
+						icon = tdp_get_tutorial_icon("menu_delete");
+						break;
 					case textkey.menu_back:
-						icon = tdp_get_tutorial_icon("menu_back")
-						break
+						icon = tdp_get_tutorial_icon("menu_back");
+						break;
 					case textkey.menu_start:
-						icon = tdp_get_tutorial_icon("menu_start")
-						break
+						icon = tdp_get_tutorial_icon("menu_start");
+						break;
 					case textkey.reset_binds:
-						icon = tdp_get_tutorial_icon("menu_reset_binds")
-						break
+						icon = tdp_get_tutorial_icon("menu_reset_binds");
+						break;
 				}
-				
-				if effect != texteffect.normal
-				{
-					switch effect
-					{
+
+				if (effect != texteffect.normal) {
+					switch (effect) {
 						case texteffect.shake:
 							cx += irandom_range(-2, 2);
 							cy += irandom_range(-2, 2);
 							break;
-						
+
 						case texteffect.updown:
 							var o = 1;
-							if option_struct != -4
+							if (option_struct != -4) {
 								o = option_struct.offset;
+							}
 							var d = ((i % 2) == 0) ? -1 : 1;
 							var _dir = floor(Wave(-1, 1, 0.1, 0));
-							cy += (_dir * d * o);
+							cy += _dir * d * o;
 							break;
 					}
 				}
-				
-				if icon != -4
-				{
+
+				if (icon != -4) {
 					draw_sprite(icon.sprite_index, icon.image_index, cx, cy);
-					if icon.str != ""
-					{
+					if (icon.str != "") {
 						var f = draw_get_font();
 						draw_set_halign(fa_center);
 						draw_set_valign(fa_middle);
@@ -434,54 +421,52 @@ function scr_draw_text_arr(x, y, text_arr, color = c_white, alpha = 1, effect = 
 					}
 				}
 				break;
-			
+
 			case texttype.array:
 				var val2 = b[4];
 				scr_draw_text_arr(cx, cy, val2, color, alpha, val);
 				break;
-			
+
 			case texttype.normal:
-				if effect == texteffect.normal
-				{
-					if !global.tdp_text_try_outline
+				if (effect == texteffect.normal) {
+					if (!global.tdp_text_try_outline) {
 						draw_text_color(cx, cy, val, color, color, color, color, alpha);
-					else
+					} else {
 						tdp_draw_text_color(cx, cy, val, color, color, color, color, alpha);
-				}
-				else
-				{
+					}
+				} else {
 					var x2 = 0;
-					switch effect
-					{
+					switch (effect) {
 						case texteffect.shake:
-							for (var j = 1; j <= string_length(val); j++)
-							{
+							for (var j = 1; j <= string_length(val); j++) {
 								var q = string_char_at(val, j);
 								var s1 = irandom_range(-1, 1);
 								var s2 = irandom_range(-1, 1);
-								if !global.tdp_text_try_outline
+								if (!global.tdp_text_try_outline) {
 									draw_text_color(cx + x2 + s1, cy + s2, q, color, color, color, color, alpha);
-								else
+								} else {
 									tdp_draw_text_color(cx + x2 + s1, cy + s2, q, color, color, color, color, alpha);
+								}
 								x2 += string_width(q);
 							}
 							break;
-						
+
 						case texteffect.updown:
-							for (j = 1; j <= string_length(val); j++)
-							{
+							for (j = 1; j <= string_length(val); j++) {
 								q = string_char_at(val, j);
 								var s = 0;
 								o = 1;
-								if option_struct != -4
+								if (option_struct != -4) {
 									o = option_struct.offset;
+								}
 								d = ((j % 2) == 0) ? -1 : 1;
 								_dir = floor(Wave(-1, 1, 0.1, 0));
-								s += (_dir * d * o);
-								if !global.tdp_text_try_outline
+								s += _dir * d * o;
+								if (!global.tdp_text_try_outline) {
 									draw_text_color(cx + x2, cy + s, q, color, color, color, color, alpha);
-								else
+								} else {
 									tdp_draw_text_color(cx + x2, cy + s, q, color, color, color, color, alpha);
+								}
 								x2 += string_width(q);
 							}
 							break;

@@ -1,33 +1,26 @@
 scr_getinput();
-if updown_buffer > 0
-{
+if (updown_buffer > 0) {
 	updown_buffer--;
-	if (!key_up2 && !key_down2 && !keyboard_check_pressed(vk_up) && !keyboard_check_pressed(vk_down))
+	if (!key_up2 && !key_down2 && !keyboard_check_pressed(vk_up) && !keyboard_check_pressed(vk_down)) {
 		updown_buffer = 0;
-}
-else
-{
-	if ((key_up2 || keyboard_check_pressed(vk_up)) && audio_select > -1)
-	{
+	}
+} else {
+	if ((key_up2 || keyboard_check_pressed(vk_up)) && audio_select > -1) {
 		updown_buffer = updown_max;
 		audio_select -= 1;
 		fmod_event_one_shot("event:/sfx/pep/step");
 	}
-	if ((key_down2 || keyboard_check_pressed(vk_down)) && audio_select < 2)
-	{
+	if ((key_down2 || keyboard_check_pressed(vk_down)) && audio_select < 2) {
 		updown_buffer = updown_max;
 		audio_select += 1;
 		fmod_event_one_shot("event:/sfx/pep/step");
 	}
 }
-if (key_jump || keyboard_check_pressed(vk_enter))
-{
-	switch audio_select
-	{
+if (key_jump || keyboard_check_pressed(vk_enter)) {
+	switch (audio_select) {
 		case -1:
 			set_audio_config();
-			with obj_option
-			{
+			with (obj_option) {
 				visible = true;
 				key_jump = false;
 				buffer = 15;
@@ -39,14 +32,11 @@ if (key_jump || keyboard_check_pressed(vk_enter))
 			break;
 	}
 }
-if key_buffer > 0
+if (key_buffer > 0) {
 	key_buffer--;
-else
-{
-	if (-key_left || keyboard_check(vk_left))
-	{
-		switch audio_select
-		{
+} else {
+	if (-key_left || keyboard_check(vk_left)) {
+		switch (audio_select) {
 			case 0:
 				audiosaved_master--;
 				break;
@@ -59,10 +49,8 @@ else
 		}
 		key_buffer = key_max;
 	}
-	if (key_right || keyboard_check(vk_right))
-	{
-		switch audio_select
-		{
+	if (key_right || keyboard_check(vk_right)) {
+		switch (audio_select) {
 			case 0:
 				audiosaved_master++;
 				break;

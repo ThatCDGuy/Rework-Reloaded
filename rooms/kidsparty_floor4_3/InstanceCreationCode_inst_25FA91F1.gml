@@ -1,2 +1,2 @@
-targetRoom = kidsparty_escape1
-targetDoor = "D"
+targetRoom = kidsparty_escape1;
+targetDoor = "D";

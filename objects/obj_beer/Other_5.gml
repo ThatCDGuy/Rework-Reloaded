@@ -1,2 +1,3 @@
-if hit
+if (hit) {
 	instance_destroy();
+}

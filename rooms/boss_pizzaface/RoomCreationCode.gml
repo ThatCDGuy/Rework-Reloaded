@@ -5,20 +5,16 @@ global.gameframe_caption_text = lang_get_value("caption_boss_pizzaface");
 global.level_minutes = 0;
 global.level_seconds = 0;
 
-with obj_player
-{
+with (obj_player) {
 	backtohubroom = tower_outside;
 	backtohubstartx = 522;
 	backtohubstarty = 2328;
 }
 
-if obj_player1.ispeppino && !global.swapmode
-{
+if (obj_player1.ispeppino && !global.swapmode) {
 	layer_set_visible("Backgrounds_Ring2", true);
 	layer_set_visible("Backgrounds_Ring3", false);
-}
-else
-{
+} else {
 	layer_set_visible("Backgrounds_Ring3", true);
 	layer_set_visible("Backgrounds_Ring2", false);
 }

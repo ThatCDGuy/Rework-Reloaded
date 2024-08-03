@@ -1,5 +1,4 @@
-switch state
-{
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -28,34 +27,35 @@ switch state
 		scr_enemy_grabbed();
 		break;
 }
-if state == states.stun && stunned > 40 && birdcreated == 0
-{
+if (state == states.stun && stunned > 40 && birdcreated == 0) {
 	birdcreated = true;
-	with (instance_create(x, y, obj_enemybird))
+	with (instance_create(x, y, obj_enemybird)) {
 		ID = other.id;
+	}
 }
-if state != states.stun
+if (state != states.stun) {
 	birdcreated = false;
-if bombreset > 0
+}
+if (bombreset > 0) {
 	bombreset--;
-if state != states.pizzagoblinthrow && bombreset == 0
-{
-	if (state == states.walk || state == states.idle)
-	{
+}
+if (state != states.pizzagoblinthrow && bombreset == 0) {
+	if (state == states.walk || state == states.idle) {
 		image_index = 0;
 		state = states.pizzagoblinthrow;
 	}
 }
-if flash == 1 && alarm[2] <= 0
+if (flash == 1 && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
-if state != states.grabbed
+}
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
-if boundbox == 0
-{
-	with (instance_create(x, y, obj_baddiecollisionbox))
-	{
+}
+if (boundbox == 0) {
+	with (instance_create(x, y, obj_baddiecollisionbox)) {
 		sprite_index = other.sprite_index;
 		mask_index = other.sprite_index;
 		baddieID = other.id;

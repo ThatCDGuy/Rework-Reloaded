@@ -1,12 +1,13 @@
-if room == rm_editor
+if (room == rm_editor) {
 	exit;
+}
 targetplayer = instance_nearest(x, y, obj_player);
-if (ceiling && (state == states.crouch || state == states.punch))
+if (ceiling && (state == states.crouch || state == states.punch)) {
 	grav = 0;
-else if (ceiling && (state != states.crouch && state != states.punch))
+} else if (ceiling && (state != states.crouch && state != states.punch)) {
 	grav = 0.5;
-switch state
-{
+}
+switch (state) {
 	case states.idle:
 		scr_enemy_idle();
 		break;
@@ -48,20 +49,16 @@ switch state
 	case states.punch:
 		hidden = false;
 		cooldown = 100;
-		if sprite_index != spr_attack
-		{
+		if (sprite_index != spr_attack) {
 			sprite_index = spr_attack;
 			image_index = 0;
-			with (instance_create(x, y, obj_forkhitbox))
-			{
+			with (instance_create(x, y, obj_forkhitbox)) {
 				visible = false;
 				sprite_index = other.sprite_index;
 				other.hitboxID = id;
 				ID = other.id;
 			}
-		}
-		else if floor(image_index) == image_number - 1
-		{
+		} else if (floor(image_index) == image_number - 1) {
 			image_speed = 0.35;
 			state = states.crouch;
 			instance_destroy(hitboxID);
@@ -69,40 +66,42 @@ switch state
 		}
 		break;
 	case states.crouch:
-		if hidden
-		{
+		if (hidden) {
 			sprite_index = spr_hidden;
-			if (targetplayer.x > (x - 200) && targetplayer.x < (x + 200) && targetplayer.y < (y + 300) && targetplayer.y > (y - 300))
-			{
+			if (targetplayer.x > (x - 200) && targetplayer.x < (x + 200) && targetplayer.y < (y + 300) && targetplayer.y > (y - 300)) {
 				hidden = false;
 				state = states.punch;
 			}
-		}
-		else
-		{
+		} else {
 			sprite_index = spr_hidden;
-			if cooldown > 0
+			if (cooldown > 0) {
 				cooldown--;
-			else
+			} else {
 				state = states.punch;
+			}
 		}
 		break;
 }
-if state == states.stun && stunned > 100 && birdcreated == 0
-{
+if (state == states.stun && stunned > 100 && birdcreated == 0) {
 	birdcreated = true;
-	with (instance_create(x, y, obj_enemybird))
+	with (instance_create(x, y, obj_enemybird)) {
 		ID = other.id;
+	}
 }
-if state != states.stun
+if (state != states.stun) {
 	birdcreated = false;
-if flash == 1 && alarm[2] <= 0
+}
+if (flash == 1 && alarm[2] <= 0) {
 	alarm[2] = 0.15 * room_speed;
-if hidden
+}
+if (hidden) {
 	invincible = true;
-else
+} else {
 	invincible = false;
-if state != states.grabbed
+}
+if (state != states.grabbed) {
 	depth = 0;
-if state != states.stun
+}
+if (state != states.stun) {
 	thrown = false;
+}

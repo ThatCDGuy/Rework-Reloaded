@@ -1,68 +1,63 @@
-if global.panic
-{
+if (global.panic) {
 	instance_destroy();
 	instance_create(x, y + 144, obj_rubble);
 	exit;
 }
-switch targetRoom
-{
+switch (targetRoom) {
 	case entrance_1:
 	case medieval_1:
 	case ruin_1:
 	case dungeon_1:
-		world = 1
-		break
+		world = 1;
+		break;
 	case desert_1:
 	case graveyard_1:
 	case farm_1:
 	case ufo_1:
-		world = 2
-		break
+		world = 2;
+		break;
 	case beach_1:
 	case forest_1:
 	case minigolf_1:
-		world = 3
-		break
+		world = 3;
+		break;
 	case space_1:
 	case city_1:
 	case sewer_1:
 	case war_1:
-		world = 4
-		break
+		world = 4;
+		break;
 	case factory_1:
 	case freezer_1:
 	case mansion_1:
 	case kidsparty_entrance1:
-		world = 5
-		break
+		world = 5;
+		break;
 	case boss_pepperman:
-		level = "b_pepperman"
-		break
+		level = "b_pepperman";
+		break;
 	case boss_vigilante:
-		level = "b_vigilante"
-		break
+		level = "b_vigilante";
+		break;
 	case boss_noise:
-		level = "b_noise"
-		break
+		level = "b_noise";
+		break;
 	case boss_fakepep:
-		level = "b_fakepep"
-		break
+		level = "b_fakepep";
+		break;
 	case boss_pizzaface:
-		level = "b_pizzaface"
-		break
+		level = "b_pizzaface";
+		break;
 }
-if (targetRoom == boss_pepperman || targetRoom == boss_vigilante || targetRoom == boss_noise || targetRoom == boss_fakepep)
+if (targetRoom == boss_pepperman || targetRoom == boss_vigilante || targetRoom == boss_noise || targetRoom == boss_fakepep) {
 	boss = true;
-if object_index != obj_bossdoor
-{
+}
+if (object_index != obj_bossdoor) {
 	var old_y = y;
-	if (scr_solid(x, y))
-	{
-		while (scr_solid(x, y))
-		{
+	if (scr_solid(x, y)) {
+		while (scr_solid(x, y)) {
 			y--;
-			if y < sprite_height
-			{
+			if (y < sprite_height) {
 				y = old_y;
 				break;
 			}
@@ -87,44 +82,40 @@ var _toppinspr = [
 	[spr_toppinsausage, spr_toppinsausage_run, spr_toppinsausage_taunt, 35],
 	[spr_toppinpineapple, spr_toppinpineapple_run, spr_toppinpineapple_taunt, 75]
 ];
-for (var i = 0; i < array_length(_toppinspr); i++)
-{
+for (var i = 0; i < array_length(_toppinspr); i++) {
 	var b = _toppinspr[i];
-	if toppin[i]
-	{
-		with (instance_create(x + b[3], y + 100, obj_toppinprop))
-		{
+	if (toppin[i]) {
+		with (instance_create(x + b[3], y + 100, obj_toppinprop)) {
 			tauntspr = b[2];
 			movespr = b[1];
 			idlespr = b[0];
-			if (place_meeting(x, y, obj_platform))
+			if (place_meeting(x, y, obj_platform)) {
 				y -= 2;
+			}
 		}
 	}
 }
-if object_index == obj_startgate && level != "exit" && level != "tutorial" && level != "secretworld"
-{
-	for (i = 1; i <= 3; i++)
-	{
+if (object_index == obj_startgate && level != "exit" && level != "tutorial" && level != "secretworld") {
+	for (i = 1; i <= 3; i++) {
 		b = true;
-		if i > secret_count
+		if (i > secret_count) {
 			b = false;
-		with (instance_create(x, y, obj_startgate_secreteye))
-		{
+		}
+		with (instance_create(x, y, obj_startgate_secreteye)) {
 			last_current_time = current_time + (600000 * i * 2);
 			timer = last_current_time;
 			trace(other.level, " secret eye ", i, timer);
-			time_x += (i - 1);
-			time_y += ((i - 1) * 2);
-			if b
+			time_x += i - 1;
+			time_y += (i - 1) * 2;
+			if (b) {
 				sprite_index = spr_gatesecreteyeopen;
-			else
+			} else {
 				sprite_index = spr_gatesecreteyeclosed;
+			}
 		}
 	}
 }
-switch level
-{
+switch (level) {
 	case "entrance":
 		msg = "ENTRANCE";
 		break;

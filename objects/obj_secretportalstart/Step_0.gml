@@ -1,19 +1,16 @@
-if (room == tower_soundtestlevel && (obj_player1.state == states.backtohub || obj_player1.state == states.comingoutdoor || obj_player1.targetDoor == "A"))
-{
+if (room == tower_soundtestlevel && (obj_player1.state == states.backtohub || obj_player1.state == states.comingoutdoor || obj_player1.targetDoor == "A")) {
 	instance_destroy();
 	exit;
 }
 depth = 0;
 image_speed = 0.35;
-switch sprite_index
-{
+switch (sprite_index) {
 	case spr_secretportal_spawnopen:
-		with obj_heatafterimage
+		with (obj_heatafterimage) {
 			visible = false;
-		with obj_player
-		{
-			if (object_index != obj_player2 || global.coop)
-			{
+		}
+		with (obj_player) {
+			if (object_index != obj_player2 || global.coop) {
 				x = other.x;
 				y = other.y;
 				roomstartx = x;
@@ -27,16 +24,12 @@ switch sprite_index
 		}
 		waitbuffer = 80;
 		drop = false;
-		if floor(image_index) == image_number - 1
-		{
+		if (floor(image_index) == image_number - 1) {
 			fmod_event_one_shot_3d("event:/sfx/misc/secretexit", x, y);
 			sprite_index = spr_secretportal_spawnidle;
-			with obj_player
-			{
-				if (object_index != obj_player2 || global.coop)
-				{
-					if !isgustavo && tauntstoredstate != states.knightpep && tauntstoredstate != states.knightpepslopes && tauntstoredstate != states.knightpepbump && tauntstoredstate != states.firemouth
-					{
+			with (obj_player) {
+				if (object_index != obj_player2 || global.coop) {
+					if (!isgustavo && tauntstoredstate != states.knightpep && tauntstoredstate != states.knightpepslopes && tauntstoredstate != states.knightpepbump && tauntstoredstate != states.firemouth) {
 						visible = true;
 						cutscene = false;
 						sprite_index = spr_bodyslamstart;
@@ -44,13 +37,12 @@ switch sprite_index
 						state = states.freefallprep;
 						freefallsmash = 0;
 						vsp = (character == "P") ? -5 : -7;
-					}
-					else if isgustavo
+					} else if (isgustavo) {
 						state = states.ratmount;
-					else
-					{
-						if state == states.knightpep
+					} else {
+						if (state == states.knightpep) {
 							hsp = 0;
+						}
 						sprite_index = tauntstoredsprite;
 					}
 				}
@@ -58,14 +50,12 @@ switch sprite_index
 		}
 		break;
 	case spr_secretportal_spawnidle:
-		if !drop
-		{
-			with obj_heatafterimage
+		if (!drop) {
+			with (obj_heatafterimage) {
 				visible = false;
-			with obj_player
-			{
-				if (check_player_coop())
-				{
+			}
+			with (obj_player) {
+				if (check_player_coop()) {
 					x = other.x;
 					y = other.y - 10;
 					visible = true;
@@ -75,40 +65,32 @@ switch sprite_index
 					scale_xs = Approach(scale_xs, 1, 0.05);
 					scale_ys = Approach(scale_ys, 1, 0.05);
 					fallinganimation = 0;
-					if scale_xs == 1
+					if (scale_xs == 1) {
 						other.drop = true;
-					if other.drop
-					{
-						if (!isgustavo && (tauntstoredstate == states.knightpep || tauntstoredstate == states.knightpepslopes || tauntstoredstate == states.knightpepbump || tauntstoredstate == states.firemouth))
-						{
+					}
+					if (other.drop) {
+						if (!isgustavo && (tauntstoredstate == states.knightpep || tauntstoredstate == states.knightpepslopes || tauntstoredstate == states.knightpepbump || tauntstoredstate == states.firemouth)) {
 							state = tauntstoredstate;
 							movespeed = tauntstoredmovespeed;
 							hsp = tauntstoredhsp;
 							sprite_index = tauntstoredsprite;
-							if (state == states.actor || state == states.backbreaker || state == states.chainsaw || state == states.machcancel)
-							{
+							if (state == states.actor || state == states.backbreaker || state == states.chainsaw || state == states.machcancel) {
 								sprite_index = spr_bodyslamstart;
 								image_index = 0;
 								state = states.freefallprep;
 								freefallsmash = 0;
 								vsp = (character == "P") ? -5 : -7;
 							}
-							if state == states.knightpep
-							{
+							if (state == states.knightpep) {
 								hsp = 0;
 								movespeed = 0;
-							}
-							else if state == states.knightpepslopes
-							{
+							} else if (state == states.knightpepslopes) {
 								movespeed = 0;
 								hsp = 0;
 								state = states.knightpep;
 								sprite_index = spr_knightpepfall;
-							}
-							else if state == states.firemouth
-							{
-								if sprite_index == spr_firemouthdash
-								{
+							} else if (state == states.firemouth) {
+								if (sprite_index == spr_firemouthdash) {
 									hsp = 0;
 									movespeed = 0;
 									sprite_index = spr_firemouthidle;
@@ -119,20 +101,17 @@ switch sprite_index
 				}
 			}
 		}
-		if drop
-		{
-			if waitbuffer > 0
+		if (drop) {
+			if (waitbuffer > 0) {
 				waitbuffer--;
-			else
-			{
+			} else {
 				sprite_index = spr_secretportal_spawnclose;
 				image_index = 0;
 			}
 		}
 		break;
 	case spr_secretportal_spawnclose:
-		if floor(image_index) == image_number - 1
-		{
+		if (floor(image_index) == image_number - 1) {
 			image_index = image_number - 1;
 			instance_destroy();
 		}

@@ -1,1 +1,1 @@
-targetRoom = tower_johngutterhall
+targetRoom = tower_johngutterhall;

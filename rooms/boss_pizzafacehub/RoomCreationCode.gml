@@ -7,19 +7,15 @@ ini_write_real("w5stick", "bosskey", true);
 obj_savesystem.ini_str = ini_close();
 gamesave_async_save();
 
-if obj_player1.ispeppino && !global.swapmode
-{
+if (obj_player1.ispeppino && !global.swapmode) {
 	layer_set_visible("Backgrounds_Ring2", true);
 	layer_set_visible("Backgrounds_Ring3", false);
-}
-else
-{
+} else {
 	layer_set_visible("Backgrounds_Ring3", true);
 	layer_set_visible("Backgrounds_Ring2", false);
 }
 
-with obj_player1
-{
+with (obj_player1) {
 	tauntstoredstate = states.normal;
 	landAnim = true;
 	state = states.animation;
@@ -27,8 +23,7 @@ with obj_player1
 	sprite_index = spr_slipbanan2;
 	image_index = sprite_get_number(spr_slipbanan2) - 1;
 	image_speed = 0.35;
-	if !ispeppino
-	{
+	if (!ispeppino) {
 		sprite_index = spr_playerN_bombend;
 		image_index = 0;
 	}

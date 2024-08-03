@@ -1,9 +1,11 @@
 x = playerid.x;
 y = playerid.y;
-if playerid.grounded
+if (playerid.grounded) {
 	visible = true;
-else
+} else {
 	visible = false;
+}
 image_xscale = playerid.xscale;
-if !playerid.visible
+if (!playerid.visible) {
 	visible = false;
+}

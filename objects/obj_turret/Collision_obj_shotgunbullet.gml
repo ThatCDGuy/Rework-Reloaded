@@ -1,5 +1,4 @@
-if invtime <= 0
-{
+if (invtime <= 0) {
 	invtime = 15;
 	hp--;
 }

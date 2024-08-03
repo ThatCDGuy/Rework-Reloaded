@@ -1,1 +1,1 @@
-x += (image_xscale * spd);
+x += image_xscale * spd;

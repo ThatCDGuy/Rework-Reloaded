@@ -1,7 +1,5 @@
-if sprite_index == spr_pizzaportalend
-{
-	with obj_player
-	{
+if (sprite_index == spr_pizzaportalend) {
+	with (obj_player) {
 		visible = true;
 		sprite_index = spr_pizzaportalentrancestart;
 		image_index = 0;

@@ -1,1 +1,1 @@
-targetRoom = industrial_treasure
+targetRoom = industrial_treasure;

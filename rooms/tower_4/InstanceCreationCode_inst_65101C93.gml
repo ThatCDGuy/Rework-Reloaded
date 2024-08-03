@@ -1,2 +1,2 @@
-level = "industrial"
-treasureindex = 14
+level = "industrial";
+treasureindex = 14;

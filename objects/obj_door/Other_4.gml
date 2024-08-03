@@ -1,27 +1,36 @@
-if (place_meeting(x, y, obj_player) && !ds_list_find_index(global.saveroom, id))
+if (place_meeting(x, y, obj_player) && !ds_list_find_index(global.saveroom, id)) {
 	ds_list_add(global.saveroom, id);
-if (ds_list_find_index(global.saveroom, id) != -1)
+}
+if (ds_list_find_index(global.saveroom, id) != -1) {
 	visited = true;
-if visited == 1 && sprite_index != spr_pumpkingate && sprite_index != spr_cheftaskdoor && sprite_index != spr_pepperdoor && sprite_index != spr_elevatordown1 && sprite_index != spr_elevatordown2 && sprite_index != spr_elevatordown3 && sprite_index != spr_elevatordown4
+}
+if (
+	visited == 1
+	&& sprite_index != spr_pumpkingate
+	&& sprite_index != spr_cheftaskdoor
+	&& sprite_index != spr_pepperdoor
+	&& sprite_index != spr_elevatordown1
+	&& sprite_index != spr_elevatordown2
+	&& sprite_index != spr_elevatordown3
+	&& sprite_index != spr_elevatordown4
+) {
 	sprite_index = spr_doorvisited;
-if (sprite_index == spr_doorvisited || sprite_index == spr_doorunvisited)
-{
+}
+if (sprite_index == spr_doorvisited || sprite_index == spr_doorunvisited) {
 	sprite_index = global.door_sprite;
 	image_index = global.door_index;
 	image_speed = 0;
 }
-if john && global.panic
-{
-	if room == saloon_4
+if (john && global.panic) {
+	if (room == saloon_4) {
 		sprite_index = spr_doorblockedsaloon;
-	else
+	} else {
 		sprite_index = spr_doorblocked;
+	}
 }
-if sprite_index == spr_cheftaskdoor
-{
+if (sprite_index == spr_cheftaskdoor) {
 	var arr = ["placebo"];
-	switch room
-	{
+	switch (room) {
 		case tower_1:
 		case tower_cheftask1:
 			arr = ["entrance1", "entrance2", "entrance3", "medieval1", "medieval2", "medieval3", "ruin1", "ruin2", "ruin3", "dungeon1", "dungeon2", "dungeon3", "sranks1", "pepperman"];
@@ -45,16 +54,15 @@ if sprite_index == spr_cheftaskdoor
 	}
 	var _found = false;
 	ini_open_from_string(obj_savesystem.ini_str);
-	for (var i = 0; i < array_length(arr); i++)
-	{
+	for (var i = 0; i < array_length(arr); i++) {
 		var b = arr[i];
-		if (ini_read_real("achievements", b, false) == 0)
-		{
+		if (ini_read_real("achievements", b, false) == 0) {
 			_found = true;
 			break;
 		}
 	}
 	ini_close();
-	if !_found
+	if (!_found) {
 		sprite_index = spr_cheftaskdoor_gold;
+	}
 }

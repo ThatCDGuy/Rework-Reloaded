@@ -1,9 +1,9 @@
-if state != states.titlescreen && other.grounded && other.key_up2
-{
-	if other.isgustavo
+if (state != states.titlescreen && other.grounded && other.key_up2) {
+	if (other.isgustavo) {
 		isgustavo = true;
-	else
+	} else {
 		isgustavo = false;
+	}
 	state = states.titlescreen;
 	playerid = other.id;
 	other.state = states.actor;

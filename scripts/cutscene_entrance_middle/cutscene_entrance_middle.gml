@@ -1,7 +1,5 @@
-function cutscene_entrance_middle()
-{
-	with obj_solidpillar
-	{
+function cutscene_entrance_middle() {
+	with (obj_solidpillar) {
 		destroy = true;
 		instance_destroy();
 	}

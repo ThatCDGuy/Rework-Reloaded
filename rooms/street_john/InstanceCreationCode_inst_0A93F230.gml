@@ -1,2 +1,2 @@
-targetRoom = street_5
-depth = (obj_player.depth + 10)
+targetRoom = street_5;
+depth = obj_player.depth + 10;

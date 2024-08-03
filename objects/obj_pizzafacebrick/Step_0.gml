@@ -1,11 +1,12 @@
-if collision
+if (collision) {
 	event_inherited();
-else
-{
+} else {
 	x += hsp;
 	y += vsp;
-	if vsp < 20
+	if (vsp < 20) {
 		vsp += grav;
-	if vsp > 0
+	}
+	if (vsp > 0) {
 		collision = true;
+	}
 }

@@ -1,12 +1,9 @@
-function scr_player_playersuperattack()
-{
+function scr_player_playersuperattack() {
 	image_speed = 0.5;
-	switch superattackstate
-	{
+	switch (superattackstate) {
 		case states.transition:
 			sprite_index = spr_rageidle;
-			with bossID
-			{
+			with (bossID) {
 				hsp = 0;
 				vsp = 0;
 				x = hitX;
@@ -16,10 +13,11 @@ function scr_player_playersuperattack()
 			vsp = 0;
 			x = hitX;
 			y = hitY;
-			if hitLag > 0
+			if (hitLag > 0) {
 				hitLag--;
-			else
+			} else {
 				superattackstate = states.jump;
+			}
 			break;
 		case states.jump:
 			sprite_index = spr_grab;
@@ -29,8 +27,7 @@ function scr_player_playersuperattack()
 			vsp = 0;
 			hsp = lengthdir_x(spd, dir);
 			vsp = lengthdir_y(spd, dir);
-			if (place_meeting(x, y, bossID))
-			{
+			if (place_meeting(x, y, bossID)) {
 				superattackstate = states.punch;
 				randomize_animations([spr_suplexmash1, spr_suplexmash2, spr_suplexmash3, spr_suplexmash4, spr_player_suplexmash5, spr_player_suplexmash6, spr_player_suplexmash7, spr_punch]);
 				punchcount = 20;
@@ -40,31 +37,24 @@ function scr_player_playersuperattack()
 		case states.punch:
 			vsp = 0;
 			hsp = xscale * 2;
-			with bossID
-			{
+			with (bossID) {
 				x = other.x;
 				y = other.y;
 				hsp = other.hsp;
 				image_xscale = -other.xscale;
 			}
-			if floor(image_index) == image_number - 1
-			{
-				if punchcount > 0
-				{
+			if (floor(image_index) == image_number - 1) {
+				if (punchcount > 0) {
 					punchcount--;
 					randomize_animations([spr_suplexmash1, spr_suplexmash2, spr_suplexmash3, spr_suplexmash4, spr_player_suplexmash5, spr_player_suplexmash6, spr_player_suplexmash7, spr_punch]);
 					image_index = 0;
 					fmod_event_one_shot_3d("event:/sfx/enemies/killingblow", x, y);
-					with bossID
-					{
+					with (bossID) {
 						boss_hurt_noplayer(25);
 						state = states.playersuperattack;
 					}
-				}
-				else
-				{
-					with bossID
-					{
+				} else {
+					with (bossID) {
 						boss_hurt_noplayer(30);
 						state = states.hit;
 						hitX = x;
@@ -85,19 +75,17 @@ function scr_player_playersuperattack()
 			}
 			break;
 		case states.grab:
-			if image_index < 7
-			{
+			if (image_index < 7) {
 				hsp = 0;
 				vsp = 0;
-			}
-			else if !finishingblow
-			{
+			} else if (!finishingblow) {
 				finishingblow = true;
 				vsp = -4;
 				hsp = -xscale * 4;
 			}
-			if floor(image_index) == image_number - 1
+			if (floor(image_index) == image_number - 1) {
 				state = states.normal;
+			}
 			break;
 	}
 }

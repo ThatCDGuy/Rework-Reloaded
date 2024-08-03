@@ -1,9 +1,8 @@
-if !attacking
-{
-	if !invincible
-	{
+if (!attacking) {
+	if (!invincible) {
 		boss_hurt_noplayer(30);
-		if hp <= 0
+		if (hp <= 0) {
 			boss_destroy(lastplayerid);
+		}
 	}
 }

@@ -1,5 +1,4 @@
-enum states
-{
+enum states {
 	normal,
 	revolver,
 	dynamite,
@@ -300,17 +299,15 @@ enum states
 	teleport,
 	KO,
 	camera_followtarget,
-	
 	// states for stick's level from the leaks. state code was removed.
 	UNKNOWN_1, // 300
 	UNKNOWN_2, // 301
 	UNKNOWN_3, // 302
 	UNKNOWN_4, // 303, used by obj_stickhat
 	UNKNOWN_5, // 304
-	
 	// noise
 	machcancelstart,
-	machcancel
+	machcancel,
 }
 
 global.coop = false;
@@ -324,8 +321,7 @@ global.stickreq[3] = 200;
 global.stickreq[4] = 210;
 global.levelattempts = 0;
 global.palette_arr = [false, false, false, false, false];
-for (var i = 0; i < array_length(data_arr); i++)
-{
+for (var i = 0; i < array_length(data_arr); i++) {
 	global.game[i] = scr_read_game(data_arr[i] + ".ini");
 	global.gameN[i] = scr_read_game(data_arr[i] + "N.ini");
 }
@@ -422,14 +418,14 @@ global.mrstickcutscene3 = -4;
 global.chateauswap = -4;
 global.warcutscene = -4;
 pal_swap_init_system(shd_pal_swapper);
-with (obj_player1)
+with (obj_player1) {
 	state = states.normal;
+}
 global.loadeditor = false;
-if (global.longintro)
-{
+if (global.longintro) {
 	global.longintro = false;
 	room_goto(Longintro);
-}
-else
+} else {
 	room_goto(Mainmenu);
+}
 instance_destroy(obj_cutscene_handler);

@@ -1,1 +1,1 @@
-x += (image_xscale * 5);
+x += image_xscale * 5;

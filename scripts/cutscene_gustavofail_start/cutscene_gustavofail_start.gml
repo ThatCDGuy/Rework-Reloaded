@@ -1,15 +1,12 @@
-function cutscene_gustavofail_start()
-{
+function cutscene_gustavofail_start() {
 	var _id = id;
-	with obj_cutscene_handler
-	{
-		if id < _id
+	with (obj_cutscene_handler) {
+		if (id < _id) {
 			instance_destroy();
+		}
 	}
-	if (!instance_exists(obj_fadeout) && obj_player1.state != states.taxi && obj_player1.state != states.comingoutdoor)
-	{
-		with obj_player1
-		{
+	if (!instance_exists(obj_fadeout) && obj_player1.state != states.taxi && obj_player1.state != states.comingoutdoor) {
+		with (obj_player1) {
 			visible = true;
 			image_alpha = 1;
 			state = states.actor;
@@ -19,8 +16,7 @@ function cutscene_gustavofail_start()
 			hsp = 0;
 			vsp = 0;
 		}
-		with obj_gustavo
-		{
+		with (obj_gustavo) {
 			state = states.actor;
 			sprite_index = spr_gustavo_idle;
 			image_speed = 0.35;

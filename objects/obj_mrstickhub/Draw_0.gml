@@ -1,6 +1,5 @@
 draw_self();
-if (place_meeting(x, y, obj_player))
-{
+if (place_meeting(x, y, obj_player)) {
 	draw_set_color(c_white);
 	var txt = concat(maxscore);
 	draw_set_halign(fa_center);

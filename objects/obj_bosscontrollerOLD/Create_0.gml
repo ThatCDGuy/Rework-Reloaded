@@ -1,8 +1,7 @@
 depth = obj_drawcontroller.depth + 2;
-function get_player_hp()
-{
-	
-}
+
+function get_player_hp() {}
+
 player_hpmultiplier = 300;
 player_hpbase = player_hpmultiplier * 5;
 player_hpmax = player_hpbase;

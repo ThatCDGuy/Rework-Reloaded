@@ -4,18 +4,15 @@ parryable = false;
 parried = false;
 team = 1;
 
-function SUPER_player_hurt(damage, player)
-{
-	if !collisioned && player.state != states.arenaround
-	{
-		if (instance_exists(obj_bosscontroller))
+function SUPER_player_hurt(damage, player) {
+	if (!collisioned && player.state != states.arenaround) {
+		if (instance_exists(obj_bosscontroller)) {
 			obj_bosscontroller.player_hp -= damage;
+		}
 		collisioned = true;
-		with player
-		{
+		with (player) {
 			var lag = 8;
-			if (state == states.chainsaw || state == states.hit)
-			{
+			if (state == states.chainsaw || state == states.hit) {
 				x = hitX;
 				y = hitY;
 			}
@@ -34,40 +31,38 @@ function SUPER_player_hurt(damage, player)
 			instance_create(x, y, obj_slapstar);
 			instance_create(x, y, obj_baddiegibs);
 			instance_create(x, y, obj_baddiegibs);
-			with obj_camera
-			{
+			with (obj_camera) {
 				shake_mag = 3;
 				shake_mag_acc = 3 / room_speed;
 			}
 		}
 	}
 }
-function SUPER_parry()
-{
-	if !parried
-	{
+
+function SUPER_parry() {
+	if (!parried) {
 		team = 0;
 		parried = true;
 	}
 }
-function SUPER_boss_hurt(player)
-{
-	if !collisioned && team != player.team
-	{
-		with player
+
+function SUPER_boss_hurt(player) {
+	if (!collisioned && team != player.team) {
+		with (player) {
 			boss_hurt_noplayer(other.dmg);
+		}
 		collisioned = true;
 	}
 }
-function boss_hurt(player)
-{
+
+function boss_hurt(player) {
 	SUPER_boss_hurt(player);
 }
-function parry()
-{
+
+function parry() {
 	SUPER_parry();
 }
-function player_hurt(damage, player)
-{
+
+function player_hurt(damage, player) {
 	SUPER_player_hurt(damage, player);
 }

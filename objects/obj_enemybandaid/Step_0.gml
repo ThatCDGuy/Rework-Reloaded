@@ -1,8 +1,7 @@
-if (instance_exists(baddieid))
-{
+if (instance_exists(baddieid)) {
 	x = baddieid.x;
 	y = baddieid.y;
 	image_xscale = baddieid.image_xscale;
-}
-else
+} else {
 	instance_destroy();
+}

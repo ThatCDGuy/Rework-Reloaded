@@ -1,4 +1,6 @@
-if (global.forestcutscene == noone)
+if (global.forestcutscene == noone) {
 	global.forestcutscene = quick_ini_read_real(get_savefile_ini(), "cutscene", "forest", false);
-if (!global.forestcutscene)
+}
+if (!global.forestcutscene) {
 	instance_destroy();
+}

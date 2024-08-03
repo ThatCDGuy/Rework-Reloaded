@@ -1,7 +1,5 @@
-function __init_view()
-{
-	enum e__VW
-	{
+function __init_view() {
+	enum e__VW {
 		XView,
 		YView,
 		WView,
@@ -19,5 +17,5 @@ function __init_view()
 		HPort,
 		Camera,
 		SurfaceID,
-	};
+	}
 }

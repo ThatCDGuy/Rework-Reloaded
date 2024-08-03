@@ -1,14 +1,13 @@
-with other
-{
-	if character == "V"
+with (other) {
+	if (character == "V") {
 		scr_hurtplayer(id);
-	else if !isgustavo && state != states.ghost && state != states.ghostpossess && state != states.johnghost && state != states.actor && state != states.parry && state != states.gotoplayer
-	{
+	} else if (!isgustavo && state != states.ghost && state != states.ghostpossess && state != states.johnghost && state != states.actor && state != states.parry && state != states.gotoplayer) {
 		scr_losepoints();
-		if ispeppino
+		if (ispeppino) {
 			create_transformation_tip(lang_get_value("ghosttip"), "ghost");
-		else
+		} else {
 			create_transformation_tip(lang_get_value("ghosttipN"), "ghostN");
+		}
 		fmod_event_one_shot("event:/sfx/pep/ghostintro");
 		grav /= 2;
 		state = states.ghost;
@@ -19,8 +18,7 @@ with other
 		ghostangle = 0;
 		ghosttimer = 0;
 		sprite_index = spr_ghostidle;
-		with (instance_create(x, y, obj_sausageman_dead))
-		{
+		with (instance_create(x, y, obj_sausageman_dead)) {
 			hsp = other.image_xscale * 3;
 			image_xscale = -other.image_xscale;
 			sprite_index = other.spr_dead;

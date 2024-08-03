@@ -1,5 +1,5 @@
-if sprite_index == switchend
-{
-	with obj_followcharacter
+if (sprite_index == switchend) {
+	with (obj_followcharacter) {
 		visible = true;
+	}
 }

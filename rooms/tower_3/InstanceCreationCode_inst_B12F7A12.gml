@@ -1,2 +1,2 @@
-level = "minigolf"
-treasureindex = 11
+level = "minigolf";
+treasureindex = 11;

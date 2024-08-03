@@ -1,10 +1,8 @@
-if (!instance_exists(ID))
-{
+if (!instance_exists(ID)) {
 	instance_destroy();
 	exit;
 }
-if ID.state != states.charge
-{
+if (ID.state != states.charge) {
 	ID.hitboxcreate = false;
 	instance_destroy();
 }

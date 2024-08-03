@@ -1,7 +1,7 @@
-with obj_bosscontroller
+with (obj_bosscontroller) {
 	bossID = other.id;
-if (instance_exists(obj_fakepepflash))
-{
+}
+if (instance_exists(obj_fakepepflash)) {
 	elitehit = 1;
 	phase = 2;
 	destroyable = true;

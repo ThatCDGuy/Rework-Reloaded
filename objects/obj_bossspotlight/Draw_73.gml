@@ -1,5 +1,6 @@
-if (!surface_exists(surface))
+if (!surface_exists(surface)) {
 	surface = surface_create(SCREEN_WIDTH, SCREEN_HEIGHT);
+}
 surface_set_target(surface);
 draw_clear_alpha(0, 0);
 var cx = camera_get_view_x(view_camera[0]);
@@ -12,8 +13,7 @@ draw_set_color(c_white);
 draw_set_alpha(1);
 var tx = room_width / 2;
 var ty = room_height / 2;
-if (instance_exists(objectID))
-{
+if (instance_exists(objectID)) {
 	tx = objectID.x;
 	ty = objectID.y;
 }

@@ -1,6 +1,5 @@
 room = targetRoom;
-with obj_player
-{
+with (obj_player) {
 	targetRoom = other.targetRoom;
 	targetDoor = other.targetDoor;
 	state = states.comingoutdoor;

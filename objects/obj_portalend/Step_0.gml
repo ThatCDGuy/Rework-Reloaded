@@ -1,4 +1,5 @@
-if global.panic == false
+if (global.panic == false) {
 	image_alpha = 0.5;
-else
+} else {
 	image_alpha = 1;
+}

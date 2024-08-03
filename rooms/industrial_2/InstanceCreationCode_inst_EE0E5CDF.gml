@@ -1,2 +1,2 @@
-chosenstate = states.tackle
-escape = true
+chosenstate = states.tackle;
+escape = true;

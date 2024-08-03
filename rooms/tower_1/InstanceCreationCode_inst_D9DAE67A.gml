@@ -1,1 +1,1 @@
-sprite_index = spr_gustavochase
+sprite_index = spr_gustavochase;

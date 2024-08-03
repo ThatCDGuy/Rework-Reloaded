@@ -1,5 +1,4 @@
-if (instance_number(object_index) > 1)
-{
+if (instance_number(object_index) > 1) {
 	instance_destroy();
 	exit;
 }
@@ -533,8 +532,7 @@ farmerpos = 0;
 clowntimer = 0;
 knightmiddairstop = 0;
 knightmove = -1;
-if (!variable_global_exists("saveroom"))
-{
+if (!variable_global_exists("saveroom")) {
 	global.combodropped = false;
 	global.saveroom = ds_list_create();
 	global.escaperoom = ds_list_create();
@@ -614,7 +612,12 @@ if (!variable_global_exists("saveroom"))
 	global.bigfont = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¡¿?.1234567890:ÁÄÃÀÂÉÈÊËÍÎÏÓÖÕÔÚÙÛÜÇ", true, 0);
 	global.smallfont = font_add_sprite_ext(spr_smallerfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¡.:?¿1234567890ÁÄÃÀÂÉÈÊËÍÎÏÓÖÕÔÚÙÛÜÇ", true, 0);
 	global.tutorialfont = font_add_sprite_ext(spr_tutorialfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz!¡,.:0123456789'?¿-áäãàâæéèêëíîïóöõôúùûüÿŸÁÄÃÀÂÉÈÊËÍÎÏÓÖÕÔÚÙÛÜÇç", true, 2);
-	global.creditsfont = font_add_sprite_ext(spr_creditsfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.:!0123456789?'\"ÁÄÃÀÂÉÈÊËÍÎÏÓÖÕÔÚÙÛÜáäãàâéèêëíîïóöõôúùûüÇç_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", true, 2);
+	global.creditsfont = font_add_sprite_ext(
+		spr_creditsfont,
+		"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.:!0123456789?'\"ÁÄÃÀÂÉÈÊËÍÎÏÓÖÕÔÚÙÛÜáäãàâéèêëíîïóöõôúùûüÇç_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль",
+		true,
+		2
+	);
 	global.moneyfont = font_add_sprite_ext(spr_stickmoney_font, "0123456789$-", true, 0);
 	global.font_map = ds_map_create();
 	ds_map_set(global.font_map, "bigfont_en", global.bigfont);
@@ -624,11 +627,9 @@ if (!variable_global_exists("saveroom"))
 	ds_map_set(global.font_map, "captionfont_en", fnt_caption);
 	font_add_enable_aa(false);
 	var key = ds_map_find_first(global.lang_map);
-	for (var i = 0; i < ds_map_size(global.lang_map); i++)
-	{
+	for (var i = 0; i < ds_map_size(global.lang_map); i++) {
 		var lang = ds_map_find_value(global.lang_map, key);
-		if (ds_map_find_value(lang, "custom_fonts"))
-		{
+		if (ds_map_find_value(lang, "custom_fonts")) {
 			ds_map_set(global.font_map, concat("tutorialfont_", key), lang_get_custom_font("tutorialfont", lang));
 			ds_map_set(global.font_map, concat("creditsfont_", key), lang_get_custom_font("creditsfont", lang));
 			ds_map_set(global.font_map, concat("bigfont_", key), lang_get_custom_font("bigfont", lang));
@@ -657,65 +658,65 @@ if (!variable_global_exists("saveroom"))
 	global.noisejetpack = false;
 	global.hasfarmer = array_create(3, false);
 	global.savedattackstyle = -4;
-	
+
 	global.throw_frame = 0;
-	global.throw_frame[obj_pizzagoblin] = 11
-	global.throw_frame[obj_canongoblin] = 13
-	global.throw_frame[obj_noisegoblin] = 18
-	global.throw_frame[obj_cheeserobot] = 6
-	global.throw_frame[obj_spitcheese] = 2
-	global.throw_frame[obj_bazookabaddie] = 7
-	global.throw_frame[obj_trash] = 2
-	global.throw_frame[obj_invtrash] = 2
-	global.throw_frame[obj_robot] = 2
-	global.throw_frame[obj_kentukykenny] = 8
-	global.throw_frame[obj_kentukylenny] = 8
-	global.throw_frame[obj_pizzard] = 6
-	global.throw_frame[obj_pepgoblin] = 3
-	global.throw_frame[obj_pepbat] = 8
-	global.throw_frame[obj_swedishmonkey] = 15
-	global.throw_frame[obj_rancher] = 10
-	global.throw_frame[obj_pickle] = 2
-	global.throw_frame[obj_tank] = 6
-	global.throw_frame[obj_thug_blue] = 9
-	global.throw_frame[obj_thug_green] = 9
-	global.throw_frame[obj_thug_red] = 9
-	global.throw_frame[obj_smokingpizzaslice] = 13
-	global.throw_frame[obj_miniufo] = 3
-	global.throw_frame[obj_kentukybomber] = 7
-	global.throw_frame[obj_miniufo_grounded] = 11
-	global.throw_frame[obj_farmerbaddie2] = 13
-	global.throw_frame[obj_farmerbaddie3] = 13
-	
+	global.throw_frame[obj_pizzagoblin] = 11;
+	global.throw_frame[obj_canongoblin] = 13;
+	global.throw_frame[obj_noisegoblin] = 18;
+	global.throw_frame[obj_cheeserobot] = 6;
+	global.throw_frame[obj_spitcheese] = 2;
+	global.throw_frame[obj_bazookabaddie] = 7;
+	global.throw_frame[obj_trash] = 2;
+	global.throw_frame[obj_invtrash] = 2;
+	global.throw_frame[obj_robot] = 2;
+	global.throw_frame[obj_kentukykenny] = 8;
+	global.throw_frame[obj_kentukylenny] = 8;
+	global.throw_frame[obj_pizzard] = 6;
+	global.throw_frame[obj_pepgoblin] = 3;
+	global.throw_frame[obj_pepbat] = 8;
+	global.throw_frame[obj_swedishmonkey] = 15;
+	global.throw_frame[obj_rancher] = 10;
+	global.throw_frame[obj_pickle] = 2;
+	global.throw_frame[obj_tank] = 6;
+	global.throw_frame[obj_thug_blue] = 9;
+	global.throw_frame[obj_thug_green] = 9;
+	global.throw_frame[obj_thug_red] = 9;
+	global.throw_frame[obj_smokingpizzaslice] = 13;
+	global.throw_frame[obj_miniufo] = 3;
+	global.throw_frame[obj_kentukybomber] = 7;
+	global.throw_frame[obj_miniufo_grounded] = 11;
+	global.throw_frame[obj_farmerbaddie2] = 13;
+	global.throw_frame[obj_farmerbaddie3] = 13;
+
 	global.throw_sprite = 0;
-	global.throw_sprite[obj_pizzagoblin] = spr_pizzagoblin_throwbomb
-	global.throw_sprite[obj_canongoblin] = spr_canongoblin_throwbomb
-	global.throw_sprite[obj_noisegoblin] = spr_archergoblin_shoot
-	global.throw_sprite[obj_cheeserobot] = spr_cheeserobot_attack
-	global.throw_sprite[obj_spitcheese] = spr_spitcheese_spit
-	global.throw_sprite[obj_bazookabaddie] = spr_tank_shoot
-	global.throw_sprite[obj_trash] = spr_trash_throw
-	global.throw_sprite[obj_invtrash] = spr_invtrash_throw
-	global.throw_sprite[obj_robot] = spr_robot_attack
-	global.throw_sprite[obj_kentukykenny] = spr_kentukykenny_throw
-	global.throw_sprite[obj_kentukylenny] = spr_kentukykenny_throw
-	global.throw_sprite[obj_pizzard] = spr_pizzard_shoot
-	global.throw_sprite[obj_pepgoblin] = spr_pepgoblin_kick
-	global.throw_sprite[obj_pepbat] = spr_pepbat_kick
-	global.throw_sprite[obj_swedishmonkey] = spr_swedishmonkey_eat
-	global.throw_sprite[obj_rancher] = spr_ranch_shoot
-	global.throw_sprite[obj_pickle] = spr_pickle_attack
-	global.throw_sprite[obj_tank] = spr_tank_shoot
-	global.throw_sprite[obj_thug_blue] = spr_shrimp_knife
-	global.throw_sprite[obj_thug_green] = spr_shrimp_knife
-	global.throw_sprite[obj_thug_red] = spr_shrimp_knife
-	global.throw_sprite[obj_smokingpizzaslice] = spr_pizzaslug_cough
-	global.throw_sprite[obj_miniufo] = spr_ufolive_shoot
-	global.throw_sprite[obj_kentukybomber] = spr_kentukybomber_attack
-	global.throw_sprite[obj_miniufo_grounded] = spr_ufogrounded_shoot
-	global.throw_sprite[obj_farmerbaddie2] = spr_farmer2_throw
-	global.throw_sprite[obj_farmerbaddie3] = spr_peasanto_throw
-	
+	global.throw_sprite[obj_pizzagoblin] = spr_pizzagoblin_throwbomb;
+	global.throw_sprite[obj_canongoblin] = spr_canongoblin_throwbomb;
+	global.throw_sprite[obj_noisegoblin] = spr_archergoblin_shoot;
+	global.throw_sprite[obj_cheeserobot] = spr_cheeserobot_attack;
+	global.throw_sprite[obj_spitcheese] = spr_spitcheese_spit;
+	global.throw_sprite[obj_bazookabaddie] = spr_tank_shoot;
+	global.throw_sprite[obj_trash] = spr_trash_throw;
+	global.throw_sprite[obj_invtrash] = spr_invtrash_throw;
+	global.throw_sprite[obj_robot] = spr_robot_attack;
+	global.throw_sprite[obj_kentukykenny] = spr_kentukykenny_throw;
+	global.throw_sprite[obj_kentukylenny] = spr_kentukykenny_throw;
+	global.throw_sprite[obj_pizzard] = spr_pizzard_shoot;
+	global.throw_sprite[obj_pepgoblin] = spr_pepgoblin_kick;
+	global.throw_sprite[obj_pepbat] = spr_pepbat_kick;
+	global.throw_sprite[obj_swedishmonkey] = spr_swedishmonkey_eat;
+	global.throw_sprite[obj_rancher] = spr_ranch_shoot;
+	global.throw_sprite[obj_pickle] = spr_pickle_attack;
+	global.throw_sprite[obj_tank] = spr_tank_shoot;
+	global.throw_sprite[obj_thug_blue] = spr_shrimp_knife;
+	global.throw_sprite[obj_thug_green] = spr_shrimp_knife;
+	global.throw_sprite[obj_thug_red] = spr_shrimp_knife;
+	global.throw_sprite[obj_smokingpizzaslice] = spr_pizzaslug_cough;
+	global.throw_sprite[obj_miniufo] = spr_ufolive_shoot;
+	global.throw_sprite[obj_kentukybomber] = spr_kentukybomber_attack;
+	global.throw_sprite[obj_miniufo_grounded] = spr_ufogrounded_shoot;
+	global.throw_sprite[obj_farmerbaddie2] = spr_farmer2_throw;
+	global.throw_sprite[obj_farmerbaddie3] = spr_peasanto_throw;
+
 	global.reset_timer = 0;
 	global.reset_timer[obj_pizzagoblin] = 200;
 	global.reset_timer[obj_canongoblin] = 200;
@@ -723,27 +724,27 @@ if (!variable_global_exists("saveroom"))
 	global.reset_timer[obj_cheeserobot] = 200;
 	global.reset_timer[obj_spitcheese] = 100;
 	global.reset_timer[obj_bazookabaddie] = 400;
-	global.reset_timer[obj_trash] = 100
-	global.reset_timer[obj_invtrash] = 100
-	global.reset_timer[obj_robot] = 150
-	global.reset_timer[obj_kentukykenny] = 200
-	global.reset_timer[obj_kentukylenny] = 200
-	global.reset_timer[obj_pizzard] = 100
-	global.reset_timer[obj_pepgoblin] = 200
-	global.reset_timer[obj_pepbat] = 200
-	global.reset_timer[obj_swedishmonkey] = 200
-	global.reset_timer[obj_rancher] = 100
-	global.reset_timer[obj_pickle] = 200
-	global.reset_timer[obj_tank] = 100
-	global.reset_timer[obj_thug_blue] = 60
-	global.reset_timer[obj_thug_green] = 60
-	global.reset_timer[obj_thug_red] = 60
-	global.reset_timer[obj_smokingpizzaslice] = 10
-	global.reset_timer[obj_miniufo] = 100
-	global.reset_timer[obj_kentukybomber] = 100
-	global.reset_timer[obj_miniufo_grounded] = 100
-	global.reset_timer[obj_farmerbaddie2] = 100
-	global.reset_timer[obj_farmerbaddie3] = 100
+	global.reset_timer[obj_trash] = 100;
+	global.reset_timer[obj_invtrash] = 100;
+	global.reset_timer[obj_robot] = 150;
+	global.reset_timer[obj_kentukykenny] = 200;
+	global.reset_timer[obj_kentukylenny] = 200;
+	global.reset_timer[obj_pizzard] = 100;
+	global.reset_timer[obj_pepgoblin] = 200;
+	global.reset_timer[obj_pepbat] = 200;
+	global.reset_timer[obj_swedishmonkey] = 200;
+	global.reset_timer[obj_rancher] = 100;
+	global.reset_timer[obj_pickle] = 200;
+	global.reset_timer[obj_tank] = 100;
+	global.reset_timer[obj_thug_blue] = 60;
+	global.reset_timer[obj_thug_green] = 60;
+	global.reset_timer[obj_thug_red] = 60;
+	global.reset_timer[obj_smokingpizzaslice] = 10;
+	global.reset_timer[obj_miniufo] = 100;
+	global.reset_timer[obj_kentukybomber] = 100;
+	global.reset_timer[obj_miniufo_grounded] = 100;
+	global.reset_timer[obj_farmerbaddie2] = 100;
+	global.reset_timer[obj_farmerbaddie3] = 100;
 }
 angle = 0;
 mach4mode = false;

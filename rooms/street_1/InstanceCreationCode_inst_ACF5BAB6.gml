@@ -1,1 +1,1 @@
-targetRoom = street_john
+targetRoom = street_john;
