@@ -9,6 +9,7 @@
 This repository doesn't include any of the datafiles (FMOD, langs) or sprites. An [UndertaleModTool](https://github.com/krzys-h/UndertaleModTool/releases) script is included to extract everything needed from the `data.win`, and port the required files to the decomp folder.
 
 # The Script
+This *COULD* be broken. As 2024 has slight asset changes, though it should "upgrade" the sprites automatically. 
 
 1. Make sure Pizza Tower is up to date, and open its `data.win` file in UndertaleModTool. Open the "Scripts" tab at the top of the window, and select "Run other script..."
 
