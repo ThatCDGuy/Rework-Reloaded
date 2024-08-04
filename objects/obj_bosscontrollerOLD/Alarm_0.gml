@@ -4,7 +4,7 @@ if (state == states.transition) {
 if (state == states.victory) {
 	exit;
 }
-if (obj_player.state != states.playersuperattack) {
+if (obj_player1.state != states.playersuperattack) {
 	round_timer--;
 	if (round_timer <= 0) {
 		instance_destroy(obj_baddiespawner);

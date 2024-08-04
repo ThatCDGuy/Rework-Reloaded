@@ -1,6 +1,13 @@
 if (instance_exists(obj_softlockcrash)) {
 	exit;
 }
+
+if (pause_dbf > 0)
+{
+	pause_dbf--;
+	exit;
+}
+
 if (
 	!pause
 	&& instance_exists(obj_player1)

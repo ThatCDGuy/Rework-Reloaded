@@ -5,7 +5,7 @@ if (addseconds <= 0) {
 }
 var xx = SCREEN_WIDTH / 2;
 var yy = timer_y;
-if (obj_player.y > (room_height - 139)) {
+if (obj_player1.y > (room_height - 139)) {
 	draw_set_alpha(0.3);
 } else {
 	draw_set_alpha(1);

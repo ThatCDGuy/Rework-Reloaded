@@ -19,5 +19,4 @@ for (var i = 0; i < array_length(banks); i++) {
 	}
 }
 global.sound_map = ds_map_create();
-global.steam_api = false;
 global.screenshotcount = 0;

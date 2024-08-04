@@ -1,3 +1,3 @@
-if (obj_player.state != states.portal) {
+if (obj_player1.state != states.portal) {
 	instance_destroy();
 }

@@ -29,6 +29,6 @@ with (instance_place(x, y + 1, obj_destructibleplatform)) {
 		image_speed = 0.35;
 	}
 }
-if (grounded && obj_player.state == states.freefallland) {
+if (grounded && obj_player1.state == states.freefallland) {
 	vsp = -11;
 }

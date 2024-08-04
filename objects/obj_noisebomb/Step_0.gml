@@ -1,7 +1,7 @@
 if (room == rank_room || room == timesuproom) {
 	visible = false;
 }
-if (obj_player.state == states.pizzathrow) {
+if (obj_player1.state == states.pizzathrow) {
 	visible = false;
 }
 if (obj_player1.spotlight == 1) {
@@ -18,8 +18,8 @@ if (sprite_index == spr_noisebomb_intro && floor(image_index) == image_number - 
 	y = playerid.y;
 }
 if (global.miniboss == 1 && sprite_index != spr_noisebomb_intro) {
-	image_alpha = obj_player.image_alpha;
-	if (obj_player.hsp != 0) {
+	image_alpha = obj_player1.image_alpha;
+	if (obj_player1.hsp != 0) {
 		sprite_index = spr_noisebomb_walk;
 	} else {
 		sprite_index = spr_noisebomb_idle;

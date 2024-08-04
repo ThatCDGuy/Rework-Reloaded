@@ -1,4 +1,4 @@
-enum menus {
+enum menu_options {
 	options, // categories.
 	audio,
 	video,
@@ -16,6 +16,8 @@ enum anchor {
 	center,
 	left,
 }
+
+menu_dbf = 0;
 
 depth = -99;
 scr_init_input();
@@ -38,31 +40,31 @@ scr_pauseicon_add(spr_pauseicons, 7, 8, 8);
 
 #region categories
 
-var categories = create_menu_fixed(menus.options, anchor.center, 0, 48, -4);
+var categories = create_menu_fixed(menu_options.options, anchor.center, 0, 48, -4);
 add_option_press(categories, 0, "option_audio", function() {
-	menu_goto(menus.audio);
+	menu_goto(menu_options.audio);
 });
 add_option_press(categories, 1, "option_video", function() {
-	menu_goto(menus.video);
+	menu_goto(menu_options.video);
 });
 add_option_press(categories, 2, "option_game", function() {
-	menu_goto(menus.game);
+	menu_goto(menu_options.game);
 });
 add_option_press(categories, 3, "option_controls", function() {
 	/*
 	obj_option.key_jump = false;
 	instance_create_unique(0, 0, obj_keyconfig);
 	*/
-	menu_goto(menus.controls);
+	menu_goto(menu_options.controls);
 });
 array_push(menus, categories);
 
 #endregion
 #region audio menu
 
-var audio_menu = create_menu_fixed(menus.audio, anchor.left, 150, 40);
+var audio_menu = create_menu_fixed(menu_options.audio, anchor.left, 150, 40);
 add_option_press(audio_menu, 0, "option_back", function() {
-	menu_goto(menus.options);
+	menu_goto(menu_options.options);
 	fmod_event_instance_stop(global.snd_slidermaster, true);
 	fmod_event_instance_stop(global.snd_slidermusic, true);
 	fmod_event_instance_stop(global.snd_slidersfx, true);
@@ -129,31 +131,29 @@ array_push(menus, audio_menu);
 #endregion
 #region video menu
 
-var video_menu = create_menu_fixed(menus.video, anchor.left, 150, 40);
+var video_menu = create_menu_fixed(menu_options.video, anchor.left, 150, 40);
 add_option_press(video_menu, 0, "option_back", function() {
-	menu_goto(menus.options);
+	menu_goto(menu_options.options);
 });
 
-if (!steam_utils_is_steam_running_on_steam_deck()) {
-	add_option_press(video_menu, 1, "option_window_mode", function() {
-		menu_goto(menus.window);
-	});
+add_option_press(video_menu, 1, "option_window_mode", function() {
+	menu_goto(menu_options.window);
+});
 
-	var res = [];
-	for (var i = 0; i < array_length(global.resolutions[obj_screensizer.aspect_ratio]); i++) {
-		var b = global.resolutions[obj_screensizer.aspect_ratio][i];
-		array_push(res, create_option_value(concat(b[0], "X", b[1]), i, false));
-	}
-
-	add_option_multiple(video_menu, 2, "option_resolution", res, function(val) {
-		ini_open_from_string(obj_savesystem.ini_str_options);
-		ini_write_real("Option", "resolution", val);
-		obj_savesystem.ini_str_options = ini_close();
-		global.option_resolution = val;
-		screen_apply_size();
-	})
-		.value = global.option_resolution;
+var res = [];
+for (var i = 0; i < array_length(global.resolutions[obj_screensizer.aspect_ratio]); i++) {
+	var b = global.resolutions[obj_screensizer.aspect_ratio][i];
+	array_push(res, create_option_value(concat(b[0], "X", b[1]), i, false));
 }
+
+add_option_multiple(video_menu, 2, "option_resolution", res, function(val) {
+	ini_open_from_string(obj_savesystem.ini_str_options);
+	ini_write_real("Option", "resolution", val);
+	obj_savesystem.ini_str_options = ini_close();
+	global.option_resolution = val;
+	screen_apply_size();
+})
+	.value = global.option_resolution;
 
 add_option_toggle(video_menu, 3, "option_vsync", function(val) {
 	ini_open_from_string(obj_savesystem.ini_str_options);
@@ -185,9 +185,9 @@ array_push(menus, video_menu);
 #endregion
 #region window menu
 
-var window_menu = create_menu_fixed(menus.window, anchor.left, 150, 40, menus.video);
+var window_menu = create_menu_fixed(menu_options.window, anchor.left, 150, 40, menu_options.video);
 add_option_press(window_menu, 0, "option_back", function() {
-	menu_goto(menus.video);
+	menu_goto(menu_options.video);
 });
 add_option_press(window_menu, 1, "option_windowed", function() {
 	screen_option_apply_fullscreen(0);
@@ -206,9 +206,9 @@ array_push(menus, window_menu);
 #endregion
 #region resolutions menu
 
-var resolution_menu = create_menu_fixed(menus.resolution, anchor.left, 150, 40, menus.video);
+var resolution_menu = create_menu_fixed(menu_options.resolution, anchor.left, 150, 40, menu_options.video);
 add_option_press(resolution_menu, 0, "option_back", function() {
-	menu_goto(menus.video);
+	menu_goto(menu_options.video);
 });
 
 for (i = 0; i < array_length(global.resolutions[obj_screensizer.aspect_ratio]); i++) {
@@ -225,6 +225,8 @@ for (i = 0; i < array_length(global.resolutions[obj_screensizer.aspect_ratio]); 
 			varname = "option_resolution";
 			depth = obj_option.depth - 1;
 		}
+		
+		obj_option.menu_dbf = 5;
 	})
 		.localization = false;
 }
@@ -233,9 +235,9 @@ array_push(menus, resolution_menu);
 #endregion
 #region game menu
 
-var game_menu = create_menu_fixed(menus.game, anchor.left, 150, 40);
+var game_menu = create_menu_fixed(menu_options.game, anchor.left, 150, 40);
 add_option_press(game_menu, 0, "option_back", function() {
-	menu_goto(menus.options);
+	menu_goto(menu_options.options);
 });
 
 add_option_toggle(game_menu, 1, "option_vibration", function(val) {
@@ -312,15 +314,15 @@ array_push(menus, game_menu);
 #endregion
 #region controls menu
 
-var controls_menu = create_menu_fixed(menus.controls, anchor.left, 150, 40);
+var controls_menu = create_menu_fixed(menu_options.controls, anchor.left, 150, 40);
 add_option_press(controls_menu, 0, "option_back", function() {
-	menu_goto(menus.options);
+	menu_goto(menu_options.options);
 });
 add_option_press(controls_menu, 1, "option_keyboard", function() {
-	menu_goto(menus.keyboard);
+	menu_goto(menu_options.keyboard);
 });
 add_option_press(controls_menu, 2, "option_controller", function() {
-	menu_goto(menus.controller);
+	menu_goto(menu_options.controller);
 });
 add_option_press(controls_menu, 3, "option_reset_config", function() {
 	ini_open_from_string(obj_savesystem.ini_str_options);
@@ -331,7 +333,7 @@ add_option_press(controls_menu, 3, "option_reset_config", function() {
 	with (obj_option) {
 		for (var i = 0; i < array_length(menus); i++) {
 			var b = menus[i];
-			if (b.menu_id == menus.controller || b.menu_id == menus.deadzone || b.menu_id == menus.keyboard) {
+			if (b.menu_id == menu_options.controller || b.menu_id == menu_options.deadzone || b.menu_id == menu_options.keyboard) {
 				for (var j = 0; j < array_length(b.options); j++) {
 					var q = b.options[j];
 					if (q.name == "option_deadzone") {
@@ -369,9 +371,9 @@ array_push(menus, controls_menu);
 #endregion
 #region keyboard menu
 
-var keyboard_menu = create_menu_fixed(menus.keyboard, anchor.left, 150, 40, menus.controls);
+var keyboard_menu = create_menu_fixed(menu_options.keyboard, anchor.left, 150, 40, menu_options.controls);
 add_option_press(keyboard_menu, 0, "option_back", function() {
-	menu_goto(menus.controls);
+	menu_goto(menu_options.controls);
 });
 
 add_option_press(keyboard_menu, 1, "option_controller_binds", function() {
@@ -396,10 +398,10 @@ array_push(menus, keyboard_menu);
 #endregion
 #region controller menu
 
-var controller_menu = create_menu_fixed(menus.controller, anchor.left, 150, 40, menus.controls);
+var controller_menu = create_menu_fixed(menu_options.controller, anchor.left, 150, 40, menu_options.controls);
 
 add_option_press(controller_menu, 0, "option_back", function() {
-	menu_goto(menus.controls);
+	menu_goto(menu_options.controls);
 });
 
 add_option_press(controller_menu, 1, "option_controller_binds", function(val) {
@@ -410,7 +412,7 @@ add_option_press(controller_menu, 1, "option_controller_binds", function(val) {
 });
 
 add_option_press(controller_menu, 2, "option_deadzone_title", function(val) {
-	menu_goto(menus.deadzone);
+	menu_goto(menu_options.deadzone);
 });
 
 add_option_toggle(controller_menu, 3, "option_controller_superjump", function(val) {
@@ -430,11 +432,11 @@ array_push(menus, controller_menu);
 #endregion
 #region deadzones menu
 
-var back = menus.controller;
-var deadzones_menu = create_menu_fixed(menus.deadzone, anchor.left, 150, 40, back);
+var back = menu_options.controller;
+var deadzones_menu = create_menu_fixed(menu_options.deadzone, anchor.left, 150, 40, back);
 
 add_option_press(deadzones_menu, 0, "option_back", function() {
-	menu_goto(menus.controller);
+	menu_goto(menu_options.controller);
 });
 add_option_slide(deadzones_menu, 1, "option_deadzone", function(val) {
 	if (val > 90) {

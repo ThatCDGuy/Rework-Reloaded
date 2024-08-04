@@ -57,17 +57,13 @@ function create_transformation_tip(str, save_entry = noone) {
 function scr_compile_icon_text(text, pos = 1, return_array = false) {
 	var arr = [];
 	var len = string_length(text);
-	var info = font_get_info(draw_get_font());
+	var info = font_get_offset(draw_get_font());
 	var newline = string_height(lang_get_value("default_letter"));
 	var char_x = 0;
 	var char_y = 0;
 
-	var offset_x = 0;
-	var offset_y = 0;
-	if (info.spriteIndex != -1) {
-		offset_x = sprite_get_xoffset(info.spriteIndex);
-		offset_y = sprite_get_yoffset(info.spriteIndex);
-	}
+	var offset_x = info.x;
+	var offset_y = info.y;
 
 	for (var saved_pos = 1; pos <= len; pos += 1) {
 		var start = pos;
@@ -412,8 +408,12 @@ function scr_draw_text_arr(x, y, text_arr, color = c_white, alpha = 1, effect = 
 						draw_set_halign(fa_center);
 						draw_set_valign(fa_middle);
 						draw_set_font(global.tutorialfont);
-						var ox = sprite_get_xoffset(spr_tutorialfont) / 2;
-						var oy = sprite_get_yoffset(spr_tutorialfont) / 2;
+						
+						var info = font_get_offset();
+						
+						var ox = info.x / 2;
+						var oy = info.y / 2;
+						
 						draw_text_color(cx + 16 - ox, cy + 14 - oy, icon.str, c_black, c_black, c_black, c_black, alpha);
 						draw_set_font(f);
 						draw_set_halign(fa_left);
@@ -424,7 +424,8 @@ function scr_draw_text_arr(x, y, text_arr, color = c_white, alpha = 1, effect = 
 
 			case texttype.array:
 				var val2 = b[4];
-				scr_draw_text_arr(cx, cy, val2, color, alpha, val);
+				var offset = font_get_offset();
+				scr_draw_text_arr(cx + offset.x, cy + offset.y, val2, color, alpha, val);
 				break;
 
 			case texttype.normal:

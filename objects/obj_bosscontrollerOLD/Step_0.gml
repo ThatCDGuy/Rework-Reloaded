@@ -139,7 +139,7 @@ switch (state) {
 	case states.normal:
 		bell_sprite = spr_bosstimer_bell;
 		round_y = Approach(round_y, round_ystart, 4);
-		if (super >= supermax && obj_player.state != states.playersuperattack) {
+		if (super >= supermax && obj_player1.state != states.playersuperattack) {
 			var p = false;
 			with (obj_player) {
 				if (!p && key_shoot2 && check_player_coop()) {
@@ -185,7 +185,7 @@ switch (state) {
 			case 2:
 				super_portrait_index += 0.35;
 				super_portrait_x += 1;
-				if (obj_player.state != states.playersuperattack || obj_player.superattackstate != states.transition) {
+				if (obj_player1.state != states.playersuperattack || obj_player1.superattackstate != states.transition) {
 					super_portrait_state = 0;
 				}
 				break;

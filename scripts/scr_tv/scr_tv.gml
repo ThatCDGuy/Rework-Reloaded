@@ -138,7 +138,7 @@ function tv_do_expression(sprite, reset_pal = false, force_pep = false) {
 					break;
 				case spr_tv_exprcollect:
 					expressionbuffer = 150;
-					if (obj_player.isgustavo) {
+					if (obj_player1.isgustavo) {
 						expressionsprite = spr_tv_happyG;
 						if (irandom(100) <= 50) {
 							fmod_event_one_shot_3d("event:/sfx/voice/brickok", obj_player1.x, obj_player1.y);

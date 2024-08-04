@@ -30,6 +30,6 @@ if (
 	gotowardsplayer = true;
 }
 if (gotowardsplayer == 1) {
-	move_towards_point(obj_player.x, obj_player.y, movespeed);
+	move_towards_point(obj_player1.x, obj_player1.y, movespeed);
 	movespeed++;
 }

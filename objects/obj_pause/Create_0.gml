@@ -11,6 +11,8 @@ depth = -500;
 backbuffer = 2;
 savedmusicmuffle = 0;
 
+pause_dbf = 0;
+
 pause_menu = ["pause_resume", "pause_options", "pause_restart", "pause_exit"];
 pause_menu_map = ds_map_create();
 ds_map_set(
@@ -19,6 +21,9 @@ ds_map_set(
 	[
 		0,
 		function() {
+			
+			pause_dbf = 1;
+			
 			scr_pause_activate_objects();
 			pause_unpause_music();
 			instance_destroy(obj_option);

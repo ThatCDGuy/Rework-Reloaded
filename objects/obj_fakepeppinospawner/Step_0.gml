@@ -10,7 +10,7 @@ if (!released) {
 		targetRoom = other.targetRoom;
 	}
 }
-if (global.key_inv == 1 && obj_player.state != states.keyget) {
+if (global.key_inv == 1 && obj_player1.state != states.keyget) {
 	global.chase = true;
 }
 if (global.panic == true) {

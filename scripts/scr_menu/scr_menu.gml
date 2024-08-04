@@ -18,7 +18,7 @@ function menu_goto(menu_id) {
 	optionselected = 0;
 }
 
-function create_menu_fixed(_menuid, _anchor, _xpad, _ypad, _backmenu = menus.options) {
+function create_menu_fixed(_menuid, _anchor, _xpad, _ypad, _backmenu = menu_options.options) {
 	return {menu_id: _menuid, type: menutype.toggle, anchor: _anchor, xpad: _xpad, ypad: _ypad, backmenu: _backmenu, options: []};
 }
 

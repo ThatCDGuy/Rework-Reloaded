@@ -1,4 +1,4 @@
-if (obj_player.state != states.bossintro) {
+if (obj_player1.state != states.bossintro) {
 	with (instance_create(x, y - 75, obj_press)) {
 		ID = other.id;
 	}

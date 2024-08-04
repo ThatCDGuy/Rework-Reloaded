@@ -1,16 +1,22 @@
 var j = 0;
 var m = menus[menu];
 
+if (menu_dbf > 0)
+{
+	menu_dbf--;
+	exit;
+}
+
 if (instance_exists(obj_keyconfig)) {
 	j = 4;
 }
-if (m.menu_id >= menus.controls && m.menu_id <= menus.unused_3) {
+if (m.menu_id >= menu_options.controls && m.menu_id <= menu_options.unused_3) {
 	j = 4;
-} else if (m.menu_id >= menus.video && m.menu_id <= menus.unused_1) {
+} else if (m.menu_id >= menu_options.video && m.menu_id <= menu_options.unused_1) {
 	j = 2;
-} else if (m.menu_id == menus.audio) {
+} else if (m.menu_id == menu_options.audio) {
 	j = 1;
-} else if (m.menu_id == menus.game) {
+} else if (m.menu_id == menu_options.game) {
 	j = 3;
 }
 
@@ -128,7 +134,7 @@ for (i = 0; i < array_length(m.options); i++) {
 	}
 }
 
-if (menu == menus.options) {
+if (menu == menu_options.options) {
 	scr_pauseicons_update(optionselected);
 } else {
 	scr_pauseicons_update(-1);
@@ -140,7 +146,7 @@ if (slidebuffer > 0) {
 
 if ((key_back || key_slap2 || keyboard_check_pressed(vk_escape)) && !instance_exists(obj_keyconfig) && !instance_exists(obj_audioconfig)) {
 	fmod_event_one_shot("event:/sfx/ui/back");
-	if (menu == menus.options) {
+	if (menu == menu_options.options) {
 		if (instance_exists(obj_mainmenuselect)) {
 			obj_mainmenuselect.selected = false;
 		}

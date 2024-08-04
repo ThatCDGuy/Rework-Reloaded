@@ -77,7 +77,7 @@ function scr_player_fightball() {
 	if (!instance_exists(dashcloudid) && grounded && !b) {
 		var water = place_meeting(x, y + 1, obj_water);
 		with (instance_create(x, y, obj_superdashcloud)) {
-			instance_create(obj_player.x, obj_player.y, obj_slapstar);
+			instance_create(obj_player1.x, obj_player1.y, obj_slapstar);
 			image_xscale = other.xscale;
 			if (water) {
 				sprite_index = spr_watereffect;

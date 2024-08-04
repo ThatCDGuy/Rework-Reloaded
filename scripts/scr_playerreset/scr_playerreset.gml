@@ -286,8 +286,8 @@ function scr_playerreset(stopmusic = true) {
 		ghostbumpbuffer = -1;
 		obj_camera.targetgolf = -4;
 		ds_list_clear(global.baddietomb);
-		obj_player.supercharge = 0;
-		obj_player.supercharged = false;
+		obj_player1.supercharge = 0;
+		obj_player1.supercharged = false;
 		pistol = false;
 		if (instance_exists(obj_gnome_checklist)) {
 			var destroy = true;

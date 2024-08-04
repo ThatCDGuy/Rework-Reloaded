@@ -59,7 +59,7 @@ switch (room) {
 obj_player1.shotgunAnim = shotgunAnim;
 obj_player1.holycross = 0;
 instance_destroy(obj_crosspriest_cross);
-if (isgustavo != obj_player.isgustavo) {
+if (isgustavo != obj_player1.isgustavo) {
 	if (isgustavo) {
 		scr_switchgustavo();
 	} else {
@@ -71,7 +71,7 @@ if (isgustavo != obj_player.isgustavo) {
 	}
 }
 
-if (!obj_player1.ispeppino && isgustavo != obj_player.noisecrusher) {
+if (!obj_player1.ispeppino && isgustavo != obj_player1.noisecrusher) {
 	if (isgustavo) {
 		scr_switchgustavo();
 	} else {

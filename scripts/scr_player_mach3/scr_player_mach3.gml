@@ -361,7 +361,7 @@ function scr_player_mach3() {
 	if (!instance_exists(dashcloudid) && grounded && !place_meeting(x, y + 1, obj_water) && !b) {
 		with (instance_create(x, y, obj_superdashcloud)) {
 			if (other.fightball == 1) {
-				instance_create(obj_player.x, obj_player.y, obj_slapstar);
+				instance_create(obj_player1.x, obj_player1.y, obj_slapstar);
 			}
 			image_xscale = other.xscale;
 			other.dashcloudid = id;
@@ -370,7 +370,7 @@ function scr_player_mach3() {
 	if (!instance_exists(dashcloudid) && grounded && place_meeting(x, y + 1, obj_water) && !b) {
 		with (instance_create(x, y, obj_superdashcloud)) {
 			if (other.fightball == 1) {
-				instance_create(obj_player.x, obj_player.y, obj_slapstar);
+				instance_create(obj_player1.x, obj_player1.y, obj_slapstar);
 			}
 			image_xscale = other.xscale;
 			sprite_index = spr_watereffect;

@@ -1,9 +1,9 @@
 if (
 	!instance_exists(ID)
-	&& obj_player.state != states.mortattack
-	&& obj_player.state != states.mort
-	&& obj_player.state != states.mortjump
-	&& obj_player.state != states.morthook
+	&& obj_player1.state != states.mortattack
+	&& obj_player1.state != states.mort
+	&& obj_player1.state != states.mortjump
+	&& obj_player1.state != states.morthook
 	&& place_meeting(x, y, obj_player)
 ) {
 	instance_destroy(obj_mort);

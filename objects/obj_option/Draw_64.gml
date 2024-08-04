@@ -39,7 +39,7 @@ switch (m.anchor) {
 			}
 			var t = lang_get_value(o.name);
 			tdp_draw_text_color(xx, yy + (m.ypad * i), t, c, c, c, c, a);
-			if (menu == menus.options) {
+			if (menu == menu_options.options) {
 				scr_pauseicon_draw(i, xx + (string_width(t) / 2) + 50, yy + (m.ypad * i) + (string_height(t) / 2));
 			}
 		}
@@ -83,7 +83,7 @@ switch (m.anchor) {
 					var y2 = y1 + h;
 
 					var spr = spr_slidericon;
-					if (menu != menus.audio) {
+					if (menu != menu_options.audio) {
 						spr = spr_slidericon2;
 					}
 

@@ -19,14 +19,14 @@ with (obj_player) {
 			image_index = 5;
 		}
 		if (x != other.x) {
-			obj_player.hsp = sign(x - other.x) * 5;
+			obj_player1.hsp = sign(x - other.x) * 5;
 		} else {
-			obj_player.hsp = 5;
+			obj_player1.hsp = 5;
 		}
 		vsp = -3;
 		image_index = 0;
-		obj_player.image_index = 0;
-		obj_player.flash = true;
+		obj_player1.image_index = 0;
+		obj_player1.flash = true;
 		state = states.bump;
 	} else if (state == states.bombpep && hurted == 0) {
 		instance_create(x, y, obj_bombexplosion);
@@ -47,17 +47,17 @@ with (obj_player) {
 			image_index = 4;
 		}
 		if (x != other.x) {
-			obj_player.hsp = sign(x - other.x) * 5;
+			obj_player1.hsp = sign(x - other.x) * 5;
 		} else {
-			obj_player.hsp = 5;
+			obj_player1.hsp = 5;
 		}
 		vsp = -3;
 		image_index = 0;
-		obj_player.image_index = 0;
-		obj_player.flash = true;
+		obj_player1.image_index = 0;
+		obj_player1.flash = true;
 		state = states.bump;
 	} else if (state == states.cheesepep || state == states.cheesepepstick) {
-		obj_player.grav = 0.5;
+		obj_player1.grav = 0.5;
 		repeat (8) {
 			with (create_debris(x, y, spr_slimedebris)) {
 				vsp = random_range(-5, 0);
@@ -65,14 +65,14 @@ with (obj_player) {
 			}
 		}
 		if (x != other.x) {
-			obj_player.hsp = sign(x - other.x) * 5;
+			obj_player1.hsp = sign(x - other.x) * 5;
 		} else {
-			obj_player.hsp = 5;
+			obj_player1.hsp = 5;
 		}
 		vsp = -3;
 		image_index = 0;
-		obj_player.image_index = 0;
-		obj_player.flash = true;
+		obj_player1.image_index = 0;
+		obj_player1.flash = true;
 		state = states.bump;
 	} else if (state != states.hurt && hurted == 0 && cutscene == 0 && state != states.bump) {
 		global.hurtcounter += 1;

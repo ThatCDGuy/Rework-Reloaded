@@ -105,7 +105,7 @@ if ((player.x > (x - 400) && player.x < (x + 400)) && (y <= (player.y + 60) && y
 			fmod_event_instance_play(chargesnd);
 			fmod_event_instance_set_3d_attributes(chargesnd, x, y);
 			image_index = 0;
-			image_xscale = -sign(x - obj_player.x);
+			image_xscale = -sign(x - obj_player1.x);
 			state = states.charge;
 			sprite_index = spr_ancho_chargestart;
 		}

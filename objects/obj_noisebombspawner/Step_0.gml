@@ -11,7 +11,7 @@ if (floor(image_index) == image_number - 1 && canthrowbomb == 0) {
 } else {
 	image_speed = 0.35;
 }
-if (!instance_exists(obj_bomb) && obj_player.state != states.bombpep) {
+if (!instance_exists(obj_bomb) && obj_player1.state != states.bombpep) {
 	canthrowbomb = true;
 } else {
 	canthrowbomb = false;

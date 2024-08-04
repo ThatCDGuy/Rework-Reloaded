@@ -465,8 +465,8 @@ function scr_vigilante_throw_cow() {
 		throwbuffer = throwbuffermax;
 		sprite_index = spr_playerV_dynamitethrow;
 		image_index = 0;
-		if (obj_player.x != x) {
-			image_xscale = sign(obj_player.x - x);
+		if (obj_player1.x != x) {
+			image_xscale = sign(obj_player1.x - x);
 		}
 		with (instance_create(x + (image_xscale * 100), y - 10, obj_vigilantecow)) {
 			xscale = other.image_xscale;
@@ -491,8 +491,8 @@ function scr_vigilante_do_revolver(_shot, _buffer, _jump = false) {
 		sprite_index = spr_playerV_revolverhold;
 	}
 	image_index = 0;
-	if (obj_player.x != x) {
-		image_xscale = -sign(x - obj_player.x);
+	if (obj_player1.x != x) {
+		image_xscale = -sign(x - obj_player1.x);
 	}
 	if (jump) {
 		revolverbuffer = 0;

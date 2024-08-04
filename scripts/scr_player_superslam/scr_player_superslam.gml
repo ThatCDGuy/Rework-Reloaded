@@ -65,7 +65,7 @@ function scr_player_superslam() {
 		hsp = 0;
 		bounce = false;
 		with (instance_create(x, y + 35, obj_bangeffect)) {
-			xscale = obj_player.xscale;
+			xscale = obj_player1.xscale;
 		}
 		create_particle(x, y, particle.landcloud, 0);
 		freefallstart = 0;

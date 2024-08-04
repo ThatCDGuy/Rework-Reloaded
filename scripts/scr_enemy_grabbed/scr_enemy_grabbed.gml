@@ -459,7 +459,7 @@ function check_grabbed_solid(player) {
 	}
 
 	if (!place_meeting(x, y, obj_destructibles) && (scr_solid(x, y) || collision_line(x, y, player.x, player.y, obj_solid, false, true) != -4)) {
-		var _dist = abs(x - obj_player.x);
+		var _dist = abs(x - obj_player1.x);
 		x = player.x;
 		y = player.y;
 		if (!scr_solid(x + player.xscale, y)) {

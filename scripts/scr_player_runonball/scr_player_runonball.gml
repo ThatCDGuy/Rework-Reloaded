@@ -6,7 +6,7 @@ function scr_player_runonball() {
 		hsp = image_xscale * movespeed;
 	}
 	jumpstop = false;
-	vsp = obj_player.vsp;
+	vsp = obj_player1.vsp;
 	sprite_index = spr_player_slipnslide;
 	if (key_attack && grounded) {
 		if (mach2 < 35) {
