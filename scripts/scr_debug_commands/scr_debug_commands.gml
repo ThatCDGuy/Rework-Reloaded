@@ -1,4 +1,4 @@
-function string_split(input, split) {
+function _string_split(input, split) {
 	input += " ";
 	var _current_str = "";
 	var _list = array_create(0);

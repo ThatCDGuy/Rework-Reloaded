@@ -80,7 +80,7 @@ function tdp_input_serialize_array(argument0) {
 }
 
 function tdp_input_deserialize(argument0, argument1) {
-	var arr = string_split(argument1, ",");
+	var arr = _string_split(argument1, ",");
 	var in = new tdp_input_key(argument0);
 	for (var i = 0; i < array_length(arr); i += 2) {
 		if (arr[i] == "") {

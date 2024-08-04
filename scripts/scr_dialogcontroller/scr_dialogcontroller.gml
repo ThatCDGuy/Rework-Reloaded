@@ -77,7 +77,7 @@ function scr_separate_text(str, font, width) {
 	}
 
 	var separation = lang_get_value("separation_map");
-	separation = string_split(separation, ",");
+	separation = _string_split(separation, ",");
 
 	while (scr_string_width(str) > width - string_width("a")) {
 		var _pos = string_length(str);
