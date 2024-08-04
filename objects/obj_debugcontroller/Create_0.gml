@@ -390,7 +390,7 @@ if (DEBUG) {
 		return undefined;
 	}
 	function DoCommand(text) {
-		var commands = string_split(text, " ");
+		var commands = _string_split(text, " ");
 		trace(commands);
 		if (array_length(commands) > 0) {
 			var c = FindCommand(commands[0]);
